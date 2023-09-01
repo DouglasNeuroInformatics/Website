@@ -1,6 +1,5 @@
 import { defineConfig, sharpImageService } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 
@@ -14,15 +13,6 @@ export default defineConfig({
     service: sharpImageService()
   },
   integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: 'en',
-        locales: {
-          en: 'en',
-          fr: 'fr'
-        }
-      }
-    }),
     tailwind()
   ],
   markdown: {
@@ -35,6 +25,5 @@ export default defineConfig({
         };
       }
     ]
-  },
-  site: 'https://douglasneuroinformatics.ca'
+  }
 });

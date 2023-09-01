@@ -1,38 +1,30 @@
 ---
+import Page from '@/layouts/Page.astro';
+
 export const getStaticPaths = () => {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
 };
 ---
 
-<html class=" gtnbufm idc0_343"><head>
-<title>Welcome to nginx!</title>
-<style>
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-</style>
-</head>
-<body>
-<h1>Douglas Neuroinformatics Platform</h1>
-<p>Welcome to the Douglas Neuroinformatics (DNP) Index</p>
-
-<p>For online documentation please refer to
-<a href="http://docs.douglasneuroinformatics.ca">docs.douglasneuroinformatics.ca</a></p>
-
-<p>For support requests please email support&lt;at&gt;douglasneuroinformatics.ca</p>
-
-<p>For account requests fill out the form at
-<a href="https://accounts.douglasneuroinformatics.ca/request_account/">Request an Account</a></p>
-
-<p>Access the Mattermost (Chat) instance at
-<a href="https://chat.douglasneuroinformatics.ca">chat.douglasneuroinformatics.ca</a></p>
-
-<p>Access our wiki service at
-<a href="https://wiki.douglasneuroinformatics.ca">wiki.douglasneuroinformatics.ca</a></p>
-
-
-
-
-</body></html>
+<Page>
+  <div class="prose prose-slate dark:prose-invert relative mx-auto max-w-3xl">
+    <h1>Welcome to the Douglas Neuroinformatics (DNP) Index</h1>
+    <p>
+      For online documentation please refer to
+      <a href="http://docs.douglasneuroinformatics.ca">docs.douglasneuroinformatics.ca</a>
+    </p>
+    <p>For support requests please email support&lt;at&gt;douglasneuroinformatics.ca</p>
+    <p>
+      For account requests fill out the form at
+      <a href="https://accounts.douglasneuroinformatics.ca/request_account/">Request an Account</a>
+    </p>
+    <p>
+      Access the Mattermost (Chat) instance at
+      <a href="https://chat.douglasneuroinformatics.ca">chat.douglasneuroinformatics.ca</a>
+    </p>
+    <p>
+      Access our wiki service at
+      <a href="https://wiki.douglasneuroinformatics.ca">wiki.douglasneuroinformatics.ca</a>
+    </p>
+  </div>
+</Page>

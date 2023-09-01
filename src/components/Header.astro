@@ -1,0 +1,29 @@
+---
+import LanguageToggle from './LanguageToggle.astro';
+import Logo from './Logo.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+import { useTranslations } from '@/i18n';
+
+const { t } = useTranslations(Astro.url);
+---
+
+<header
+  class="fixed top-0 z-10 w-full bg-white/80 text-slate-700 shadow backdrop-blur-lg dark:bg-slate-800/75 dark:text-slate-300"
+>
+  <div class="container flex items-center py-3 font-medium">
+    <button
+      aria-label="Menu Button"
+      class="flex h-10 items-center [&>svg]:h-full [&>svg]:w-auto"
+      id="nav-toggle"
+      type="button"
+    >
+      <Logo class="fill-sky-900 dark:fill-slate-100" />
+      <span class="font-lg ml-3 whitespace-nowrap font-semibold">{t('title')}</span>
+    </button>
+    <div class="flex flex-grow justify-end gap-3">
+      <ThemeToggle />
+      <LanguageToggle />
+    </div>
+  </div>
+</header>
