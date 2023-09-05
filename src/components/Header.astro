@@ -2,6 +2,7 @@
 import LanguageToggle from './LanguageToggle.astro';
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import Hamburger from './Hamburger.astro';
 
 import { useTranslations } from '@/i18n';
 
@@ -24,6 +25,12 @@ const { t } = useTranslations(Astro.url);
     <div class="flex flex-grow justify-end gap-3">
       <ThemeToggle />
       <LanguageToggle />
+      <Hamburger/>
+      <script>
+        document.querySelector('.hamburger').addEventListener('click', () => {
+          document.querySelector('.nav-links').classList.toggle('expanded');
+        });
+      </script>
     </div>
   </div>
 </header>

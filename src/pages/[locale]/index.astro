@@ -1,11 +1,11 @@
 ---
 import Page from '@/layouts/Page.astro';
+import Navigation from '../../components/Navigation.astro';
 
 export const getStaticPaths = () => {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
 };
 ---
-
 <Page>
   <div class="prose prose-slate dark:prose-invert relative mx-auto max-w-3xl">
     <h1>Welcome to the Douglas Neuroinformatics (DNP) Index</h1>
