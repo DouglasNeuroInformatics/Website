@@ -29,7 +29,7 @@ const posts = await getCollection('blog', ({ data }) => data.language === resolv
           const { remarkPluginFrontmatter } = await post.render();
           return (
             <a
-              class="cursor-pointer rounded-md border border-slate-300 bg-slate-50 p-5 shadow-sm dark:border-slate-600 dark:bg-slate-800"
+              class="cursor-pointer hover:animate-pulse transition-transform duration-500 hover:scale-105 rounded-md border border-slate-300 bg-slate-50 p-5 shadow-sm dark:border-slate-600 dark:bg-slate-800"
               href={translatePath(`/blog/${post.slug}`)}
             >
               <span
@@ -59,3 +59,15 @@ const posts = await getCollection('blog', ({ data }) => data.language === resolv
     )
   }
 </Page>
+
+<!-- <script>
+  window.addEventListener('mouseover', () => {
+    const blogItem = document.getElementById('blog-card')!;
+    blogItem.classList.add('animate-pulse');
+  });
+
+  window.addEventListener('mouseout', () => {
+    const blogItem2 = document.getElementById('blog-card')!;
+    blogItem2.classList.remove('animate-pulse');
+  });
+</script> -->
