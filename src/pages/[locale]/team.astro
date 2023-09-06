@@ -1,6 +1,7 @@
 ---
 import Page from '@/layouts/Page.astro';
 import { Image } from 'astro:assets';
+import Modal from '@/components/Modal.astro'
 
 import { getCollection } from 'astro:content';
 
@@ -40,9 +41,12 @@ export const getStaticPaths = () => {
             </div>
           </div>
         </li>
+
       ))
     }
   </ul>
+
+
 </Page>
 <script>
   window.addEventListener('load', () => {
