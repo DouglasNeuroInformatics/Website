@@ -21,8 +21,9 @@ export const getStaticPaths = () => {
 ---
 
 <Page>
-  <h2 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Meet Our Team</h2>
-  <ul class="grid gap-8 lg:grid-cols-2" id="team-members-list">
+  <Modal />
+  <h2 class="z-1 pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Meet Our Team</h2>
+  <ul class="grid gap-8 lg:grid-cols-2 z-1" id="team-members-list">
     {
       team.map(({ data: { fullName, suffix, position, image, description } }) => (
         <li class="opacity-0 ease-in-out transition-all duration-500 translate-y-6 hover:scale-105">
@@ -45,7 +46,7 @@ export const getStaticPaths = () => {
       ))
     }
   </ul>
-<Modal></Modal>
+
 </Page>
 <script>
   window.addEventListener('load', () => {
