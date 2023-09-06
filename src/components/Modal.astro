@@ -1,29 +1,42 @@
----
-const {id, open} = Astro.props;
----
 
-<button onclick="{`window.${id}.showModal()`}">{open}</button>
 
-<dialog id="{id}">
-    <slot name="main" />
-    <form method="dialog">
-      <slot name="close" />
-    </form>
-  </dialog>
+<button id="my-btn" class="bg-slate-200 border-2">Open Modal</button>
+<!-- The Modal -->
+<div id="my-modal" class="text-red-400 w-60 bg-inherit border-2 hidden">
 
-  <!-- <style lang="scss">
-    dialog {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      &::backdrop {
-        position: fixed;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-        background: rgba(217, 212, 212, 0.487);
-      }
+    <!-- Modal content -->
+    <div>
+      <span id="close" class="text-red-600">&times;</span>
+      <p>Some text in the Modal..</p>
+    </div>
+  
+</div>
+
+<script>
+  // Get the modal
+  const modal = document.getElementById("my-modal");
+  
+  // Get the button that opens the modal
+  const btn = document.getElementById("my-btn");
+  
+  // Get the <span> element that closes the modal
+  const spans = document.getElementById("close");
+  
+  // When the user clicks the button, open the modal 
+  btn?.addEventListener('click', ()=>{
+    modal?.classList.replace("hidden","block");
+  });
+  
+  // When the user clicks on <span> (x), close the modal
+  spans?.addEventListener('click', ()=>{
+    modal?.classList.replace("block","hidden");
+  });
+
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal?.classList.replace("block","hidden");
     }
-  </style> -->
+  }
+  </script>
