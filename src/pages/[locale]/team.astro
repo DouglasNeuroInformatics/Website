@@ -21,32 +21,35 @@ export const getStaticPaths = () => {
 ---
 
 <Page>
-  <Modal />
-  <h2 class="z-1 pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Meet Our Team</h2>
-  <ul class="grid gap-8 lg:grid-cols-2 z-1" id="team-members-list">
-    {
-      team.map(({ data: { fullName, suffix, position, image, description } }) => (
-        <li class="opacity-0 ease-in-out transition-all duration-500 translate-y-6 hover:scale-105">
-          <div class="grid grid-cols-3 gap-8">
-            <div class="flex items-center justify-center">
-              <Image
-                class="rounded-lg object-cover shadow-lg"
-                src={image}
-                alt={fullName}
-              />
-            </div>
-            <div class="col-span-2 space-y-1 text-lg font-medium leading-relaxed">
-              <h3>{`${fullName}${suffix ? `, ${suffix}` : ''}`}</h3>
-              <span class="text-sky-700 dark:text-sky-400">{position}</span>
-              <p class="mt-1 text-base font-normal leading-tight text-slate-600 dark:text-slate-300">{description}</p>
-            </div>
-          </div>
-        </li>
+  <div class="h-full w-full">
+    <div class="z-30"><Modal/></div>
+    <div class="z-10">  
+      <h2 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Meet Our Team</h2>
+      <ul class="grid gap-8 lg:grid-cols-2" id="team-members-list">
+        {
+          team.map(({ data: { fullName, suffix, position, image, description } }) => (
+            <li class="opacity-0 ease-in-out transition-all duration-500 translate-y-6 hover:scale-105">
+              <div class="grid grid-cols-3 gap-8">
+                <div class="flex items-center justify-center">
+                  <Image
+                    class="rounded-lg object-cover shadow-lg"
+                    src={image}
+                    alt={fullName}
+                  />
+                </div>
+                <div class="col-span-2 space-y-1 text-lg font-medium leading-relaxed">
+                  <h3>{`${fullName}${suffix ? `, ${suffix}` : ''}`}</h3>
+                  <span class="text-sky-700 dark:text-sky-400">{position}</span>
+                  <p class="mt-1 text-base font-normal leading-tight text-slate-600 dark:text-slate-300">{description}</p>
+                </div>
+              </div>
+            </li>
 
-      ))
-    }
-  </ul>
-
+          ))
+        }
+      </ul>
+    </div>
+</div>
 </Page>
 <script>
   window.addEventListener('load', () => {
