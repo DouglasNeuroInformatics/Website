@@ -1,11 +1,11 @@
 
 
-<button id="my-btn" class="bg-slate-200 border-2">Open Modal</button>
+
 <!-- The Modal -->
-<div id="my-modal" class="flex absolute left-0 z-30 bg-slate-100/40 hidden h-full w-full items-center justify-center">
+<div id="my-modal" class="flex absolute left-0 z-30 bg-slate-100/40 hidden h-screen w-screen items-center justify-center">
 
     <!-- Modal content -->
-    <div class='grid z-40 bg-slate-200 h-1/2 w-1/2 inset-x-2/3'>
+    <div id="content" class='grid z-40 bg-slate-200 h-1/2 w-1/2 inset-x-2/3'>
       <span id="close" class="text-slate-400 text-5xl">&times;</span>
       
     </div>
@@ -21,6 +21,9 @@
   
   // Get the <span> element that closes the modal
   const spans = document.getElementById("close");
+
+  // Get the modal content div
+  const content = document.getElementById("content");
   
   // When the user clicks the button, open the modal 
   btn?.addEventListener('click', ()=>{
@@ -39,4 +42,13 @@
       modal?.classList.replace("block","hidden");
     }
   }
+
+  // window.onclick = function(event) {
+  //   if (event.target != content && event.target == modal) {
+  //     if(content?.classList.contains("block")){
+  //       modal?.classList.replace("block","hidden");
+  //     }
+      
+  //   }
+  // }
   </script>

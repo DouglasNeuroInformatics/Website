@@ -20,19 +20,38 @@ export const getStaticPaths = () => {
 };
 ---
 
+
 <Page>
+  <template class="modal-content-template">
+  </template>
+
+  <div class="flex fixed inset-0 -z-10 bg-opacity-0 transition-all duration-500 bg-black h-screen w-screen items-center justify-center" id="modal-overlay">
+    <div id="modal-content" class="bg-opacity-100 p-3 duration-500 transition-transform bg-slate-100 scale-0 z-30 opacity-100 h-1/2 w-1/2 dark:bg-slate-800 rounded-lg">
+      <span id="close" class="text-slate-400 dark:text-slate-200 text-5xl text-left">&times;</span>
+      <h3 class="modal-title"></h3>
+      <span class="modal-pos text-sky-700 dark:text-sky-400"></span>
+      <p class="modal-desc mt-1 text-base font-normal leading-tight text-slate-600 dark:text-slate-300"></p>
+      <div id="modal-image-container" class="flex justify-center items-center mt-6"></div>
+      <!-- <Image class="modal-pic rounded-lg object-cover shadow-lg" alt="example" src={{
+        src: "",
+        width: 20,
+        height: 20,
+        format: "jpeg"
+
+      }}/> -->
+    </div>
+  </div>
   <div class="h-full w-full">
-    <div class="z-30"><Modal/></div>
-    <div class="z-10">  
+    <div id="my-btn"class="z-10">  
       <h2 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Meet Our Team</h2>
       <ul class="grid gap-8 lg:grid-cols-2" id="team-members-list">
         {
           team.map(({ data: { fullName, suffix, position, image, description } }) => (
             <li class="opacity-0 ease-in-out transition-all duration-500 translate-y-6 hover:scale-105">
-              <div class="grid grid-cols-3 gap-8">
+              <button class="grid grid-cols-3 gap-8" type="button" data-fullname={fullName} data-suffix={suffix} data-position={position} data-image={image} data-description = {description}>
                 <div class="flex items-center justify-center">
                   <Image
-                    class="rounded-lg object-cover shadow-lg"
+                    class="rounded-lg object-cover shadow-lg headshot"
                     src={image}
                     alt={fullName}
                   />
@@ -42,9 +61,8 @@ export const getStaticPaths = () => {
                   <span class="text-sky-700 dark:text-sky-400">{position}</span>
                   <p class="mt-1 text-base font-normal leading-tight text-slate-600 dark:text-slate-300">{description}</p>
                 </div>
-              </div>
+              </button>
             </li>
-
           ))
         }
       </ul>
@@ -54,12 +72,76 @@ export const getStaticPaths = () => {
 <script>
   window.addEventListener('load', () => {
     const ul = document.getElementById('team-members-list')!;
+    const modalOverlay = document.getElementById('modal-overlay') as HTMLDivElement;
+    const modalContent = document.getElementById('modal-content') as HTMLDivElement
+    const modalImageContainer = document.getElementById('modal-image-container') as HTMLDivElement;
+
+    
+    function openModal(event: MouseEvent) {
+      modalOverlay.classList.replace('bg-opacity-0', 'bg-opacity-50')
+      modalOverlay.classList.replace('-z-10', 'z-20')
+      modalContent.classList.replace('scale-0', 'scale-100')
+      document.body.style.overflow = 'hidden'
+
+      if (event.currentTarget instanceof HTMLButtonElement) {
+        const fullname = event.currentTarget.getAttribute('data-fullname')
+        const suffix = event.currentTarget.getAttribute('data-suffix')
+        const pos = event.currentTarget.getAttribute('data-position')
+        const desc = event.currentTarget.getAttribute('data-description')
+      
+        const title = modalOverlay.querySelector('.modal-title') as HTMLHeadingElement;
+        const modalPos = modalOverlay.querySelector('.modal-pos') as HTMLHeadingElement;
+        const modalDesc = modalOverlay.querySelector('.modal-desc') as HTMLHeadingElement;
+
+        const headshot = event.currentTarget.querySelector('.headshot') as HTMLImageElement;
+        headshot.classList.add("w-1/3");
+        headshot.classList.add("h-1/3");
+        
+        
+        
+        modalImageContainer.appendChild(headshot.cloneNode())
+
+
+        headshot.classList.remove("w-1/3");
+        headshot.classList.remove("h-1/3");
+        
+
+        title.innerText = fullname!
+        if(suffix){
+          title.innerText = fullname! + ', ' + suffix!
+        }
+        modalPos.innerText = pos!;
+        modalDesc.innerText = desc!;
+
+
+      } else {
+        console.error('Could not find expected button in current target')
+      }
+    }
+
+    function closeModal() {
+      modalOverlay.classList.replace('bg-opacity-50','bg-opacity-0');
+      modalContent.classList.replace('scale-100', 'scale-0')
+      // after animation is done
+      setTimeout(() => {
+        modalOverlay.classList.replace('z-20','-z-10');
+        document.body.style.overflow = 'auto'
+        const headshot = modalOverlay.querySelector('.headshot') as HTMLImageElement
+        headshot.remove()
+      }, 500)
+    }
+    
     for (let i = 0; i < ul.children.length; i++) {
       const li = ul.children.item(i) as HTMLLIElement;
+      const btn = li.children.item(0) as HTMLButtonElement;
+      btn.addEventListener('click', openModal)
+
       setTimeout(() => {
         li.classList.replace('opacity-0', 'opacity-100');
         li.classList.replace('translate-y-6', 'translate-y-0');
       }, i * 100);
     }
-  });
+
+    modalOverlay.addEventListener('click', closeModal);
+  })
 </script>
