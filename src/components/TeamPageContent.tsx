@@ -45,6 +45,9 @@ const TeamPageContent = ({ team }: TeamPageContentProps) => {
               initial={{ scale: 0 }}
               transition={{ duration: 0.8, type: 'spring', bounce: 0.23 }}
             >
+              <div className="right-0 top-0 h-1/2 text-end text-3xl">
+                <span className="bg-slate-100 dark:border-slate-700 dark:bg-slate-800 ">&times;</span>
+              </div>
               <TeamMemberCard
                 format="expanded"
                 person={team[modalIndex].data}
