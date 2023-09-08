@@ -6,7 +6,7 @@
     "astro": "astro",
     "build": "astro build",
     "dev": "astro dev",
-    "format": "prettier --write src",
+    "format": "prettier --write src/**/*.{astro,ts,tsx,yaml}",
     "lint": "eslint --fix src",
     "preview": "astro preview",
     "start": "astro dev"

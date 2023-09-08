@@ -18,7 +18,7 @@ function getTranslation(key: TranslationKey, language: Language) {
   const value = key
     .split('.')
     .filter(Boolean)
-    .reduce<any>((accumulator, currentValue) => (accumulator )?.[currentValue], translations);
+    .reduce<any>((accumulator, currentValue) => accumulator?.[currentValue], translations);
   return (value[language] ?? value) as string;
 }
 

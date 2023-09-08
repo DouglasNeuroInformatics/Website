@@ -1,54 +1,50 @@
-
-
-
 <!-- The Modal -->
-<div id="my-modal" class="flex absolute left-0 z-30 bg-slate-100/40 hidden h-screen w-screen items-center justify-center">
-
-    <!-- Modal content -->
-    <div id="content" class='grid z-40 bg-slate-200 h-1/2 w-1/2 inset-x-2/3'>
-      <span id="close" class="text-slate-400 text-5xl">&times;</span>
-      
-    </div>
-  
+<div
+  id="my-modal"
+  class="absolute left-0 z-30 flex hidden h-screen w-screen items-center justify-center bg-slate-100/40"
+>
+  <!-- Modal content -->
+  <div id="content" class="inset-x-2/3 z-40 grid h-1/2 w-1/2 bg-slate-200">
+    <span id="close" class="text-5xl text-slate-400">&times;</span>
+  </div>
 </div>
 
 <script>
   // Get the modal
-  const modal = document.getElementById("my-modal");
-  
+  const modal = document.getElementById('my-modal');
+
   // Get the button that opens the modal
-  const btn = document.getElementById("my-btn");
-  
+  const btn = document.getElementById('my-btn');
+
   // Get the <span> element that closes the modal
-  const spans = document.getElementById("close");
+  const spans = document.getElementById('close');
 
   // Get the modal content div
-  const content = document.getElementById("content");
-  
-  // When the user clicks the button, open the modal 
-  btn?.addEventListener('click', ()=>{
-    modal?.classList.replace("hidden","block");
-  });
-  
-  // When the user clicks on <span> (x), close the modal
-  spans?.addEventListener('click', ()=>{
-    modal?.classList.replace("block","hidden");
+  const content = document.getElementById('content');
+
+  // When the user clicks the button, open the modal
+  btn?.addEventListener('click', () => {
+    modal?.classList.replace('hidden', 'block');
   });
 
-  
+  // When the user clicks on <span> (x), close the modal
+  spans?.addEventListener('click', () => {
+    modal?.classList.replace('block', 'hidden');
+  });
+
   // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target == modal) {
-      modal?.classList.replace("block","hidden");
+      modal?.classList.replace('block', 'hidden');
     }
-  }
+  };
 
   // window.onclick = function(event) {
   //   if (event.target != content && event.target == modal) {
   //     if(content?.classList.contains("block")){
   //       modal?.classList.replace("block","hidden");
   //     }
-      
+
   //   }
   // }
-  </script>
+</script>
