@@ -1,5 +1,6 @@
 import { defineConfig, sharpImageService } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import react from "@astrojs/react";
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 
@@ -12,18 +13,16 @@ export default defineConfig({
   image: {
     service: sharpImageService()
   },
-  integrations: [
-    tailwind()
-  ],
+  integrations: [tailwind(), react()],
   markdown: {
-    remarkPlugins: [
-      () => {
-        return function (tree, { data }) {
-          const textOnPage = toString(tree);
-          const readingTime = getReadingTime(textOnPage);
-          data.astro.frontmatter.readingTime = readingTime.minutes;
-        };
-      }
-    ]
+    remarkPlugins: [() => {
+      return function (tree, {
+        data
+      }) {
+        const textOnPage = toString(tree);
+        const readingTime = getReadingTime(textOnPage);
+        data.astro.frontmatter.readingTime = readingTime.minutes;
+      };
+    }]
   }
 });

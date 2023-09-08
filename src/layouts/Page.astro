@@ -1,7 +1,7 @@
 ---
 import Header from '@/components/Header.astro';
 import { useTranslations } from '@/i18n';
-
+import Footer from '@/components/Footer.astro';
 type Props = {
   meta?: {
     title?: string;
@@ -28,8 +28,9 @@ const hostname = Astro.url.hostname;
   </head>
   <body class="flex h-screen flex-col scroll-smooth bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
     <Header />
-    <main class="container pb-8 pt-24">
+    <main class="container pb-8 pt-24 flex-grow">
       <slot />
     </main>
+    <Footer/>
   </body>
 </html>
