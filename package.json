@@ -13,7 +13,7 @@
     "start": "astro dev"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
+    "*.{astro,ts,tsx}": "eslint --cache --fix",
     "*.{astro,ts,tsx,yaml}": "prettier --write"
   },
   "dependencies": {
