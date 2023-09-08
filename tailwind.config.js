@@ -2,7 +2,7 @@ import typographyPlugin from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,ts}'],
+  content: ['./src/**/*.{astro,html,js,ts,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
