@@ -3,6 +3,7 @@ import Page from '@/layouts/Page.astro';
 import { Image } from 'astro:assets';
 import Modal from '@/components/Modal.astro'
 
+import TeamMember from '@/components/TeamMember';
 import { getCollection } from 'astro:content';
 
 const team = await getCollection('team');
@@ -22,16 +23,17 @@ export const getStaticPaths = () => {
 
 
 <Page>
+  <!-- <TeamMember /> -->
   <template class="modal-content-template">
   </template>
 
   <div class="flex fixed inset-0 -z-10 bg-opacity-0 transition-all duration-500 bg-black h-screen w-screen items-center justify-center" id="modal-overlay">
-    <div id="modal-content" class="bg-opacity-100 p-3 duration-500 transition-transform bg-slate-100 scale-0 z-30 opacity-100 h-1/2 w-1/2 dark:bg-slate-800 rounded-lg">
+    <div id="modal-content" class="bg-opacity-100 p-3 duration-500 transition-transform bg-slate-100 scale-0 z-60 opacity-100 h-4/6 w-3/5 dark:bg-slate-800 rounded-lg">
       <span id="close" class="text-slate-400 dark:text-slate-200 text-5xl text-left">&times;</span>
-      <h3 class="modal-title"></h3>
+      <h2 class="modal-title"></h2>
       <span class="modal-pos text-sky-700 dark:text-sky-400"></span>
       <p class="modal-desc mt-1 text-base font-normal leading-tight text-slate-600 dark:text-slate-300"></p>
-      <div id="modal-image-container" class="flex justify-center items-center mt-6"></div>
+      <div id="modal-image-container" class="flex justify-center items-center mt-6 "></div>
       <!-- <Image class="modal-pic rounded-lg object-cover shadow-lg" alt="example" src={{
         src: "",
         width: 20,
@@ -119,16 +121,20 @@ export const getStaticPaths = () => {
       }
     }
 
-    function closeModal() {
-      modalOverlay.classList.replace('bg-opacity-50','bg-opacity-0');
-      modalContent.classList.replace('scale-100', 'scale-0')
-      // after animation is done
-      setTimeout(() => {
+    function closeModal(event:MouseEvent) {
+      // console.log(event.currentTarget == modalContent);
+      if (event.currentTarget != modalContent){
+        modalOverlay.classList.replace('bg-opacity-50','bg-opacity-0');
+        modalContent.classList.replace('scale-100', 'scale-0')
+        // after animation is done
+        setTimeout(() => {
         modalOverlay.classList.replace('z-20','-z-10');
         document.body.style.overflow = 'auto'
         const headshot = modalOverlay.querySelector('.headshot') as HTMLImageElement
         headshot.remove()
       }, 500)
+      }
+      
     }
     
     for (let i = 0; i < ul.children.length; i++) {
@@ -141,7 +147,8 @@ export const getStaticPaths = () => {
         li.classList.replace('translate-y-6', 'translate-y-0');
       }, i * 100);
     }
-
+    
     modalOverlay.addEventListener('click', closeModal);
   })
+
 </script>
