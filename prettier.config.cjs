@@ -1,7 +1,7 @@
 // @ts-check
 
 /** @type {import("prettier").Config} */
-export default {
+module.exports =  {
   plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   htmlWhitespaceSensitivity: 'ignore',
   printWidth: 120,
