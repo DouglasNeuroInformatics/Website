@@ -43,7 +43,7 @@ While hardware serves as the body of the DNP, software is its beating heart. Her
 
 2. **Scientific Software**: The platform offers a comprehensive suite of specialized software. Rather than dealing with compatibility headaches on Windows or MacOS, our workstations come equipped with frequently-used scientific tools like Python, JupyterLab, and R. If there's a specific software you need, just let us know, and we'll be happy to help.
 
-3. **User-Friendly Web Platforms**: Although the command line is the most common way of accessing the DNP for research applications, we are currently engineering a [web-based platform](https://github.com/DouglasNeuroInformatics/DataBank) for managing, versioning, and sharing your data. Alongside our [data capture tool](https://github.com/DouglasNeuroInformatics/OpenDataCapture) designed primarily for clinical research, we aim to provide a diverse set of tools accessible to users with a range of technical abilities. 
+3. **User-Friendly Web Platforms**: Although the command line is the most common way of accessing the DNP for research applications, we are currently engineering a [web-based platform](https://github.com/DouglasNeuroInformatics/DataBank) for managing, versioning, and sharing your data. Alongside our [data capture tool](https://github.com/DouglasNeuroInformatics/OpenDataCapture) designed primarily for clinical research, we aim to provide a diverse set of tools accessible to users with a range of technical abilities.
 
 ## How to Dive into the DNP Ecosystem
 
