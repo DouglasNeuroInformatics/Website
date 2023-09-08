@@ -19,6 +19,9 @@ module.exports = {
       parser: 'astro-eslint-parser',
       parserOptions: {
         parser: '@typescript-eslint/parser'
+      },
+      rules: {
+        'import/exports-last': 'off',
       }
     }
   ]

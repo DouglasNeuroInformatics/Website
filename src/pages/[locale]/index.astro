@@ -1,17 +1,22 @@
 ---
 import Page from '@/layouts/Page.astro';
-import Navigation from '../../components/Navigation.astro';
 
 export const getStaticPaths = () => {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
 };
 ---
+
 <Page>
-  <div id="douglas-text" class="prose prose-slate dark:prose-invert relative mx-auto max-w-3xl transition-opacity duration-300 ease-in opacity-0 translate-y-full">
+  <div
+    id="douglas-text"
+    class="prose prose-slate relative mx-auto max-w-3xl translate-y-full opacity-0 transition-opacity duration-300 ease-in dark:prose-invert"
+  >
     <h1>Welcome to the Douglas Neuroinformatics (DNP) Index</h1>
     <h3>About the DNP</h3>
     <p>
-      The Douglas Neuroinformatics Platform is a single-sign-on Ubuntu Linux based computer system. Originally the computing platform of the Douglas Cerebral Imaging Centre (CIC), it has grown and generalized to meet the informatics needs of the Douglas Research Centre as a whole.
+      The Douglas Neuroinformatics Platform is a single-sign-on Ubuntu Linux based computer system. Originally the
+      computing platform of the Douglas Cerebral Imaging Centre (CIC), it has grown and generalized to meet the
+      informatics needs of the Douglas Research Centre as a whole.
     </p>
     <h3>Documentation</h3>
     <p>
@@ -30,18 +35,18 @@ export const getStaticPaths = () => {
     </p>
     <h3>Communication</h3>
     <p>
-      The team uses <a href="https://mattermost.com/"> Mattermost</a>, an online, and self-hostable chat application to communcate. Access the Mattermost (Chat) channel is at
+      The team uses <a href="https://mattermost.com/">Mattermost</a>, an online, and self-hostable chat application to
+      communcate. Access the Mattermost (Chat) channel is at
       <a href="https://chat.douglasneuroinformatics.ca">chat.douglasneuroinformatics.ca</a>
     </p>
-   
   </div>
 </Page>
 <script>
   window.addEventListener('load', () => {
     const ul = document.getElementById('douglas-text')!;
     setTimeout(() => {
-        ul.classList.replace('opacity-0', 'opacity-100');
-        ul.classList.replace('translate-y-full', 'translate-y-0');
-      }, 1000);
+      ul.classList.replace('opacity-0', 'opacity-100');
+      ul.classList.replace('translate-y-full', 'translate-y-0');
+    }, 1000);
   });
 </script>
