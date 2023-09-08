@@ -23,6 +23,10 @@ module.exports = {
       rules: {
         'import/exports-last': 'off',
       }
+    },
+    {
+      files: ['*.jsx', '*.tsx'],
+      extends: ['@douglasneuroinformatics/eslint-config/lib/react.cjs']
     }
   ]
 };
