@@ -1,0 +1,65 @@
+---
+import ScrollFadeItem from '@/components/ScrollFadeItem';
+import Page from '@/layouts/Page.astro';
+
+export const getStaticPaths = () => {
+  return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
+};
+---
+
+<Page>
+  <ScrollFadeItem client:load>
+    <div class="p-30 py-20 text-center">
+      <h1 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Welcome to the Douglas Neuroinformatics (DNP) Index
+      </h1>
+    </div>
+  </ScrollFadeItem>
+
+  <ScrollFadeItem client:load>
+    <div class="p-30">
+      <h3 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">About the DNP</h3>
+      <p class="text-xl">
+        The Douglas Neuroinformatics Platform is a single-sign-on Ubuntu Linux based computer system. Originally the
+        computing platform of the Douglas Cerebral Imaging Centre (CIC), it has grown and generalized to meet the
+        informatics needs of the Douglas Research Centre as a whole.
+      </p>
+    </div>
+  </ScrollFadeItem>
+
+  <ScrollFadeItem client:load>
+    <div class="p-30">
+      <h3 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Documentation</h3>
+      <p class="text-xl">
+        For online documentation please refer to
+        <a class="underline" href="http://docs.douglasneuroinformatics.ca">docs.douglasneuroinformatics.ca</a>
+      </p>
+      <p class="text-xl">
+        Access our wiki service at
+        <a class="underline" href="https://wiki.douglasneuroinformatics.ca">wiki.douglasneuroinformatics.ca</a>
+      </p>
+    </div>
+  </ScrollFadeItem>
+
+  <ScrollFadeItem client:load>
+    <div class="p-30">
+      <h3 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Contact and Requests</h3>
+      <p class="text-xl">For support requests please email support&lt;at &gt;douglasneuroinformatics.ca</p>
+      <p class="text-xl">
+        For account requests fill out the form at
+        <a class="underline" href="https://accounts.douglasneuroinformatics.ca/request_account/">Request an Account</a>
+      </p>
+    </div>
+  </ScrollFadeItem>
+
+  <ScrollFadeItem client:load>
+    <div class="p-30">
+      <h3 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Communication</h3>
+      <p class="text-xl">
+        The team uses <a class="underline" href="https://mattermost.com/">Mattermost</a>, an online, and self-hostable
+        chat application to communcate. Access the Mattermost (Chat) channel is at
+        <a class="underline" href="https://chat.douglasneuroinformatics.ca">chat.douglasneuroinformatics.ca</a>
+      </p>
+    </div>
+  </ScrollFadeItem>
+</Page>

@@ -27,9 +27,11 @@ const hostname = Astro.url.hostname;
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <script defer data-domain={hostname} src="https://plausible.io/js/script.js"></script>
   </head>
-  <body class="flex h-screen flex-col scroll-smooth bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <body
+    class="flex min-h-screen flex-col scroll-smooth bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100"
+  >
     <Header />
-    <main class="container flex-grow pb-8 pt-24">
+    <main class="container pb-8 pt-24">
       <slot />
     </main>
     <Footer />

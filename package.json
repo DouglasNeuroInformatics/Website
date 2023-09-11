@@ -22,7 +22,9 @@
     "mdast-util-to-string": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "reading-time": "^1.5.0"
+    "react-scrollama": "^2.3.2",
+    "reading-time": "^1.5.0",
+    "scrollama": "^3.2.0"
   },
   "devDependencies": {
     "@astrojs/react": "^3.0.1",
