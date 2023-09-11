@@ -34,7 +34,7 @@ const ScrollFadeItem = ({ children }: ScrollFadeItemProps) => {
   }, []);
 
   return (
-    <div className="flex min-h-[calc(120vh-64px)]" ref={ref}>
+    <div className="flex min-h-[calc(100vh-48px)]" ref={ref}>
       <motion.div
         animate={{ opacity: isVisible ? 1 : 0.2, y: isVisible ? 0 : 50 }}
         className="flex-grow"
