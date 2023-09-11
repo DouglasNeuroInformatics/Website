@@ -13,13 +13,18 @@ const TeamPageContent = ({ team }: TeamPageContentProps) => {
   const [modalIndex, setModalIndex] = useState<number | null>(null);
   const isModalOpen = modalIndex !== null;
 
-  const closeModal = () => {
-    setModalIndex(null);
-  };
-
   useEffect(() => {
     document.body.style.overflow = isModalOpen ? 'hidden' : 'auto';
   }, [modalIndex]);
+
+  const closeOverlay = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    const data = (event.target as HTMLElement).getAttribute('data-value');
+    if (data === 'parent') {
+      setModalIndex(null);
+    }
+  };
 
   return (
     <div className="relative">
@@ -30,11 +35,12 @@ const TeamPageContent = ({ team }: TeamPageContentProps) => {
             : { backgroundColor: 'rgb(0 0 0 / 0)', transitionEnd: { zIndex: -10 } }
         }
         className="fixed inset-0 flex h-screen w-screen cursor-default items-center justify-center"
+        data-value="parent"
         initial={false}
         role="button"
         tabIndex={0}
         transition={{ duration: 0.5 }}
-        onClick={closeModal}
+        onClick={closeOverlay}
       >
         <AnimatePresence>
           {isModalOpen && (
@@ -46,13 +52,18 @@ const TeamPageContent = ({ team }: TeamPageContentProps) => {
               transition={{ duration: 0.8, type: 'spring', bounce: 0.23 }}
             >
               <div className="right-0 top-0 h-1/2 text-end text-3xl">
-                <span className="bg-slate-100 dark:border-slate-700 dark:bg-slate-800 ">&times;</span>
+                <span
+                  className="bg-slate-100 hover:opacity-25 dark:border-slate-700 dark:bg-slate-800"
+                  data-value="parent"
+                >
+                  &times;
+                </span>
               </div>
               <TeamMemberCard
                 format="expanded"
                 person={team[modalIndex].data}
                 onClick={() => {
-                  setModalIndex(null);
+                  closeOverlay;
                 }}
               />
             </motion.div>
