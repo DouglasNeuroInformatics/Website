@@ -69,7 +69,7 @@ export const getStaticPaths = () => {
            Access our wiki service at
           <a class="underline" href="https://wiki.douglasneuroinformatics.ca">wiki.douglasneuroinformatics.ca</a>
         </p>
-        <Image class="h-1/4 w-1/2 rounded-sm pl-4" alt="douglas Logo" src={wikiImage} />
+        <Image class="h-1/4 w-1/2 rounded-sm pl-4" alt="wiki image" src={wikiImage} />
       </div>
     </div>
   </ScrollFadeItem>
@@ -93,13 +93,15 @@ export const getStaticPaths = () => {
         chat application to communcate. Access to the Mattermost (Chat) channel is at
         <a class="underline" href="https://chat.douglasneuroinformatics.ca">chat.douglasneuroinformatics.ca</a>
       </p>
-      <div class="flex h-1/4 items-center justify-center self-center p-6">
-        <Image
-          class="flex h-1/4 w-1/4 justify-center self-center lg:h-1/6 lg:w-1/6"
-          alt="Mattermost Logo"
-          src={mattermostLogo}
-        />
-      </div>
+      <a class="hover:animate-pulse" href="https://mattermost.com/">
+        <div class="flex h-1/4 items-center justify-center self-center p-6">
+          <Image
+            class="flex h-1/4 w-1/4 justify-center self-center lg:h-1/6 lg:w-1/6"
+            alt="Mattermost Logo"
+            src={mattermostLogo}
+          />
+        </div>
+      </a>
     </div>
   </ScrollFadeItem>
 </Page>
