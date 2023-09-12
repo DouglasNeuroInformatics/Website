@@ -18,13 +18,16 @@
   },
   "dependencies": {
     "clsx": "^2.0.0",
+    "eslint-plugin-import": "^2.28.1",
     "framer-motion": "^10.16.4",
     "mdast-util-to-string": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scrollama": "^2.3.2",
     "reading-time": "^1.5.0",
-    "scrollama": "^3.2.0"
+    "scrollama": "^3.2.0",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^0.0.1-alpha.0"
   },
   "devDependencies": {
     "@astrojs/react": "^3.0.1",

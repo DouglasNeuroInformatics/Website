@@ -1,4 +1,4 @@
-import { defineConfig, sharpImageService } from 'astro/config';
+import { defineConfig, squooshImageService } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import react from "@astrojs/react";
 import getReadingTime from 'reading-time';
@@ -11,7 +11,7 @@ export default defineConfig({
   },
   compressHTML: true,
   image: {
-    service: sharpImageService()
+    service: squooshImageService()
   },
   integrations: [tailwind(), react()],
   markdown: {
