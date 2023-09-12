@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+
+import MattermostLogo from '@/assets/mattermostlogo.png';
 import ScrollFadeItem from '@/components/ScrollFadeItem';
 import Page from '@/layouts/Page.astro';
 
@@ -60,6 +63,13 @@ export const getStaticPaths = () => {
         chat application to communcate. Access the Mattermost (Chat) channel is at
         <a class="underline" href="https://chat.douglasneuroinformatics.ca">chat.douglasneuroinformatics.ca</a>
       </p>
+      <div class="h-1/4 w-1/4 justify-center justify-items-center object-center">
+        <Image
+          class="h-1/2 w-1/2 justify-center justify-items-center object-center"
+          alt="Mattermost Logo"
+          src={MattermostLogo}
+        />
+      </div>
     </div>
   </ScrollFadeItem>
 </Page>

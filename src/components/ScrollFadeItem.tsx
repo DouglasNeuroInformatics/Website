@@ -20,7 +20,7 @@ const ScrollFadeItem = ({ children }: ScrollFadeItemProps) => {
         setIsVisible(entries[0].isIntersecting);
       },
       {
-        threshold: 0.25
+        threshold: 0.4
       }
     );
     if (!ref.current) {
