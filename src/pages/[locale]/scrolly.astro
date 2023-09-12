@@ -3,7 +3,9 @@ import { Image } from 'astro:assets';
 
 import douglasLogo from '@/assets/douglas-logo.png';
 import douglasBuild from '@/assets/douglasBuilding.jpg';
+import Logo from '@/assets/logo.png';
 import mattermostLogo from '@/assets/mattermostlogo.png';
+import wikiImage from '@/assets/wiki.jpg';
 import ScrollFadeItem from '@/components/ScrollFadeItem';
 import Page from '@/layouts/Page.astro';
 
@@ -25,15 +27,33 @@ export const getStaticPaths = () => {
   </ScrollFadeItem>
 
   <ScrollFadeItem client:load>
-    <div class="p-30">
+    <div class="pb-72 pt-48">
       <h3 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">About the DNP</h3>
-      <p class="text-xl">
+      <p class="pb-12 text-xl">
         The Douglas Neuroinformatics Platform is a single-sign-on Ubuntu Linux based computer system. Originally the
         computing platform of the Douglas Cerebral Imaging Centre (CIC), it has grown and generalized to meet the
         informatics needs of the Douglas Research Centre as a whole.
       </p>
+      <h4 class="pb-8 text-center text-xl font-extrabold tracking-tight sm:text-2xl">Hardware</h4>
+      <p class="text-xl">
+        The system itself consists (as of mid-2021) of Linux-based single-sign-on user management system, along with a 1
+        PB storage system, ~40 8-12 core workstations with 16-32 GB of RAM, and a 10-node compute cluster of 12-core 48
+        GB RAM compute nodes. Primary servers are replicated across two sites for disaster recovery. Unified storage
+        across systems is provided via NFS from the primary storage server to all systems. A heterogenous cluster
+        compute environment is provided via a SLURM batch system providing access to the compute cluster as well as
+        opportunistic scheduling on workstations. Entry-level GPU computation is available on workstations to provide
+        CUDA and OpenCL acceleration suitable applications.
+      </p>
+      <h4 class="p-8 text-center text-xl font-extrabold tracking-tight sm:text-2xl">Software</h4>
+      <p class="text-xl">
+        The platform workstations run Ubuntu Linux variants, with full productivity software (LibreOffice, GIMP,
+        Inkscape, etc), modern web browsers (Chrome, Firefox), and a large suite of scientific software. Servers run
+        Ubuntu Linux server, as well as compute nodes. Limited Windows workstations are available to provide access to
+        proprietary software such as E-Prime. Scientific software is available in the software quarantine.
+      </p>
       <div class="flex items-center justify-center self-center p-4">
-        <Image class="rounded-sm p-6" alt="douglas Logo" src={douglasLogo} />
+        <Image class="h-1/4 rounded-sm p-4" alt="douglas Logo" src={douglasLogo} />
+        <Image class="h-1/2 w-1/2 rounded-sm p-4 md:h-1/4 md:w-1/4 lg:h-1/6 lg:w-1/6" alt="douglas Logo" src={Logo} />
       </div>
     </div>
   </ScrollFadeItem>
@@ -41,14 +61,16 @@ export const getStaticPaths = () => {
   <ScrollFadeItem client:load>
     <div class="p-30">
       <h3 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Documentation</h3>
-      <p class="text-xl">
-        For online documentation please refer to
-        <a class="underline" href="http://docs.douglasneuroinformatics.ca">docs.douglasneuroinformatics.ca</a>
-      </p>
-      <p class="text-xl">
-        Access our wiki service at
-        <a class="underline" href="https://wiki.douglasneuroinformatics.ca">wiki.douglasneuroinformatics.ca</a>
-      </p>
+      <div class="flex">
+        <p class="text-xl">
+          For online documentation please refer to
+          <a class="underline" href="http://docs.douglasneuroinformatics.ca">docs.douglasneuroinformatics.ca</a>
+          <br />
+           Access our wiki service at
+          <a class="underline" href="https://wiki.douglasneuroinformatics.ca">wiki.douglasneuroinformatics.ca</a>
+        </p>
+        <Image class="h-1/4 w-1/2 rounded-sm pl-4" alt="douglas Logo" src={wikiImage} />
+      </div>
     </div>
   </ScrollFadeItem>
 
@@ -68,11 +90,15 @@ export const getStaticPaths = () => {
       <h3 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">Communication</h3>
       <p class="text-xl">
         The team uses <a class="underline" href="https://mattermost.com/">Mattermost</a>, an online, and self-hostable
-        chat application to communcate. Access the Mattermost (Chat) channel is at
+        chat application to communcate. Access to the Mattermost (Chat) channel is at
         <a class="underline" href="https://chat.douglasneuroinformatics.ca">chat.douglasneuroinformatics.ca</a>
       </p>
-      <div class="flex h-1/4 w-1/4 items-center justify-center self-center p-4">
-        <Image class="flex h-1/2 w-1/2 justify-center self-center" alt="Mattermost Logo" src={mattermostLogo} />
+      <div class="flex h-1/4 items-center justify-center self-center p-6">
+        <Image
+          class="flex h-1/4 w-1/4 justify-center self-center lg:h-1/6 lg:w-1/6"
+          alt="Mattermost Logo"
+          src={mattermostLogo}
+        />
       </div>
     </div>
   </ScrollFadeItem>
