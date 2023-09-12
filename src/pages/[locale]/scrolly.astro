@@ -6,6 +6,7 @@ import douglasBuild from '@/assets/douglasBuilding.jpg';
 import Logo from '@/assets/logo.png';
 import mattermostLogo from '@/assets/mattermostlogo.png';
 import wikiImage from '@/assets/wiki.jpg';
+import ChevronDownIcon from '@/components/ChevronDownIcon.astro';
 import ScrollFadeItem from '@/components/ScrollFadeItem';
 import Page from '@/layouts/Page.astro';
 
@@ -16,12 +17,24 @@ export const getStaticPaths = () => {
 
 <Page>
   <ScrollFadeItem client:load>
-    <div class="p-30 py-20 text-center">
+    <div class="p-30 py-20">
       <h1 class="pb-12 text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
         Welcome to the Douglas Neuroinformatics (DNP) Index
       </h1>
+      <p class="pb-12 text-xl">What is going on in the Douglas...</p>
       <div class="flex items-center justify-center self-center p-4">
-        <Image class="rounded-sm shadow-md" alt="douglas building" src={douglasBuild} />
+        <Image
+          class="z-20 rounded-sm shadow-md transition-opacity duration-500 hover:opacity-10"
+          alt="douglas building"
+          src={douglasBuild}
+        />
+        <Image class="absolute z-10 h-1/4 w-1/4 rounded-sm p-4 md:h-1/4 md:w-1/4" alt="DNP Logo" src={Logo} />
+      </div>
+      <div
+        class="flex items-center justify-center self-center p-4 pt-20 opacity-10 duration-500 hover:animate-bounce hover:opacity-100"
+      >
+        <span>Scroll down for more</span>
+        <ChevronDownIcon class="h-8 w-8" />
       </div>
     </div>
   </ScrollFadeItem>
@@ -52,8 +65,16 @@ export const getStaticPaths = () => {
         proprietary software such as E-Prime. Scientific software is available in the software quarantine.
       </p>
       <div class="flex items-center justify-center self-center p-4">
-        <Image class="h-1/4 rounded-sm p-4" alt="douglas Logo" src={douglasLogo} />
-        <Image class="h-1/2 w-1/2 rounded-sm p-4 md:h-1/4 md:w-1/4 lg:h-1/6 lg:w-1/6" alt="douglas Logo" src={Logo} />
+        <Image
+          class="h-1/4 rounded-sm p-4 transition-all duration-500 hover:scale-105"
+          alt="douglas Logo"
+          src={douglasLogo}
+        />
+        <Image
+          class="h-1/2 w-1/2 rounded-sm p-4 transition-all duration-500 hover:scale-105 md:h-1/4 md:w-1/4 lg:h-1/6 lg:w-1/6"
+          alt="DNP Logo"
+          src={Logo}
+        />
       </div>
     </div>
   </ScrollFadeItem>
