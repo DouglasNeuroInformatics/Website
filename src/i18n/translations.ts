@@ -76,6 +76,10 @@ export const translations = {
       }
     },
     testimonials: {
+      title: {
+        en: 'Testimonials',
+        fr: 'Témoignages'
+      },
       heading: {
         en: 'What People Say About Us',
         fr: 'Ce que les gens disent de nous'
