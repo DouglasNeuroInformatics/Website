@@ -31,7 +31,7 @@ const TeamPageContent = ({ team }: TeamPageContentProps) => {
       <motion.div
         animate={
           isModalOpen
-            ? { backgroundColor: 'rgb(0 0 0 / 0.7)', zIndex: 20 }
+            ? { backgroundColor: 'rgb(0 0 0 / 0.7)', zIndex: 30 }
             : { backgroundColor: 'rgb(0 0 0 / 0)', transitionEnd: { zIndex: -10 } }
         }
         className="fixed inset-0 flex h-screen w-screen cursor-default items-center justify-center"
