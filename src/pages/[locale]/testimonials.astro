@@ -1,5 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
+
+import TestimonialContent from '@/components/TestimonialContent';
 import Page from '@/layouts/Page.astro';
+
+const testimonials = await getCollection('testimonials');
 
 export const getStaticPaths = () => {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -7,5 +12,5 @@ export const getStaticPaths = () => {
 ---
 
 <Page>
-  <div></div>
+  <div><TestimonialContent client:load testimonials={testimonials} /></div>
 </Page>
