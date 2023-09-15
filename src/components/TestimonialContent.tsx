@@ -6,7 +6,7 @@ import TestimonialCard from './TestimonialCard';
 type TestimonialContentProps = {
   testimonials: CollectionEntry<'testimonials'>[];
 };
-const tester = 0;
+let tester = 0;
 const TestimonialContent = ({ testimonials }: TestimonialContentProps) => {
   return (
     <div>
