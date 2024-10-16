@@ -23,39 +23,27 @@ const { resolvedLanguage } = useTranslations(Astro.url);
   <body>
     <main class="relative flex min-h-screen items-center justify-center bg-gray-100 p-4">
       <div class="absolute right-4 top-4 flex space-x-2">
-        <button
+        <a
           id="en-button"
           class={cn(
             'rounded bg-gray-500 px-4 py-2 text-white sm:px-4 sm:py-2 md:px-6 md:py-3',
             resolvedLanguage === 'en' && 'bg-blue-500'
           )}
+          href={new URL(Astro.url.href.replace(`/${resolvedLanguage}`, `/en`))}
         >
           English
-        </button>
-        <button
+        </a>
+        <a
           class={cn([
             'rounded bg-gray-500 px-4 py-2 text-white sm:px-4 sm:py-2 md:px-6 md:py-3',
             resolvedLanguage === 'fr' && 'bg-blue-500'
           ])}
-          id="fr-button"
+          href={new URL(Astro.url.href.replace(`/${resolvedLanguage}`, `/fr`))}
         >
           Français
-        </button>
+        </a>
       </div>
       <slot />
     </main>
   </body>
 </html>
-<script>
-  function toggleLanguage(lang: 'en' | 'fr') {
-    document.getElementById('en-section')!.classList.add('hidden');
-    document.getElementById('fr-section')!.classList.add('hidden');
-    if (lang === 'en') {
-      document.getElementById('en-section')!.classList.remove('hidden');
-    } else {
-      document.getElementById('fr-section')!.classList.remove('hidden');
-    }
-  }
-  document.getElementById('en-button')!.addEventListener('click', () => toggleLanguage('en'));
-  document.getElementById('fr-button')!.addEventListener('click', () => toggleLanguage('fr'));
-</script>
