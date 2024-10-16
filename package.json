@@ -12,7 +12,8 @@
     "lint": "astro check && eslint --fix src"
   },
   "dependencies": {
-    "@douglasneuroinformatics/libui": "^3.6.1"
+    "@douglasneuroinformatics/libui": "^3.6.1",
+    "es-toolkit": "^1.25.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
