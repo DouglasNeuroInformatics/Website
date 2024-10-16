@@ -6,6 +6,7 @@
   "packageManager": "pnpm@9.12.1",
   "scripts": {
     "build": "astro build",
+    "deploy": "rsync -r dist/* douglasneuroinformatics.ca:/var/www/html",
     "dev": "astro dev",
     "format": "prettier --write src",
     "lint": "astro check && eslint --fix src"
