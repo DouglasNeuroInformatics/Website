@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
     "@douglasneuroinformatics/eslint-config": "^5.2.1",
     "@douglasneuroinformatics/prettier-config": "^0.0.1",
