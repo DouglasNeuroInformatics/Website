@@ -30,9 +30,6 @@ export default defineConfig({
   },
   site: 'https://douglasneuroinformatics.ca',
   vite: {
-    build: {
-      assetsInlineLimit: 16_000
-    },
     resolve: {
       alias: {
         '@': path.resolve(import.meta.dirname, 'src')
