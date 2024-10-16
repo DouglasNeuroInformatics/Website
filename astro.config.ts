@@ -6,7 +6,8 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   build: {
-    assets: '_assets'
+    assets: '_assets',
+    inlineStylesheets: 'always'
   },
   compressHTML: true,
   integrations: [
@@ -29,6 +30,9 @@ export default defineConfig({
   },
   site: 'https://douglasneuroinformatics.ca',
   vite: {
+    build: {
+      assetsInlineLimit: 16_000
+    },
     resolve: {
       alias: {
         '@': path.resolve(import.meta.dirname, 'src')
