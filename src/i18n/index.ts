@@ -10,13 +10,15 @@ function extractLanguageFromURL(url: Pick<URL, 'pathname'>) {
 
 const useTranslations = (url: URL) => {
   const resolvedLanguage = extractLanguageFromURL(url);
-  const t = (translations: { [K in Language]: string }) => {
-    return translations[resolvedLanguage];
-  };
   return {
     altLanguage: resolvedLanguage === 'en' ? 'fr' : 'en',
     resolvedLanguage,
-    t
+    t: (translations: { [K in Language]: string }) => {
+      return translations[resolvedLanguage];
+    },
+    translatePath: (path: string) => {
+      return `/${resolvedLanguage}${path}`;
+    }
   } as const;
 };
 
