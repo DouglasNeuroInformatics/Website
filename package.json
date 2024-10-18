@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@douglasneuroinformatics/libui": "^3.6.1",
-    "es-toolkit": "^1.25.2"
+    "clsx": "^2.1.1",
+    "es-toolkit": "^1.25.2",
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
