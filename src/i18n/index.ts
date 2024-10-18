@@ -13,7 +13,11 @@ const useTranslations = (url: URL) => {
   const t = (translations: { [K in Language]: string }) => {
     return translations[resolvedLanguage];
   };
-  return { resolvedLanguage, t } as const;
+  return {
+    altLanguage: resolvedLanguage === 'en' ? 'fr' : 'en',
+    resolvedLanguage,
+    t
+  } as const;
 };
 
 export { useTranslations };
