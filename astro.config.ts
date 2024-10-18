@@ -3,6 +3,8 @@ import path from 'node:path';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
+import { toString } from 'mdast-util-to-string';
+import getReadingTime from 'reading-time';
 
 export default defineConfig({
   build: {
@@ -24,6 +26,18 @@ export default defineConfig({
       configFile: path.resolve(import.meta.dirname, 'tailwind.config.cjs')
     })
   ],
+  markdown: {
+    remarkPlugins: [
+      () => {
+        return function (tree, { data }) {
+          const textOnPage = toString(tree);
+          const readingTime = getReadingTime(textOnPage);
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          (data.astro as any).frontmatter.readingTime = readingTime.minutes;
+        };
+      }
+    ]
+  },
   output: 'static',
   server: {
     port: 3000
