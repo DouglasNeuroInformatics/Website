@@ -41,7 +41,7 @@ const pathname = Astro.url.pathname.replace(/^(\/en|\/fr)/, '');
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
   </head>
-  <body class="flex min-h-screen flex-col">
+  <body class="flex min-h-screen flex-col bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
     <Header />
     <main class={cn('container grow py-16', className)}>
       <slot />
