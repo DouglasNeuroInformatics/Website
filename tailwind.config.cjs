@@ -4,5 +4,17 @@ const typographyPlugin = require('@tailwindcss/typography');
 module.exports = {
   content: ['./src/**/*.{astro,html,js,md,mdx,ts}'],
   plugins: [typographyPlugin()],
-  root: __dirname
+  root: __dirname,
+  theme: {
+    extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          md: '2rem',
+          xl: '3rem'
+        }
+      }
+    }
+  }
 };
