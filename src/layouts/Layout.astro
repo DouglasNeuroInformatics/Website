@@ -50,7 +50,7 @@ const pathname = Astro.url.pathname.replace(/^(\/en|\/fr)/, '');
       window.localStorage.setItem('theme', theme);
     </script>
   </head>
-  <body class="flex min-h-screen flex-col bg-slate-100 text-gray-900 dark:bg-slate-900 dark:text-gray-100">
+  <body class="flex min-h-screen flex-col bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
     <Header />
     <main class={cn('container grow py-16', className)}>
       <slot />

@@ -19,7 +19,15 @@ export const getStaticPaths = () => {
     fr: 'Le site officiel du Douglas Neuroinformatics Platform'
   })}
 >
-  <div class="mt-16 w-full max-w-4xl rounded-lg bg-white p-8 text-center shadow-lg">
+  <h1 class="hidden text-3xl font-bold leading-tight tracking-tighter md:block md:text-4xl">
+    {
+      t({
+        en: 'The Douglas Neuroinformatics Platform',
+        fr: 'Le Douglas Neuroinformatics Platform'
+      })
+    }
+  </h1>
+  <!-- <div class="mt-16 w-full max-w-4xl rounded-lg bg-white p-8 text-center shadow-lg">
     <br />
     <h1 class="mb-8 text-4xl font-bold text-gray-800">Douglas Neuroinformatics Platform</h1>
     <Logo class="mx-auto my-4 h-auto max-w-full" />
@@ -108,5 +116,5 @@ export const getStaticPaths = () => {
         </a><br /><br />
       </div>
     </div>
-  </div>
+  </div> -->
 </Layout>
