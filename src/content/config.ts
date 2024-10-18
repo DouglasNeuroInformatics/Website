@@ -12,28 +12,6 @@ export const collections = {
       type: z.enum(['article', 'caseStudy', 'video'])
     })
   }),
-  faq: defineCollection({
-    schema: z.object({
-      entries: z.array(
-        z.object({
-          answer: z.object({
-            en: z.union([z.string().min(1), z.array(z.string().min(1)).min(1)]),
-            fr: z.union([z.string().min(1), z.array(z.string().min(1)).min(1)])
-          }),
-          question: z.object({
-            en: z.string().min(1),
-            fr: z.string().min(1)
-          })
-        })
-      ),
-      order: z.number().positive().int(),
-      title: z.object({
-        en: z.string().min(1),
-        fr: z.string().min(1)
-      })
-    }),
-    type: 'data'
-  }),
   team: defineCollection({
     schema: ({ image }) =>
       z.object({
