@@ -1,5 +1,4 @@
 ---
-import Logo from '@/components/Logo.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
 
@@ -12,6 +11,7 @@ export const getStaticPaths = () => {
 
 <Layout
   bilingual
+  class="flex flex-col"
   hasDefaultLocaleRedirect
   title="Douglas Neuroinformatics Platform"
   description={t({
@@ -19,14 +19,33 @@ export const getStaticPaths = () => {
     fr: 'Le site officiel du Douglas Neuroinformatics Platform'
   })}
 >
-  <h1 class="hidden text-3xl font-bold leading-tight tracking-tighter md:block md:text-4xl">
-    {
-      t({
-        en: 'The Douglas Neuroinformatics Platform',
-        fr: 'Le Douglas Neuroinformatics Platform'
-      })
-    }
-  </h1>
+  <div class="flex flex-grow flex-col items-center justify-center">
+    <div class="max-w-3xl text-center">
+      <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
+        {
+          t({
+            en: 'Supporting Research Excellence',
+            fr: "Soutenir l'excellence en matière de recherche"
+          })
+        }
+      </span>
+      <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
+        {
+          t({
+            en: 'The Douglas Neuroinformatics Platform',
+            fr: 'Le Douglas Neuroinformatics Platform'
+          })
+        }
+      </h1>
+      <p class="mt-3 text-gray-700 dark:text-gray-300">
+        {t({
+          en: 'We provide a Linux-based computing platform for storage and computationally intensive tasks at the Douglas Research Center. Our team also specializes in developing and deploying open-source software tailored to meet the specific needs of researchers.',
+          fr: 'Nous fournissons une plateforme informatique basée sur Linux pour le stockage et les tâches de calcul intensif au Centre de recherche Douglas. Notre équipe est également spécialisée dans le développement et le déploiement de logiciels open-source adaptés aux besoins spécifiques des chercheurs.'
+        })}
+      </p>
+    </div>
+  </div>
+
   <!-- <div class="mt-16 w-full max-w-4xl rounded-lg bg-white p-8 text-center shadow-lg">
     <br />
     <h1 class="mb-8 text-4xl font-bold text-gray-800">Douglas Neuroinformatics Platform</h1>
