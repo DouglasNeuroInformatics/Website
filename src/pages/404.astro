@@ -1,12 +1,15 @@
 ---
+import Logo from '@/components/Logo.astro';
 import Layout from '@/layouts/Layout.astro';
 ---
 
-<Layout description="Page Not Found" title="404 - Not Found">
-  <main class="flex flex-col items-center justify-center">
-    <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">404 - Not Found</h1>
-    <p class="mt-2 max-w-prose text-center text-sm text-muted-foreground sm:text-base">
-      Please verify the URL or use the navigation menu above to find what you're looking for.
-    </p>
-  </main>
+<Layout class="flex flex-col items-center justify-center" description="Page Not Found" title="404 - Not Found">
+  <div class="flex items-center justify-center mb-3">
+    <Logo class="h-24 w-24" />
+  </div>
+  <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">404 - Not Found</h1>
+  <p class="mt-2 max-w-prose text-center text-sm text-muted-foreground sm:text-base">
+    Please verify the URL or use the navigation menu above to find what you're looking for.
+  </p>
+  <br class="my-6" />
 </Layout>
