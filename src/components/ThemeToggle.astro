@@ -9,8 +9,7 @@ const { t } = useTranslations(Astro.url);
     en: 'Change Theme',
     fr: 'Changer le thème'
   })}
-  class="relative h-10 w-10 rounded-md transition-transform hover:backdrop-brightness-95 dark:text-gray-300 dark:hover:text-gray-100 dark:hover:backdrop-brightness-150"
-  id="theme-toggle"
+  class="theme-toggle relative h-10 w-10 rounded-md transition-transform hover:backdrop-brightness-95 dark:text-gray-300 dark:hover:text-gray-100 dark:hover:backdrop-brightness-150"
   type="button"
 >
   <svg
@@ -44,14 +43,16 @@ const { t } = useTranslations(Astro.url);
     document.documentElement.setAttribute('data-mode', theme);
     localStorage.setItem('theme', theme);
   };
-  document.getElementById('theme-toggle')?.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-mode');
-    if (currentTheme === 'dark') {
-      setTheme('light');
-    } else if (currentTheme === 'light') {
-      setTheme('dark');
-    } else {
-      console.error(`Unexpected theme: ${currentTheme}`);
-    }
+  document.querySelectorAll('.theme-toggle').forEach((element) => {
+    element.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-mode');
+      if (currentTheme === 'dark') {
+        setTheme('light');
+      } else if (currentTheme === 'light') {
+        setTheme('dark');
+      } else {
+        console.error(`Unexpected theme: ${currentTheme}`);
+      }
+    });
   });
 </script>
