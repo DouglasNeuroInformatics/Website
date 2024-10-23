@@ -8,6 +8,12 @@ module.exports = {
   root: __dirname,
   theme: {
     extend: {
+      colors: {
+        logo: {
+          primary: '#102e71',
+          secondary: '#57abda'
+        }
+      },
       container: {
         center: true,
         padding: {
