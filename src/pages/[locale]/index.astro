@@ -85,8 +85,9 @@ export const getStaticPaths = () => {
     <div class="grid gap-6 md:grid-cols-2">
       <Resource
         link={{
-          href: '#',
-          label: 'Email Us'
+          kind: 'mailto',
+          name: 'support',
+          domain: 'douglasneuroinformatics.ca'
         }}
         title={t({
           en: 'Support Requests',
