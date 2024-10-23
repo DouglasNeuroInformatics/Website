@@ -96,9 +96,9 @@ const { animate, class: className } = Astro.props;
     const totalLength = innerBackground.getTotalLength().toString();
     innerBackground.style.strokeDasharray = totalLength;
     innerBackground.style.strokeDashoffset = totalLength;
-    logo.classList.add('[fill-opacity:0%]');
     setTimeout(() => {
       logo.classList.remove('[fill-opacity:0%]');
+      innerBackground.classList.remove('stroke-[5px]');
     }, 1000);
   });
 </script>
