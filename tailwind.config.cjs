@@ -8,6 +8,9 @@ module.exports = {
   root: __dirname,
   theme: {
     extend: {
+      animation: {
+        dash: 'dash 2s forwards'
+      },
       colors: {
         logo: {
           300: '#57abda',
@@ -21,6 +24,13 @@ module.exports = {
           DEFAULT: '1rem',
           md: '2rem',
           xl: '3rem'
+        }
+      },
+      keyframes: {
+        dash: {
+          '50%, 100%': {
+            strokeDashoffset: 0
+          }
         }
       }
     }

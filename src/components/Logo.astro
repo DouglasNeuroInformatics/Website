@@ -1,15 +1,20 @@
 ---
-type Props = astroHTML.JSX.SVGAttributes;
+type Props = astroHTML.JSX.SVGAttributes & {
+  animate?: boolean;
+};
+
+const { animate, class: className } = Astro.props;
 ---
 
 <svg
+  class:list={['logo', animate && 'transition-[fill-opacity] duration-1000 [fill-opacity:0%]', className]}
+  data-animate={animate}
   height="666.378"
   preserveAspectRatio="xMidYMid"
   version="1.0"
   viewBox="0 0 620.397 499.784"
   width="827.196"
   xmlns="http://www.w3.org/2000/svg"
-  {...Astro.props}
 >
   <path
     class:list={['bottom-brain-background', 'fill-logo-900 dark:fill-logo-800']}
@@ -25,7 +30,7 @@ type Props = astroHTML.JSX.SVGAttributes;
     d="M 521.7 422.4 s 39 -8 63.3 -39.7 c 28.3 -37.1 24.6 -76.8 24.6 -76.8 28.7 -53.4 -9 -103.5 -9 -103.5 C 597 146 562 122.6 562 122.6 c -22.7 -53.8 -73 -68.3 -73 -68.3 -39.5 -46 -109.5 -44.5 -109.5 -44.5 s -65.6 -24 -155.7 3 c -15 4.4 -64.8 14.8 -101.4 37 C 7.3 120.2 -1.5 229.6 .2 247.4 c 8.9 99.4 79 117.2 123.6 127.6 10.5 28.2 48.8 80.1 117.7 60.8 85 -14.8 120.7 -40 141.6 -40 s 79 22.2 138.6 26.7 m 0 0"
   ></path>
   <path
-    class:list={['inner-brain-background', 'fill-white stroke-logo-300']}
+    class:list={['inner-brain-background', 'fill-white stroke-logo-300', animate && 'animate-dash stroke-[5px]']}
     d={[
       'M 523.2 186.4',
       'a 106 106 0 0 0 -51.7 -32.2 78 78 0 0 0 -92.4 -74',
@@ -84,3 +89,16 @@ type Props = astroHTML.JSX.SVGAttributes;
     <path class="fill-white" d="M 455.4 184.3 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6"></path>
   </g>
 </svg>
+<script>
+  const animatedLogos = document.querySelectorAll<SVGSVGElement>('.logo[data-animate]');
+  animatedLogos.forEach((logo) => {
+    const innerBackground = logo.querySelector('.inner-brain-background') as SVGPathElement;
+    const totalLength = innerBackground.getTotalLength().toString();
+    innerBackground.style.strokeDasharray = totalLength;
+    innerBackground.style.strokeDashoffset = totalLength;
+    logo.classList.add('[fill-opacity:0%]');
+    setTimeout(() => {
+      logo.classList.remove('[fill-opacity:0%]');
+    }, 1000);
+  });
+</script>
