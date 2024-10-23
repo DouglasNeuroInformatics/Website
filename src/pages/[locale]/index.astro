@@ -1,5 +1,6 @@
 ---
 import Card from '@/components/Card.astro';
+import ServiceOffering from '@/components/ServiceOffering.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
 
@@ -23,35 +24,50 @@ export const getStaticPaths = () => {
     fr: 'Le Douglas Neuroinformatics Platform fournit des ressources informatiques et des logiciels open-source aux chercheurs du Centre de recherche Douglas.'
   })}
 >
-  <div class="flex flex-grow flex-col items-center justify-center">
-    <div class="flex min-h-[calc(100vh-64px)] max-w-3xl flex-col items-center justify-center text-center">
-      <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
-        {
-          t({
-            en: 'Supporting Research Excellence',
-            fr: "Soutenir l'excellence en matière de recherche"
-          })
-        }
-      </span>
-      <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
-        {
-          t({
-            en: 'The Douglas Neuroinformatics Platform',
-            fr: 'Le Douglas Neuroinformatics Platform'
-          })
-        }
-      </h1>
-      <p class="mt-3 text-gray-700 dark:text-gray-300">
-        {
-          t({
-            en: 'We provide a Linux-based computing platform for storage and computationally intensive tasks at the Douglas Research Center. Our team also specializes in developing and deploying open-source software tailored to meet the specific needs of researchers.',
-            fr: 'Nous fournissons une plateforme informatique basée sur Linux pour le stockage et les tâches de calcul intensif au Centre de recherche Douglas. Notre équipe est également spécialisée dans le développement et le déploiement de logiciels open-source adaptés aux besoins spécifiques des chercheurs.'
-          })
-        }
-      </p>
+  <section class="mx-auto flex min-h-[calc(100vh-64px)] max-w-3xl flex-col items-center justify-center text-center">
+    <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
+      {
+        t({
+          en: 'Supporting Research Excellence',
+          fr: "Soutenir l'excellence en matière de recherche"
+        })
+      }
+    </span>
+    <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
+      {
+        t({
+          en: 'The Douglas Neuroinformatics Platform',
+          fr: 'Le Douglas Neuroinformatics Platform'
+        })
+      }
+    </h1>
+    <p class="mt-3 text-gray-700 dark:text-gray-300">
+      {
+        t({
+          en: 'We provide a Linux-based computing platform for storage and computationally intensive tasks at the Douglas Research Center. Our team also specializes in developing and deploying open-source software tailored to meet the specific needs of researchers.',
+          fr: 'Nous fournissons une plateforme informatique basée sur Linux pour le stockage et les tâches de calcul intensif au Centre de recherche Douglas. Notre équipe est également spécialisée dans le développement et le déploiement de logiciels open-source adaptés aux besoins spécifiques des chercheurs.'
+        })
+      }
+    </p>
+  </section>
+  <section>
+    <h2 class="mb-5 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl">
+      {
+        t({
+          en: 'Our Services',
+          fr: 'Nos services'
+        })
+      }
+    </h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      <ServiceOffering
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quia corrupti adipisci voluptatum dignissimos, ipsum atque placeat saepe maxime nihil distinctio necessitatibus doloremque soluta fugiat tempora libero voluptates unde ratione?"
+        title="Core Computing Platform"
+      />
     </div>
-  </div>
-  <div>
+  </section>
+
+  <!-- <div>
     <div class="space-y-6">
       <a
         href="http://docs.douglasneuroinformatics.ca"
@@ -125,5 +141,5 @@ export const getStaticPaths = () => {
         <p class="font-bold text-cyan-300 hover:underline">opendatacapture.org</p>
       </a>
     </div>
-  </div>
+  </div> -->
 </Layout>
