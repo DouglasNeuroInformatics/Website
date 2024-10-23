@@ -9,6 +9,9 @@ export default config({
     es2021: true,
     node: true
   },
+  react: {
+    enabled: true
+  },
   typescript: {
     enabled: true
   }

@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro';
+import { Logo } from './Logo';
 
 import { useTranslations } from '@/i18n';
 import { cn } from '@/utils/cn';
@@ -13,6 +13,6 @@ const { class: className } = Astro.props;
 ---
 
 <a class={cn('flex h-10 items-center no-underline [&>svg]:h-full [&>svg]:w-auto', className)} href={translatePath('/')}>
-  <Logo class="fill-sky-900 dark:fill-gray-100" />
+  <Logo />
   <span class="ml-3 whitespace-nowrap font-semibold tracking-tight text-gray-700 dark:text-gray-300">DNP</span>
 </a>
