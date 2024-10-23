@@ -6,15 +6,14 @@ const { t, resolvedLanguage } = useTranslations(Astro.url);
 const is404 = /^\/404\/?$/.test(Astro.url.pathname);
 ---
 
-<div class="relative">
+<div class="language-toggle-container relative">
   <button
     aria-label={t({
       en: 'Change Language',
       fr: 'Changer la langue'
     })}
-    class="flex items-center justify-center rounded-md p-2 hover:backdrop-brightness-95 disabled:cursor-not-allowed dark:text-gray-300 dark:hover:text-gray-100 dark:hover:backdrop-brightness-150"
+    class="language-toggle flex items-center justify-center rounded-md p-2 hover:backdrop-brightness-95 disabled:cursor-not-allowed dark:text-gray-300 dark:hover:text-gray-100 dark:hover:backdrop-brightness-150"
     disabled={is404}
-    id="language-toggle"
     type="button"
   >
     <span class="uppercase">{resolvedLanguage}</span>
@@ -30,8 +29,7 @@ const is404 = /^\/404\/?$/.test(Astro.url.pathname);
     </svg>
   </button>
   <div
-    class="absolute mt-1 hidden w-full rounded-md bg-white shadow-xl ring-1 ring-black ring-opacity-10 dark:bg-gray-800"
-    id="language-toggle-dropdown"
+    class="language-toggle-dropdown absolute mt-1 hidden w-full rounded-md bg-white shadow-xl ring-1 ring-black ring-opacity-10 dark:bg-gray-800"
   >
     <a
       class="block cursor-pointer p-2 text-center uppercase first:rounded-t-md last:rounded-b-md hover:backdrop-brightness-95 dark:hover:backdrop-brightness-150"
@@ -48,9 +46,11 @@ const is404 = /^\/404\/?$/.test(Astro.url.pathname);
   </div>
 </div>
 <script>
-  const toggle = document.getElementById('language-toggle') as HTMLButtonElement;
-  const dropdown = document.getElementById('language-toggle-dropdown') as HTMLDivElement;
-  toggle.addEventListener('click', () => {
-    dropdown.classList.toggle('hidden');
+  document.querySelectorAll('.language-toggle-container').forEach((containerElement) => {
+    const toggle = containerElement.querySelector('.language-toggle')!;
+    const dropdown = containerElement.querySelector('.language-toggle-dropdown')!;
+    toggle.addEventListener('click', () => {
+      dropdown.classList.toggle('hidden');
+    });
   });
 </script>
