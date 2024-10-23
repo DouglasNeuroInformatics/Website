@@ -4,7 +4,6 @@ export const Logo: React.FC<{
   animate?: boolean;
   className?: string;
 }> = ({ animate, className }) => {
-  animate = false as boolean;
   return (
     <svg
       className={className}
@@ -88,7 +87,6 @@ export const Logo: React.FC<{
           },
           transition: {
             duration: 2
-            //repeat: Infinity
           }
         })}
       />
