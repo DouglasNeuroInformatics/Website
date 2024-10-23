@@ -1,0 +1,16 @@
+---
+type Props = {
+  title: string;
+  link: {
+    href: string;
+    label: string;
+  };
+};
+
+const { link, title } = Astro.props;
+---
+
+<div class="flex flex-col gap-2">
+  <h5 class="text-lg font-semibold">{title}</h5>
+  <a href={link.href}>{link.label}</a>
+</div>
