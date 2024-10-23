@@ -1,9 +1,38 @@
+/* eslint-disable max-lines-per-function */
+
+import { useState } from 'react';
+
 import { motion } from 'framer-motion';
+import type { Transition, Variant } from 'framer-motion';
+
+type CircleVariantKey = 'active' | 'inactive';
 
 export const Logo: React.FC<{
   animate?: boolean;
   className?: string;
 }> = ({ animate, className }) => {
+  const [circleProps, setCircleProps] = useState<{
+    animate: CircleVariantKey;
+    transition: Transition;
+    variants: {
+      [K in CircleVariantKey]: Variant;
+    };
+  }>({
+    animate: 'inactive',
+    transition: {
+      duration: 1,
+      repeat: Infinity,
+      repeatType: 'reverse'
+    },
+    variants: {
+      active: {
+        opacity: ['50%', '100%']
+      },
+      inactive: {
+        opacity: ['0%', '50%']
+      }
+    }
+  });
   return (
     <svg
       className={className}
@@ -83,6 +112,11 @@ export const Logo: React.FC<{
             fillOpacity: ['0%', '0%', '100%'],
             pathLength: [0, 1, 1]
           },
+          onAnimationComplete: () => {
+            setCircleProps((prevCircleProps) => {
+              return { ...prevCircleProps, animate: 'active' };
+            });
+          },
           transition: {
             duration: 3
           }
@@ -90,13 +124,41 @@ export const Logo: React.FC<{
       />
       {/* Inner Brain Dots */}
       <g>
-        <motion.path className="fill-white" d="M 393.2 146.8 a 10.8 10.8 0 1 0 -21.6 0 10.8 10.8 0 0 0 21.6 0" />
-        <motion.path className="fill-white" d="M 404.4 238.5 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6" />
-        <motion.path className="fill-white" d="M 228 266.4 a 10.8 10.8 0 1 0 15.3 15.3 10.8 10.8 0 0 0 -15.3 -15.3" />
-        <motion.path className="fill-white" d="M 279.7 162.6 a 10.8 10.8 0 1 0 0 21.7 10.8 10.8 0 0 0 0 -21.7" />
-        <motion.path className="fill-white" d="M 186.4 213 a 10.8 10.8 0 1 0 0 21.7 10.8 10.8 0 0 0 0 -21.7" />
-        <motion.path className="fill-white" d="M 330.8 108.4 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6" />
-        <motion.path className="fill-white" d="M 455.4 184.3 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6" />
+        <motion.path
+          className="fill-white"
+          d="M 393.2 146.8 a 10.8 10.8 0 1 0 -21.6 0 10.8 10.8 0 0 0 21.6 0"
+          {...circleProps}
+        />
+        <motion.path
+          className="fill-white"
+          d="M 404.4 238.5 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6"
+          {...circleProps}
+        />
+        <motion.path
+          className="fill-white"
+          d="M 228 266.4 a 10.8 10.8 0 1 0 15.3 15.3 10.8 10.8 0 0 0 -15.3 -15.3"
+          {...circleProps}
+        />
+        <motion.path
+          className="fill-white"
+          d="M 279.7 162.6 a 10.8 10.8 0 1 0 0 21.7 10.8 10.8 0 0 0 0 -21.7"
+          {...circleProps}
+        />
+        <motion.path
+          className="fill-white"
+          d="M 186.4 213 a 10.8 10.8 0 1 0 0 21.7 10.8 10.8 0 0 0 0 -21.7"
+          {...circleProps}
+        />
+        <motion.path
+          className="fill-white"
+          d="M 330.8 108.4 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6"
+          {...circleProps}
+        />
+        <motion.path
+          className="fill-white"
+          d="M 455.4 184.3 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6"
+          {...circleProps}
+        />
       </g>
     </svg>
   );
