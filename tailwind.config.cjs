@@ -10,8 +10,9 @@ module.exports = {
     extend: {
       colors: {
         logo: {
-          primary: '#102e71',
-          secondary: '#57abda'
+          300: '#57abda',
+          800: '#0743c6',
+          900: '#102e71'
         }
       },
       container: {
