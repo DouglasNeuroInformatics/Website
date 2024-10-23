@@ -6,8 +6,6 @@ import NavLink from './NavLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
 import SiteTitle from './SiteTitle.astro';
-import MenuIcon from './MenuIcon.astro';
-import XMarkIcon from './XMarkIcon.astro';
 
 const { t, translatePath } = useTranslations(Astro.url);
 
@@ -51,8 +49,17 @@ const navLinks = [
         <LanguageToggle />
       </div>
     </div>
-    <button class="flex h-10 items-center md:hidden [&>svg]:h-full [&>svg]:w-auto" id="nav-toggle" type="button">
-      <MenuIcon />
+    <button class="flex h-10 items-center md:hidden" id="nav-toggle" type="button">
+      <svg
+        class="h-full w-auto"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+      </svg>
     </button>
   </div>
 </header>
@@ -75,12 +82,14 @@ const navLinks = [
       type="button"
       id="close-slider-button"
     >
-      <XMarkIcon />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="black">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+      </svg>
     </button>
   </div>
   <hr class="mx-4 my-4 border-gray-300 dark:border-gray-700" />
   <nav class="flex flex-col px-4">
-    {navLinks.map((props) => <NavLink {...props} />)}
+    {navLinks.map(({ label, ...props }) => <NavLink {...props}>{label}</NavLink>)}
   </nav>
 </div>
 <script>
