@@ -4,6 +4,7 @@ export const Logo: React.FC<{
   animate?: boolean;
   className?: string;
 }> = ({ animate, className }) => {
+  animate = false as boolean;
   return (
     <svg
       className={className}
@@ -33,15 +34,7 @@ export const Logo: React.FC<{
       <motion.path
         className="fill-white"
         d={[
-          'M 393.2 146.8',
-          'a 10.8 10.8 0 1 0 -21.6 0 10.8 10.8 0 0 0 21.6 0',
-          'm 11.2 91.7',
-          'a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0-21.6',
-          'M 228 266.4',
-          'a 10.8 10.8 0 1 0 15.3 15.3 10.8 10.8 0 0 0 -15.3 -15.3',
-          'm 51.7 -103.8',
-          'a 10.8 10.8 0 1 0 0 21.7 10.8 10.8 0 0 0 0 -21.7',
-          'm 243.5 23.8',
+          'M 523.2 186.4',
           'a 106 106 0 0 0 -51.7 -32.2 78 78 0 0 0 -92.4 -74',
           'A 107 107 0 0 0 347 47.3',
           'a 106.4 106.4 0 0 0 -162.6 108.4 107 107 0 0 0 -47.4 31.7 106 106 0 0 0 -25.8 69.4',
@@ -84,13 +77,7 @@ export const Logo: React.FC<{
           'v 149.4',
           'a 102 102 0 0 0 54 -27.5',
           'l 1.6 -1.5',
-          'a 106.1 106.1 0 0 0 3.8 -144.8',
-          'M 186.4 213',
-          'a 10.8 10.8 0 1 0 0 21.7 10.8 10.8 0 0 0 0 -21.7',
-          'm 144.4-104.6',
-          'a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0-21.6',
-          'm 124.6 75.9',
-          'a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6'
+          'a 106.1 106.1 0 0 0 3.8 -144.8'
         ].join(' ')}
         {...(animate && {
           animate: {
@@ -105,6 +92,16 @@ export const Logo: React.FC<{
           }
         })}
       />
+      {/* Inner Brain Dots */}
+      <g>
+        <motion.path className="fill-white" d="M 393.2 146.8 a 10.8 10.8 0 1 0 -21.6 0 10.8 10.8 0 0 0 21.6 0" />
+        <motion.path className="fill-white" d="M 404.4 238.5 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6" />
+        <motion.path className="fill-white" d="M 228 266.4 a 10.8 10.8 0 1 0 15.3 15.3 10.8 10.8 0 0 0 -15.3 -15.3" />
+        <motion.path className="fill-white" d="M 279.7 162.6 a 10.8 10.8 0 1 0 0 21.7 10.8 10.8 0 0 0 0 -21.7" />
+        <motion.path className="fill-white" d="M 186.4 213 a 10.8 10.8 0 1 0 0 21.7 10.8 10.8 0 0 0 0 -21.7" />
+        <motion.path className="fill-white" d="M 330.8 108.4 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6" />
+        <motion.path className="fill-white" d="M 455.4 184.3 a 10.8 10.8 0 1 0 0 21.6 10.8 10.8 0 0 0 0 -21.6" />
+      </g>
     </svg>
   );
 };
