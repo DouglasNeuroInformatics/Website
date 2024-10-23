@@ -31,7 +31,7 @@ export const Logo: React.FC<{
       />
       {/* Inner Brain Background */}
       <motion.path
-        className="fill-white"
+        className="fill-white stroke-logo-300"
         d={[
           'M 523.2 186.4',
           'a 106 106 0 0 0 -51.7 -32.2 78 78 0 0 0 -92.4 -74',
@@ -80,13 +80,11 @@ export const Logo: React.FC<{
         ].join(' ')}
         {...(animate && {
           animate: {
-            fillOpacity: '100%'
-          },
-          initial: {
-            fillOpacity: '0%'
+            fillOpacity: ['0%', '0%', '100%'],
+            pathLength: [0, 1, 1]
           },
           transition: {
-            duration: 2
+            duration: 3
           }
         })}
       />
