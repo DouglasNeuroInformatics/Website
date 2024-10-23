@@ -8,7 +8,6 @@ type Props = {
     | {
         kind?: 'default';
         href: string;
-        label: string;
       }
     | {
         kind: 'mailto';
@@ -44,7 +43,7 @@ const { icon, link, title } = Astro.props;
         data-name={link.kind === 'mailto' && link.name}
         data-domain={link.kind === 'mailto' && link.domain}
       >
-        {link.kind === 'mailto' ? '@' : link.label}
+        {link.kind === 'mailto' ? '@' : link.href}
       </span>
     </div>
   </button>
