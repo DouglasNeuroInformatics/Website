@@ -50,7 +50,7 @@ export const getStaticPaths = () => {
     </p>
   </section>
   <section>
-    <h2 class="mb-5 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl">
+    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl">
       {
         t({
           en: 'Our Services',
@@ -60,8 +60,15 @@ export const getStaticPaths = () => {
     </h2>
     <div class="grid gap-6 md:grid-cols-2">
       <ServiceOffering
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quia corrupti adipisci voluptatum dignissimos, ipsum atque placeat saepe maxime nihil distinctio necessitatibus doloremque soluta fugiat tempora libero voluptates unde ratione?"
+        description="Our core computing platform is a single-sign-on Ubuntu Linux based computer system. Originally the computing platform of the Douglas Cerebral Imaging Centre (CIC), it has grown and generalized to meet the informatics needs of the Douglas Research Centre as a whole."
         title="Core Computing Platform"
+        link={{
+          href: 'http://docs.douglasneuroinformatics.ca',
+          label: t({
+            en: 'View Documentation',
+            fr: 'Consulter la documentation'
+          })
+        }}
       />
     </div>
   </section>

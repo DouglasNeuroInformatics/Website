@@ -4,14 +4,21 @@ import Card from './Card.astro';
 type Props = {
   description: string;
   title: string;
+  link: {
+    href: string;
+    label: string;
+  };
 };
 
-const { description, title } = Astro.props;
+const { description, link, title } = Astro.props;
 ---
 
-<Card class="p-5">
-  <h5 class="text-lg font-semibold">{title}</h5>
-  <p>
-    {description}
-  </p>
+<Card class="group duration-200 hover:scale-105">
+  <a class="flex flex-col gap-2 p-5" href={link.href} target="_blank">
+    <h5 class="text-lg font-semibold">{title}</h5>
+    <p class="text-sm text-gray-700 dark:text-gray-300">
+      {description}
+    </p>
+    <span class="text-sm font-medium group-hover:underline">{link.label} »</span>
+  </a>
 </Card>
