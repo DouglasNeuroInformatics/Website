@@ -1,5 +1,4 @@
 ---
-import Card from '@/components/Card.astro';
 import ServiceOffering from '@/components/ServiceOffering.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
@@ -66,80 +65,4 @@ export const getStaticPaths = () => {
       />
     </div>
   </section>
-
-  <!-- <div>
-    <div class="space-y-6">
-      <a
-        href="http://docs.douglasneuroinformatics.ca"
-        target="_blank"
-        class="block rounded-lg bg-blue-500 p-4 shadow-md duration-200 hover:scale-105"
-      >
-        <p class="font-bold text-white">
-          {
-            t({
-              en: 'For online documentation please refer to:',
-              fr: 'Pour la documentation en ligne, veuillez consulter :'
-            })
-          }
-        </p>
-        <p class="font-bold text-cyan-300 hover:underline">docs.douglasneuroinformatics.ca</p>
-      </a>
-      <div class="block rounded-lg bg-blue-600 p-4 shadow-md duration-200 hover:scale-105">
-        <p class="font-bold text-white">
-          {
-            t({
-              en: 'For support requests please email:',
-              fr: "Pour les demandes d'assistance, veuillez envoyer un courriel à :"
-            })
-          }
-        </p>
-        <p class="select-none font-bold text-cyan-300">support&lt;at&gt;douglasneuroinformatics.ca</p>
-      </div>
-      <a
-        href="https://accounts.douglasneuroinformatics.ca/request_account"
-        target="_blank"
-        class="block rounded-lg bg-blue-700 p-4 shadow-md duration-200 hover:scale-105"
-      >
-        <p class="font-bold text-white">
-          {
-            t({
-              en: 'For account requests fill out the form at:',
-              fr: "Pour les demandes de compte, remplissez le formulaire à l'adresse suivante :"
-            })
-          }
-        </p>
-        <p class="font-bold text-cyan-300 hover:underline">accounts.douglasneuroinformatics.ca</p>
-      </a>
-      <a
-        href="https://chat.douglasneuroinformatics.ca"
-        target="_blank"
-        class="block rounded-lg bg-blue-800 p-4 shadow-md duration-200 hover:scale-105"
-      >
-        <p class="font-bold text-white">
-          {
-            t({
-              en: 'Access the Mattermost (Chat) instance at:',
-              fr: "Accédez à l'instance Mattermost (Chat) à l'adresse :"
-            })
-          }
-        </p>
-        <p class="font-bold text-cyan-300 hover:underline">chat.douglasneuroinformatics.ca</p>
-      </a>
-      <a
-        href="https://opendatacapture.org/en"
-        target="_blank"
-        class="block rounded-lg bg-blue-900 p-4 shadow-md duration-200 hover:scale-105"
-      >
-        <p class="font-bold text-white">
-          {
-            t({
-              en: 'Check out our data capture platform:',
-              fr: 'Découvrez notre plateforme de capture de données :'
-            })
-          }
-        </p>
-        <p class="font-bold text-cyan-300 hover:underline">opendatacapture.org</p>
-      </a>
-    </div>
-  </div> -->
 </Layout>
