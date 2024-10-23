@@ -7,8 +7,6 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "checkJs": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
     "lib": [
       "DOM",
       "DOM.Iterable",
