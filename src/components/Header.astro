@@ -13,7 +13,7 @@ const navLinks = [
   {
     href: translatePath('/'),
     label: t({
-      en: 'Overview',
+      en: 'Home',
       fr: 'Accueil'
     })
   },
@@ -25,10 +25,10 @@ const navLinks = [
     })
   },
   {
-    href: translatePath('/blog'),
+    href: translatePath('/news'),
     label: t({
-      en: 'Blog',
-      fr: 'Blogue'
+      en: 'News',
+      fr: 'Nouvelles'
     })
   }
 ];
@@ -100,6 +100,10 @@ const navLinks = [
   <nav class="flex flex-col px-4">
     {navLinks.map(({ label, ...props }) => <NavLink {...props}>{label}</NavLink>)}
   </nav>
+  <div class="mt-auto flex justify-end gap-3 px-4">
+    <ThemeToggle />
+    <LanguageToggle dropdownDirection="up" />
+  </div>
 </div>
 <script>
   const backdrop = document.getElementById('mobile-slider-backdrop')!;

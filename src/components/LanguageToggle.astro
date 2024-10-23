@@ -1,9 +1,15 @@
 ---
 import { useTranslations } from '@/i18n';
 
+type Props = {
+  dropdownDirection?: 'down' | 'up';
+};
+
 const { t, resolvedLanguage } = useTranslations(Astro.url);
 
 const is404 = /^\/404\/?$/.test(Astro.url.pathname);
+
+const { dropdownDirection = 'down' } = Astro.props;
 ---
 
 <div class="language-toggle-container relative">
@@ -18,7 +24,7 @@ const is404 = /^\/404\/?$/.test(Astro.url.pathname);
   >
     <span class="uppercase">{resolvedLanguage}</span>
     <svg
-      class="ml-1 h-4 w-4"
+      class:list={['ml-1.5 h-4 w-4', dropdownDirection === 'up' && 'rotate-180']}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -29,7 +35,10 @@ const is404 = /^\/404\/?$/.test(Astro.url.pathname);
     </svg>
   </button>
   <div
-    class="language-toggle-dropdown absolute mt-1 hidden w-full rounded-md bg-white shadow-xl ring-1 ring-black ring-opacity-10 dark:bg-gray-800"
+    class:list={[
+      'language-toggle-dropdown absolute hidden w-full rounded-md bg-white shadow-xl ring-1 ring-black ring-opacity-10 dark:bg-gray-800',
+      dropdownDirection === 'down' ? 'mt-1' : 'top-[-5.25rem]'
+    ]}
   >
     <a
       class="block cursor-pointer p-2 text-center uppercase first:rounded-t-md last:rounded-b-md hover:backdrop-brightness-95 dark:hover:backdrop-brightness-150"
