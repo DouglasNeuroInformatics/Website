@@ -66,13 +66,36 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </h2>
     <div class="grid gap-6 md:grid-cols-2">
       <ServiceOffering
-        description="Our core computing platform is a single-sign-on Ubuntu Linux based computer system. Originally the computing platform of the Douglas Cerebral Imaging Centre (CIC), it has grown and generalized to meet the informatics needs of the Douglas Research Centre as a whole."
-        title="Core Computing Platform"
+        description={t({
+          en: 'Our core computing platform is a single-sign-on Ubuntu Linux based computer system. Originally the computing platform of the Douglas Cerebral Imaging Centre (CIC), it has grown and generalized to meet the informatics needs of the Douglas Research Centre as a whole.',
+          fr: "Notre plateforme informatique de base est un système informatique Ubuntu Linux à connexion unique. À l'origine, il s'agissait de la plateforme informatique du Centre d'imagerie cérébrale du Douglas (CIC), mais elle s'est développée et généralisée pour répondre aux besoins informatiques de l'ensemble du Centre de recherche Douglas."
+        })}
+        title={t({
+          en: 'Core Computing Platform',
+          fr: 'Plateforme informatique centrale'
+        })}
         link={{
-          href: 'http://docs.douglasneuroinformatics.ca',
+          href: 'https://docs.douglasneuroinformatics.ca',
           label: t({
             en: 'View Documentation',
             fr: 'Consulter la documentation'
+          })
+        }}
+      />
+      <ServiceOffering
+        description={t({
+          en: 'The Douglas Data Capture Platform is a deployment of Open Data Capture, managed by the DNP team. Open Data Capture is a web-based continuous data collection platform designed in-house for clinical researchers at the Douglas. Access to the platform is available to any Douglas researcher on request.',
+          fr: "La plateforme de saisie de données du Douglas est un déploiement d'Open Data Capture, géré par l'équipe DNP. Open Data Capture est une plateforme Web de collecte continue de données conçue à l'interne pour les chercheurs cliniques du Douglas. L'accès à la plateforme est disponible à tout chercheur du Douglas sur demande."
+        })}
+        title={t({
+          en: 'Douglas Data Capture Platform',
+          fr: 'Plateforme de saisie des données du Douglas'
+        })}
+        link={{
+          href: 'https://demo.opendatacapture.org',
+          label: t({
+            en: 'View Demo',
+            fr: 'Voir la démo'
           })
         }}
       />
