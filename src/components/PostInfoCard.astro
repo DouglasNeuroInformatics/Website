@@ -33,7 +33,7 @@ const { resolvedLanguage } = useTranslations(Astro.url);
         }
       </time>
       <span aria-hidden="true">&middot;</span>
-      <span>{Math.round(readingTime)} min read</span>
+      <span>{Math.max(Math.round(readingTime), 1)} min read</span>
     </div>
   </div>
 </div>
