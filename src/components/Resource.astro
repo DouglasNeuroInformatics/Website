@@ -26,7 +26,9 @@ const { icon, link, title } = Astro.props;
     data-mailto={link.kind === 'mailto'}
     type="button"
   >
-    <div class="flex w-full max-w-16 items-center justify-center [&>svg]:h-auto [&>svg]:w-8">
+    <div
+      class="flex w-full max-w-16 items-center justify-center [&>svg]:h-8 [&>svg]:w-auto [&>svg]:fill-slate-700 dark:[&>svg]:fill-slate-300"
+    >
       <Fragment set:html={icon} />
     </div>
     <div class="flex w-full flex-col gap-2 text-left">
