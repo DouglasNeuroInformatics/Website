@@ -1,5 +1,4 @@
 ---
-type: article
 title: 'Welcome to Our Blog!'
 description: 'Welcome to the Douglas Neuroinformatics Platform blog.'
 author: joshua-unrau

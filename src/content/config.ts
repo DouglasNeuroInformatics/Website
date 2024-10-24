@@ -1,7 +1,7 @@
 import { defineCollection, reference, z } from 'astro:content';
 
 export const collections = {
-  blog: defineCollection({
+  news: defineCollection({
     schema: z.object({
       author: reference('team'),
       datePublished: z.date(),
@@ -9,7 +9,7 @@ export const collections = {
       isDraft: z.boolean().optional(),
       language: z.enum(['en', 'fr']),
       title: z.string().min(1),
-      type: z.enum(['article', 'caseStudy', 'video'])
+      type: z.enum(['article']).default('article')
     })
   }),
   team: defineCollection({
