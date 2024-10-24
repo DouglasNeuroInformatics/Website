@@ -4,6 +4,6 @@ position:
   fr: Développeur principal
 image: '@/assets/headshots/joshua-unrau.webp'
 description:
-  en: Joshua is an experienced TypeScript developer, specializing in React, TailwindCSS, Express and NestJS. He is also well-versed in build tooling, generic types, and the intricacies of the JavaScript ecosystem.
-  fr: Joshua est un développeur TypeScript expérimenté, spécialisé dans React, TailwindCSS, Express et NestJS. Il connaît également bien les outils de construction, les types génériques et les subtilités de l'écosystème JavaScript.
+  en: Joshua is a seasoned TypeScript developer with expertise in React, TailwindCSS, Express, and NestJS. He has a deep understanding of build tooling, generic types, and the complexities of the JavaScript ecosystem.
+  fr: Joshua est un développeur TypeScript chevronné avec une expertise dans React, TailwindCSS, Express et NestJS. Il a une compréhension profonde des outils de construction, des types génériques et des complexités de l'écosystème JavaScript.
 seniority: 4
