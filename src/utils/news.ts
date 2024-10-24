@@ -6,7 +6,7 @@ export function parsePostSlug(slug: string) {
   if (!result) {
     throw new Error(`Unexpected format for slug '${slug}': must match regular expression '${regex.source}'`);
   }
-  const [locale, dateString, name] = result.slice(1) as [Language, string, string];
+  const [language, dateString, name] = result.slice(1) as [Language, string, string];
   const timestamp = Date.parse(dateString);
   if (Number.isNaN(timestamp)) {
     throw new Error(`Invalid date '${dateString}' in slug '${slug}'`);
@@ -14,6 +14,7 @@ export function parsePostSlug(slug: string) {
 
   return {
     datePublished: new Date(timestamp),
-    url: `/${locale}/news/${name}`
+    language,
+    url: `/${language}/news/${name}`
   };
 }
