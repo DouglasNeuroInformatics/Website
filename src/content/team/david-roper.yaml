@@ -4,6 +4,6 @@ position:
   fr: Développeur junior
 image: '@/assets/headshots/david-roper.webp'
 description:
-  en: David contributes to the project by specializing in writing tests. He is also currently developing instruments for conducting animal studies using Open Data Capture, as part of a collaboration with Western University.
-  fr: David contribue au projet en se spécialisant dans la rédaction de tests. Il développe également des instruments pour mener des études sur les animaux en utilisant Open Data Capture, dans le cadre d'une collaboration avec l'Université de Western.
+  en: David focuses on enhancing features of Open Data Capture for animal researchers. Through his work on MouseODC, he has made substantial contributions to the development of Open Data Capture.
+  fr: David se concentre sur l'amélioration des fonctionnalités d'Open Data Capture pour les chercheurs sur les animaux. Grâce à son travail sur MouseODC, il a contribué de manière substantielle au développement d'Open Data Capture.
 seniority: 8
