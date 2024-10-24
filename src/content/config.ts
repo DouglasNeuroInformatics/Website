@@ -4,10 +4,8 @@ export const collections = {
   news: defineCollection({
     schema: z.object({
       author: reference('team'),
-      datePublished: z.date(),
       description: z.string().min(1),
       isDraft: z.boolean().optional(),
-      language: z.enum(['en', 'fr']),
       title: z.string().min(1),
       type: z.enum(['article']).default('article')
     })
