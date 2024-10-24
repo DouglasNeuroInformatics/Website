@@ -12,6 +12,7 @@
     "lint": "astro check && eslint --fix src"
   },
   "dependencies": {
+    "@xterm/xterm": "^5.5.0",
     "clsx": "^2.1.1",
     "es-toolkit": "^1.25.2",
     "tailwind-merge": "^2.5.4",
