@@ -1,0 +1,30 @@
+---
+import checkCircleIcon from '@/assets/svg/check-circle.svg?raw';
+
+type Props = {
+  title: string;
+  items: {
+    label: string;
+  }[];
+};
+
+const { items, title } = Astro.props;
+---
+
+<div>
+  <h5 class="font-medium leading-tight tracking-tight md:text-lg">
+    {title}
+  </h5>
+  <ul>
+    {
+      items.map((item) => (
+        <li>
+          <div class="flex w-12 items-center [&>svg]:h-8 [&>svg]:w-8 [&>svg]:fill-green-600 [&>svg]:stroke-white">
+            <Fragment set:html={checkCircleIcon} />
+          </div>
+          <p>{item.label}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>
