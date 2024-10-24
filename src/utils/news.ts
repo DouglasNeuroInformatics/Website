@@ -15,6 +15,7 @@ export function parsePostSlug(slug: string) {
   return {
     datePublished: new Date(timestamp),
     language,
+    name,
     url: `/${language}/news/${name}`
   };
 }

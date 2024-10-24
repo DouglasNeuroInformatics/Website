@@ -1,28 +1,21 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 
 import Card from '@/components/Card.astro';
 import PageHeading from '@/components/PageHeading.astro';
 import PostInfoCard from '@/components/PostInfoCard.astro';
 import Layout from '@/layouts/Layout.astro';
 
-import { useTranslations, type Language } from '@/i18n';
+import { useTranslations } from '@/i18n';
 import { parsePostSlug } from '@/utils/news';
+
+import type { ParsedPost } from './[slug].astro';
 
 export const getStaticPaths = () => {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
 };
 
 const { resolvedLanguage, t } = useTranslations(Astro.url);
-
-type ParsedPost = CollectionEntry<'news'> & {
-  data: {
-    datePublished: Date;
-    language: Language;
-    url: string;
-  };
-};
 
 const posts: ParsedPost[] = await getCollection('news', ({ data }) => !data.isDraft)
   .then((posts) =>
