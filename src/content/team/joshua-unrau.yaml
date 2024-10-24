@@ -4,6 +4,6 @@ position:
   fr: Développeur principal
 image: '@/assets/headshots/joshua-unrau.webp'
 description:
-  en: Joshua is a seasoned TypeScript developer with expertise in React, TailwindCSS, Express, and NestJS. He has a deep understanding of build tooling, generic types, and the complexities of the JavaScript ecosystem.
-  fr: Joshua est un développeur TypeScript chevronné avec une expertise dans React, TailwindCSS, Express et NestJS. Il a une compréhension profonde des outils de construction, des types génériques et des complexités de l'écosystème JavaScript.
+  en: Joshua is an experienced full-stack developer who leads the development of Open Data Capture. He also oversees and supports our other software projects.
+  fr: Joshua est un développeur full-stack chevronné qui dirige le développement de la plateforme Open Data Capture. Il supervise et soutient également nos autres projets logiciels.
 seniority: 4
