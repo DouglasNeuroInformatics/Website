@@ -32,31 +32,36 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     fr: 'Le Douglas Neuroinformatics Platform fournit des ressources informatiques et des logiciels open-source aux chercheurs du Centre de recherche Douglas.'
   })}
 >
-  <section class="mx-auto flex min-h-[calc(100vh-64px)] max-w-3xl flex-col items-center justify-center text-center">
-    <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
-      {
-        t({
-          en: 'Supporting Research Excellence',
-          fr: "Soutenir l'excellence en matière de recherche"
-        })
-      }
-    </span>
-    <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
-      {
-        t({
-          en: 'The Douglas Neuroinformatics Platform',
-          fr: 'Le Douglas Neuroinformatics Platform'
-        })
-      }
-    </h1>
-    <p class="mt-3 text-gray-700 dark:text-gray-300">
-      {
-        t({
-          en: 'We provide a Linux-based computing platform for storage and computationally intensive tasks at the Douglas Research Center. Our team also specializes in developing and deploying open-source software tailored to meet the specific needs of researchers.',
-          fr: 'Nous fournissons une plateforme informatique basée sur Linux pour le stockage et les tâches de calcul intensif au Centre de recherche Douglas. Notre équipe est également spécialisée dans le développement et le déploiement de logiciels open-source adaptés aux besoins spécifiques des chercheurs.'
-        })
-      }
-    </p>
+  <section class="mx-auto my-16 grid gap-8 xl:my-0 xl:min-h-[calc(100vh-64px)] xl:grid-cols-2">
+    <div class="flex flex-col items-center justify-center text-center">
+      <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
+        {
+          t({
+            en: 'Supporting Research Excellence',
+            fr: "Soutenir l'excellence en matière de recherche"
+          })
+        }
+      </span>
+      <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
+        {
+          t({
+            en: 'The Douglas Neuroinformatics Platform',
+            fr: 'Le Douglas Neuroinformatics Platform'
+          })
+        }
+      </h1>
+      <p class="mt-3 text-gray-700 dark:text-gray-300">
+        {
+          t({
+            en: 'We provide a Linux-based computing platform for storage and computationally intensive tasks at the Douglas Research Center. Our team also specializes in developing and deploying open-source software tailored to meet the specific needs of researchers.',
+            fr: 'Nous fournissons une plateforme informatique basée sur Linux pour le stockage et les tâches de calcul intensif au Centre de recherche Douglas. Notre équipe est également spécialisée dans le développement et le déploiement de logiciels open-source adaptés aux besoins spécifiques des chercheurs.'
+          })
+        }
+      </p>
+    </div>
+    <div class="hidden items-center justify-center md:flex">
+      <div class="h-[500px] w-[500px] border" id="brain-container"></div>
+    </div>
   </section>
   <section class="mb-12 md:mb-16">
     <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl">
@@ -286,3 +291,4 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
 </Layout>
+<script src="@/scripts/brain.ts"></script>
