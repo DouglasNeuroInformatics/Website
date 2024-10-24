@@ -23,3 +23,4 @@ const useTranslations = (url: URL) => {
 };
 
 export { useTranslations };
+export type { Language };
