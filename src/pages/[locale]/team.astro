@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 
 import Headshot from '@/components/Headshot.astro';
 import PageHeading from '@/components/PageHeading.astro';
-import Layout from '@/layouts/Layout.astro';
 import { useTranslations } from '@/i18n';
+import Layout from '@/layouts/Layout.astro';
 
 const team = await getCollection('team');
 team.sort((a, b) => {
