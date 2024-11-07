@@ -34,7 +34,10 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
   })}
 >
   <section class="mx-auto my-16 grid grid-cols-12 gap-8 xl:my-0 xl:min-h-[calc(100vh-64px)]">
-    <div class="col-span-12 flex flex-col items-center justify-center text-center xl:col-span-7">
+    <div
+      class="col-span-12 flex translate-y-12 flex-col items-center justify-center text-center opacity-0 duration-700 xl:col-span-7"
+      id="hero-container"
+    >
       <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide xl:text-base">
         {
           t({
@@ -60,7 +63,10 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
         }
       </p>
     </div>
-    <div class="col-span-12 hidden items-center justify-center md:flex xl:col-span-5">
+    <div
+      class="col-span-12 hidden translate-y-12 items-center justify-center opacity-0 transition-[opacity,transform] duration-700 md:flex xl:col-span-5"
+      id="react-logo-container"
+    >
       <ReactLogo class="h-auto w-72 xl:w-96" />
     </div>
   </section>
@@ -283,3 +289,13 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
 </Layout>
+<script>
+  const logoContainer = document.getElementById('react-logo-container')!;
+
+  logoContainer.classList.replace('opacity-0', 'opacity-100');
+  logoContainer.classList.replace('translate-y-12', 'translate-y-0');
+
+  const heroContainer = document.getElementById('hero-container')!;
+  heroContainer.classList.replace('opacity-0', 'opacity-100');
+  heroContainer.classList.replace('translate-y-12', 'translate-y-0');
+</script>
