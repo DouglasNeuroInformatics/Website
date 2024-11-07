@@ -128,6 +128,10 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     <div class="flex flex-col gap-8">
       <div class="mb-8 grid gap-12 md:grid-cols-2">
         <ConsultingService
+          description={t({
+            en: 'We have expertise developing bespoke application-level software. Please <button class="font-medium underline hover:cursor-pointer hover:text-slate-900 dark:hover:text-slate-100" data-contact-ref="true" type="button">contact us</button> for more information or to get a quote.',
+            fr: 'Nous disposons d\'une expertise dans le développement de logiciels d\'application sur mesure. N\'hésitez pas à  <button class="font-medium underline hover:cursor-pointer hover:text-slate-900 dark:hover:text-slate-100" data-contact-ref="true" type="button">nous contacter</button> pour plus d\'informations ou pour obtenir un devis.'
+          })}
           title={t({
             en: 'Software Engineering',
             fr: 'Ingénierie logicielle'
@@ -184,6 +188,10 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
           <Fragment set:html={firmwareFigure} />
         </div>
         <ConsultingService
+          description={t({
+            en: 'We specialize in administering, deploying, and managing open source software platforms. Please <button class="font-medium underline hover:cursor-pointer hover:text-slate-900 dark:hover:text-slate-100" data-contact-ref="true" type="button">reach out to us</button> for additional details or to request a quote.',
+            fr: 'Nous sommes spécialisés dans l\'administration, le déploiement et la gestion de plateformes de logiciels open source. N\'hésitez pas à <button class="font-medium underline hover:cursor-pointer hover:text-slate-900 dark:hover:text-slate-100" data-contact-ref="true" type="button">prendre contact avec nous</button> pour obtenir des détails supplémentaires ou un devis.'
+          })}
           title={t({
             en: 'System Administration',
             fr: "Processus d'ingénierie logicielle"
@@ -235,7 +243,10 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
   <section class="mb-12 md:mb-16">
-    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl">
+    <h2
+      class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl"
+      id="resources-heading"
+    >
       {
         t({
           en: 'Resources',
@@ -298,4 +309,14 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
   const heroContainer = document.getElementById('hero-container')!;
   heroContainer.classList.replace('opacity-0', 'opacity-100');
   heroContainer.classList.replace('translate-y-12', 'translate-y-0');
+
+  const resourcesHeading = document.getElementById('resources-heading')!;
+
+  document.querySelectorAll<HTMLButtonElement>('button[data-contact-ref="true"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      resourcesHeading.scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
 </script>
