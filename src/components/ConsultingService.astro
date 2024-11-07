@@ -12,11 +12,11 @@ type Props = {
 const { items, title } = Astro.props;
 ---
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-5">
   <h4 class="text-lg font-semibold leading-tight tracking-tight md:text-xl xl:text-2xl">
     {title}
   </h4>
-  <ul class="space-y-4">
+  <ul class="space-y-5">
     {
       items.map((item) => (
         <li>
