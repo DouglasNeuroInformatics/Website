@@ -38,7 +38,7 @@ const navLinks = [
   class="fixed top-0 z-10 w-full bg-white/80 text-gray-700 shadow backdrop-blur-lg dark:bg-gray-800/75 dark:text-gray-300"
 >
   <div class="container flex items-center justify-between py-3 font-medium">
-    <SiteTitle class="[&>span]:hidden [&>span]:lg:block" />
+    <SiteTitle class="[&>span]:hidden [&>span]:md:block" />
     <div class="hidden shrink md:flex">
       <nav class="flex gap-3 overflow-hidden duration-300" id="nav-dropdown">
         {navLinks.map(({ label, ...props }) => <NavLink {...props}>{label}</NavLink>)}

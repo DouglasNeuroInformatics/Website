@@ -2,6 +2,7 @@
 import checkCircleIcon from '@/assets/svg/check-circle.svg?raw';
 
 type Props = {
+  description?: string;
   title: string;
   items: {
     description: string;
@@ -9,13 +10,22 @@ type Props = {
   }[];
 };
 
-const { items, title } = Astro.props;
+const { description, items, title } = Astro.props;
 ---
 
 <div class="flex flex-col gap-5">
-  <h4 class="text-lg font-semibold leading-tight tracking-tight md:text-xl xl:text-2xl">
-    {title}
-  </h4>
+  <div class="flex flex-col gap-2">
+    <h4 class="text-lg font-semibold leading-tight tracking-tight md:text-xl xl:text-2xl">
+      {title}
+    </h4>
+    {
+      description && (
+        <span class="text-sm text-gray-700 dark:text-gray-300">
+          <Fragment set:html={description} />
+        </span>
+      )
+    }
+  </div>
   <ul class="space-y-5">
     {
       items.map((item) => (
@@ -25,7 +35,7 @@ const { items, title } = Astro.props;
               <Fragment set:html={checkCircleIcon} />
             </div>
             <div>
-              <h5 class="font-semibold tracking-tight text-lg">{item.label}</h5>
+              <h5 class="text-lg font-semibold tracking-tight">{item.label}</h5>
             </div>
           </div>
           <div class="ml-10">
