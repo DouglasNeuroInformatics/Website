@@ -33,8 +33,8 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     fr: 'Le Douglas Neuroinformatics Platform fournit des ressources informatiques et des logiciels open-source aux chercheurs du Centre de recherche Douglas.'
   })}
 >
-  <section class="mx-auto my-16 grid gap-8 xl:my-0 xl:min-h-[calc(100vh-64px)] xl:grid-cols-2">
-    <div class="flex flex-col items-center justify-center text-center">
+  <section class="mx-auto my-16 grid grid-cols-12 gap-8 xl:my-0 xl:min-h-[calc(100vh-64px)]">
+    <div class="col-span-12 flex flex-col items-center justify-center text-center xl:col-span-7">
       <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
         {
           t({
@@ -43,7 +43,7 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
           })
         }
       </span>
-      <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
+      <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl xl:text-5xl">
         {
           t({
             en: 'The Douglas Neuroinformatics Platform',
@@ -60,11 +60,11 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
         }
       </p>
     </div>
-    <div class="hidden items-center justify-center md:flex">
-      <ReactLogo class="h-auto w-96" />
+    <div class="col-span-12 hidden items-center justify-center md:flex xl:col-span-5">
+      <ReactLogo class="h-auto w-72 xl:w-96" />
     </div>
   </section>
-  <section class="mb-12 md:mb-16">
+  <section class="mb-12 md:mb-16 xl:mb-24">
     <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl">
       {
         t({
