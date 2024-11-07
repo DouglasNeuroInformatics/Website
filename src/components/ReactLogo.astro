@@ -1,14 +1,18 @@
 ---
+import { cn } from '@/utils/cn';
+
 type Props = astroHTML.JSX.SVGAttributes;
+
+const { class: className, ...props } = Astro.props;
 ---
 
 <svg
-  class="animate-spin-slow h-auto w-96"
+  class={cn('animate-spin-slow', className)}
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   preserveAspectRatio="xMidYMid meet"
   viewBox="0 0 256 228"
-  {...Astro.props}
+  {...props}
 >
   <path
     class="fill-logo-900"
