@@ -7,10 +7,16 @@ const { class: className, ...props } = Astro.props;
 ---
 
 <svg
-  class={cn('animate-spin-slow', className)}
+  class={cn(
+    'animate-spin-slow p-6 transition-[filter] duration-500 hover:[filter:var(--glow)] dark:hover:[filter:var(--glow-dark)]',
+    className
+  )}
+  id="react-logo"
+  style={{
+    '--glow': 'drop-shadow(0 0 2em #57abda)',
+    '--glow-dark': 'drop-shadow(0 0 2em #102e71)'
+  }}
   xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  preserveAspectRatio="xMidYMid meet"
   viewBox="0 0 256 228"
   {...props}
 >
