@@ -9,7 +9,8 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        dash: 'dash 2s forwards'
+        dash: 'dash 2s forwards',
+        'spin-slow': 'spin 10s linear infinite'
       },
       colors: {
         logo: {

@@ -1,5 +1,6 @@
 ---
 import ConsultingService from '@/components/ConsultingService.astro';
+import ReactLogo from '@/components/ReactLogo.astro';
 import Resource from '@/components/Resource.astro';
 import ServiceOffering from '@/components/ServiceOffering.astro';
 import { useTranslations } from '@/i18n';
@@ -32,9 +33,12 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     fr: 'Le Douglas Neuroinformatics Platform fournit des ressources informatiques et des logiciels open-source aux chercheurs du Centre de recherche Douglas.'
   })}
 >
-  <section class="mx-auto my-16 grid gap-8 xl:my-0 xl:min-h-[calc(100vh-64px)] xl:grid-cols-2">
-    <div class="flex flex-col items-center justify-center text-center">
-      <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
+  <section class="mx-auto my-16 grid grid-cols-12 gap-8 xl:my-0 xl:min-h-[calc(100vh-64px)]">
+    <div
+      class="col-span-12 flex translate-y-12 flex-col items-center justify-center text-center opacity-0 duration-700 xl:col-span-7"
+      id="hero-container"
+    >
+      <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide xl:text-base">
         {
           t({
             en: 'Supporting Research Excellence',
@@ -42,7 +46,7 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
           })
         }
       </span>
-      <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
+      <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl xl:text-5xl">
         {
           t({
             en: 'The Douglas Neuroinformatics Platform',
@@ -59,12 +63,15 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
         }
       </p>
     </div>
-    <div class="hidden items-center justify-center md:flex">
-      <div class="h-[500px] w-[500px] border" id="brain-container"></div>
+    <div
+      class="col-span-12 hidden translate-y-12 items-center justify-center opacity-0 transition-[opacity,transform] duration-700 md:flex xl:col-span-5"
+      id="react-logo-container"
+    >
+      <ReactLogo class="h-auto w-72 xl:w-96" />
     </div>
   </section>
-  <section class="mb-12 md:mb-16">
-    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl">
+  <section class="mb-12 md:mb-16 xl:mb-32">
+    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl">
       {
         t({
           en: 'Our Platforms',
@@ -92,7 +99,7 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
       />
       <ServiceOffering
         description={t({
-          en: 'The Douglas Data Capture Platform is a deployment of Open Data Capture, managed by the DNP team. Open Data Capture is a web-based continuous data collection platform designed in-house for clinical researchers at the Douglas. Access to the platform is available to any Douglas researcher on request.',
+          en: 'The Douglas Data Capture Platform is a deployment of Open Data Capture, managed by the DNP. Open Data Capture is a web-based continuous data collection platform designed in-house for clinical researchers at the Douglas. Access to the platform is available to any Douglas researcher on request.',
           fr: "La plateforme de saisie de données du Douglas est un déploiement d'Open Data Capture, géré par l'équipe DNP. Open Data Capture est une plateforme Web de collecte continue de données conçue à l'interne pour les chercheurs cliniques du Douglas. L'accès à la plateforme est disponible à tout chercheur du Douglas sur demande."
         })}
         title={t({
@@ -109,8 +116,8 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
       />
     </div>
   </section>
-  <section class="mb-12 md:mb-16">
-    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl">
+  <section class="mb-12 md:mb-16 xl:mb-32">
+    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl">
       {
         t({
           en: 'Consulting Services',
@@ -119,19 +126,11 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
       }
     </h2>
     <div class="flex flex-col gap-8">
-      <h3 class="text-lg font-semibold leading-tight tracking-tight md:text-xl">
-        {
-          t({
-            en: 'Software Development and System Administration',
-            fr: 'Développement de logiciels et administration de systèmes'
-          })
-        }
-      </h3>
       <div class="mb-8 grid gap-12 md:grid-cols-2">
         <ConsultingService
           title={t({
-            en: 'Software Engineering Processes',
-            fr: "Processus d'ingénierie logicielle"
+            en: 'Software Engineering',
+            fr: 'Ingénierie logicielle'
           })}
           items={[
             {
@@ -176,15 +175,14 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
             }
           ]}
         />
-        <div class="items-center justify-center [&>svg]:h-96">
+        <div class="flex items-center justify-center [&>svg]:h-96">
           <Fragment set:html={programmingFigure} />
         </div>
       </div>
       <div class="grid gap-12 md:grid-cols-2">
-        <div class="items-center justify-center [&>svg]:h-96 [&>svg]:w-auto">
+        <div class="flex items-center justify-center [&>svg]:h-96 [&>svg]:w-auto">
           <Fragment set:html={firmwareFigure} />
         </div>
-
         <ConsultingService
           title={t({
             en: 'System Administration',
@@ -197,18 +195,18 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
                 fr: 'Évaluation des logiciels libres pour les applications personnalisées'
               }),
               description: t({
-                en: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, ipsum porro quis sequi quas deserunt, dicta eveniet incidunt fugit quod maiores nostrum officiis dolorem dolores eligendi totam voluptate provident.',
-                fr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, ipsum porro quis sequi quas deserunt, dicta eveniet incidunt fugit quod maiores nostrum officiis dolorem dolores eligendi totam voluptate provident.'
+                en: 'Our team is experienced in evaluating open source software and can help you find the right tool for your needs.',
+                fr: "Notre équipe est expérimentée dans l'évaluation des logiciels open source et peut vous aider à trouver l'outil adapté à vos besoins."
               })
             },
             {
               label: t({
-                en: 'Installing and Managing Existing Software',
-                fr: 'Installation et gestion des logiciels existants'
+                en: 'Installing and Managing Software',
+                fr: 'Installation et gestion des logiciels'
               }),
               description: t({
-                en: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, ipsum porro quis sequi quas deserunt, dicta eveniet incidunt fugit quod maiores nostrum officiis dolorem dolores eligendi totam voluptate provident.',
-                fr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, ipsum porro quis sequi quas deserunt, dicta eveniet incidunt fugit quod maiores nostrum officiis dolorem dolores eligendi totam voluptate provident.'
+                en: "We can manage and deploy software internally at the Douglas, whether it's a web service on the Douglas internal network or a desktop application.",
+                fr: "Nous pouvons gérer et déployer des logiciels en interne au Douglas, qu'il s'agisse d'un service Web sur le réseau interne ou d'une application de bureau."
               })
             },
             {
@@ -217,8 +215,8 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
                 fr: "Spécification du matériel physique et de l'informatique en nuage"
               }),
               description: t({
-                en: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, ipsum porro quis sequi quas deserunt, dicta eveniet incidunt fugit quod maiores nostrum officiis dolorem dolores eligendi totam voluptate provident.',
-                fr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, ipsum porro quis sequi quas deserunt, dicta eveniet incidunt fugit quod maiores nostrum officiis dolorem dolores eligendi totam voluptate provident.'
+                en: 'Our team is well-acquainted with the hardware requirements for various computational tasks. We can help you build the physical infrastructure your lab needs.',
+                fr: "Notre équipe connaît parfaitement les exigences matérielles pour diverses tâches informatiques. Nous pouvons vous aider à construire l'infrastructure physique dont votre laboratoire a besoin."
               })
             },
             {
@@ -227,8 +225,8 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
                 fr: 'Gestion des serveurs en nuage'
               }),
               description: t({
-                en: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, ipsum porro quis sequi quas deserunt, dicta eveniet incidunt fugit quod maiores nostrum officiis dolorem dolores eligendi totam voluptate provident.',
-                fr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maxime, ipsum porro quis sequi quas deserunt, dicta eveniet incidunt fugit quod maiores nostrum officiis dolorem dolores eligendi totam voluptate provident.'
+                en: 'We offer cloud hosting and full-service software deployments. When you find the right open source software for your needs, we can manage and deploy it for you.',
+                fr: "Nous proposons des services d'hébergement cloud et de déploiement de logiciels à service complet. Lorsque vous trouvez le logiciel open source adapté à vos besoins, nous pouvons le gérer et le déployer pour vous."
               })
             }
           ]}
@@ -237,7 +235,7 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
   <section class="mb-12 md:mb-16">
-    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl">
+    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl">
       {
         t({
           en: 'Resources',
@@ -291,4 +289,13 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
 </Layout>
-<script src="@/scripts/brain.ts"></script>
+<script>
+  const logoContainer = document.getElementById('react-logo-container')!;
+
+  logoContainer.classList.replace('opacity-0', 'opacity-100');
+  logoContainer.classList.replace('translate-y-12', 'translate-y-0');
+
+  const heroContainer = document.getElementById('hero-container')!;
+  heroContainer.classList.replace('opacity-0', 'opacity-100');
+  heroContainer.classList.replace('translate-y-12', 'translate-y-0');
+</script>
