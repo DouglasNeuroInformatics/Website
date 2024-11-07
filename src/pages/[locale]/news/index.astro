@@ -58,7 +58,7 @@ const posts: ParsedPost[] = await getCollection('news', ({ data }) => !data.isDr
   </PageHeading>
   {
     (
-      <ul class="grid gap-6 lg:grid-cols-2" id="blog-list">
+      <ul class="grid gap-6 xl:grid-cols-2" id="blog-list">
         {posts.map(async (post) => {
           const author = await getEntry(post.data.author);
           const { remarkPluginFrontmatter } = await post.render();
