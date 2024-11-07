@@ -4,6 +4,7 @@ import Resource from '@/components/Resource.astro';
 import ServiceOffering from '@/components/ServiceOffering.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
+import ReactLogo from '@/components/ReactLogo.astro';
 
 const { t } = useTranslations(Astro.url);
 
@@ -60,7 +61,7 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
       </p>
     </div>
     <div class="hidden items-center justify-center md:flex">
-      <div class="h-[500px] w-[500px] border" id="brain-container"></div>
+      <ReactLogo class="h-auto w-[500px]" />
     </div>
   </section>
   <section class="mb-12 md:mb-16">
@@ -291,4 +292,4 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
 </Layout>
-<script src="@/scripts/brain.ts"></script>
+
