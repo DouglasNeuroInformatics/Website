@@ -100,7 +100,7 @@ const navLinks = [
   <nav class="flex flex-col px-4">
     {navLinks.map(({ label, ...props }) => <NavLink {...props}>{label}</NavLink>)}
   </nav>
-  <div class="mt-auto flex justify-end gap-3 px-4">
+  <div class="mt-auto flex gap-3 px-4">
     <ThemeToggle />
     <LanguageToggle dropdownDirection="up" />
   </div>

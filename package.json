@@ -14,7 +14,8 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "es-toolkit": "^1.25.2",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "ts-pattern": "^5.5.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

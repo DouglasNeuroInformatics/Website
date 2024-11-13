@@ -1,5 +1,6 @@
 ---
 import { cn } from '@/utils/cn';
+import Heading from './Heading.astro';
 
 type Props = {
   class?: string;
@@ -8,6 +9,6 @@ type Props = {
 const { class: className } = Astro.props;
 ---
 
-<h1 class={cn('py-8 text-center text-2xl font-extrabold tracking-tight md:text-3xl', className)}>
+<Heading class={cn('py-8 text-center xl:py-12', className)} variant="h1">
   <slot />
-</h1>
+</Heading>

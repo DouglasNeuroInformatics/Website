@@ -18,6 +18,7 @@ import mattermostIcon from '@/assets/svg/mattermost.svg?raw';
 import openDataCaptureIcon from '@/assets/svg/open-data-capture.svg?raw';
 import programmingFigure from '@/assets/svg/programming.svg?raw';
 import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
+import Heading from '@/components/Heading.astro';
 ---
 
 <Layout
@@ -33,28 +34,30 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     fr: 'Le Douglas Neuroinformatics Platform fournit des ressources informatiques et des logiciels open-source aux chercheurs du Centre de recherche Douglas.'
   })}
 >
-  <section class="mx-auto my-16 grid grid-cols-12 gap-8 xl:my-0 xl:min-h-[calc(100vh-64px)]">
+  <section class="mx-auto grid min-h-[calc(100vh-64px)] grid-cols-12 gap-8">
     <div
-      class="col-span-12 flex translate-y-12 flex-col items-center justify-center text-center opacity-0 duration-700 xl:col-span-7"
+      class="col-span-12 flex translate-y-12 flex-col items-center justify-center text-center opacity-0 duration-700 xl:col-span-8"
       id="hero-container"
     >
-      <span class="text-muted-foreground text-sm font-semibold uppercase tracking-wide xl:text-base">
+      <span
+        class="text-muted-foreground text-pretty text-sm font-semibold uppercase leading-normal tracking-tight md:text-base"
+      >
         {
           t({
             en: 'Supporting Research Excellence',
-            fr: "Soutenir l'excellence en matière de recherche"
+            fr: "Soutenir l'excellence en recherche"
           })
         }
       </span>
-      <h1 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl xl:text-5xl">
+      <Heading xl variant="h1">
         {
           t({
             en: 'The Douglas Neuroinformatics Platform',
             fr: 'Le Douglas Neuroinformatics Platform'
           })
         }
-      </h1>
-      <p class="mt-3 text-gray-700 dark:text-gray-300">
+      </Heading>
+      <p class="mt-3 text-sm text-gray-700 dark:text-gray-300 md:text-base">
         {
           t({
             en: 'We provide a Linux-based computing platform for storage and computationally intensive tasks at the Douglas Research Center. Our team also specializes in developing and deploying open-source software tailored to meet the specific needs of researchers.',
@@ -64,22 +67,22 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
       </p>
     </div>
     <div
-      class="col-span-12 hidden translate-y-12 items-center justify-center opacity-0 transition-[opacity,transform] duration-700 md:flex xl:col-span-5"
+      class="col-span-12 hidden translate-y-12 items-center justify-center opacity-0 transition-[opacity,transform] duration-700 xl:col-span-4 xl:flex"
       id="react-logo-container"
     >
       <ReactLogo class="h-auto w-72 xl:w-96" />
     </div>
   </section>
-  <section class="mb-12 md:mb-16 xl:mb-32">
-    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl">
+  <section class="mb-16 xl:mb-32">
+    <Heading class="mb-8 text-center" variant="h2">
       {
         t({
           en: 'Our Platforms',
           fr: 'Nos plateformes'
         })
       }
-    </h2>
-    <div class="grid gap-6 md:grid-cols-2">
+    </Heading>
+    <div class="grid gap-6 lg:grid-cols-2">
       <ServiceOffering
         description={t({
           en: 'Our core computing platform is a single-sign-on Ubuntu Linux based computer system. Originally the computing platform of the Douglas Cerebral Imaging Centre (CIC), it has grown and generalized to meet the informatics needs of the Douglas Research Centre as a whole.',
@@ -116,25 +119,25 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
       />
     </div>
   </section>
-  <section class="mb-12 md:mb-16 xl:mb-32">
-    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl">
+  <section class="mb-16 xl:mb-32">
+    <Heading class="mb-8 text-center" variant="h2">
       {
         t({
           en: 'Consulting Services',
           fr: 'Services de conseil'
         })
       }
-    </h2>
+    </Heading>
     <div class="flex flex-col gap-8">
-      <div class="mb-8 grid gap-12 md:grid-cols-2">
+      <div class="mb-8 grid gap-12 lg:grid-cols-2">
         <ConsultingService
           description={t({
-            en: 'We have expertise developing bespoke application-level software. Please <button class="font-medium underline hover:cursor-pointer hover:text-slate-900 dark:hover:text-slate-100" data-contact-ref="true" type="button">contact us</button> for more information or to get a quote.',
-            fr: 'Nous disposons d\'une expertise dans le développement de logiciels d\'application sur mesure. N\'hésitez pas à  <button class="font-medium underline hover:cursor-pointer hover:text-slate-900 dark:hover:text-slate-100" data-contact-ref="true" type="button">nous contacter</button> pour plus d\'informations ou pour obtenir un devis.'
+            en: 'We specialize in developing bespoke software, from full-scale applications to small utility scripts. For most projects, our pricing is comparable to hiring research assistants, but without the hassle of recruitment and training. Please <button class="font-medium underline hover:cursor-pointer hover:text-gray-900 dark:hover:text-gray-100" data-contact-ref="true" type="button">contact us</button> for more information or to get a quote.',
+            fr: 'Nous sommes spécialisés dans le développement de logiciels sur mesure, qu\'il s\'agisse d\'applications à grande échelle ou de petits scripts utilitaires. Pour la plupart des projets, nos tarifs sont comparables à ceux des assistants de recherche, mais sans les inconvénients du recrutement et de la formation. N\'hésitez pas à  <button class="font-medium underline hover:cursor-pointer hover:text-gray-900 dark:hover:text-gray-100" data-contact-ref="true" type="button">nous contacter</button> pour plus d\'informations ou pour obtenir un devis.'
           })}
           title={t({
-            en: 'Software Engineering',
-            fr: 'Ingénierie logicielle'
+            en: 'Software Development',
+            fr: 'Développement de logiciels'
           })}
           items={[
             {
@@ -179,18 +182,18 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
             }
           ]}
         />
-        <div class="hidden items-center justify-center md:flex [&>svg]:h-96">
+        <div class="hidden items-center justify-center lg:flex [&>svg]:h-96">
           <Fragment set:html={programmingFigure} />
         </div>
       </div>
-      <div class="grid gap-12 md:grid-cols-2">
-        <div class="hidden items-center justify-center md:flex [&>svg]:h-96 [&>svg]:w-auto">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div class="hidden items-center justify-center lg:flex [&>svg]:h-96 [&>svg]:w-auto">
           <Fragment set:html={firmwareFigure} />
         </div>
         <ConsultingService
           description={t({
-            en: 'We specialize in administering, deploying, and managing open source software platforms. Please <button class="font-medium underline hover:cursor-pointer hover:text-slate-900 dark:hover:text-slate-100" data-contact-ref="true" type="button">reach out to us</button> for additional details or to request a quote.',
-            fr: 'Nous sommes spécialisés dans l\'administration, le déploiement et la gestion de plateformes de logiciels open source. N\'hésitez pas à <button class="font-medium underline hover:cursor-pointer hover:text-slate-900 dark:hover:text-slate-100" data-contact-ref="true" type="button">prendre contact avec nous</button> pour obtenir des détails supplémentaires ou un devis.'
+            en: 'We specialize in administering, deploying, and managing open source software platforms. Please <button class="font-medium underline hover:cursor-pointer hover:text-gray-900 dark:hover:text-gray-100" data-contact-ref="true" type="button">reach out to us</button> for additional details or to request a quote.',
+            fr: 'Nous sommes spécialisés dans l\'administration, le déploiement et la gestion de plateformes de logiciels open source. N\'hésitez pas à <button class="font-medium underline hover:cursor-pointer hover:text-gray-900 dark:hover:text-gray-100" data-contact-ref="true" type="button">prendre contact avec nous</button> pour obtenir des détails supplémentaires ou un devis.'
           })}
           title={t({
             en: 'System Administration',
@@ -233,8 +236,28 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
                 fr: 'Gestion des serveurs en nuage'
               }),
               description: t({
-                en: 'We offer cloud hosting and full-service software deployments. When you find the right open source software for your needs, we can manage and deploy it for you.',
-                fr: "Nous proposons des services d'hébergement cloud et de déploiement de logiciels à service complet. Lorsque vous trouvez le logiciel open source adapté à vos besoins, nous pouvons le gérer et le déployer pour vous."
+                en: 'We offer cloud hosting, full-service software deployments, as well as hosting and management of virtual machines. When you find the right open source software for your needs, we can manage and deploy it for you.',
+                fr: "Nous proposons l'hébergement en nuage, des déploiements de logiciels complets, ainsi que l'hébergement et la gestion de machines virtuelles. Lorsque vous trouvez le logiciel open source adapté à vos besoins, nous pouvons le gérer et le déployer pour vous."
+              })
+            },
+            {
+              label: t({
+                en: 'Custom Data Backup',
+                fr: 'Sauvegarde des données'
+              }),
+              description: t({
+                en: 'Our team is well-acquainted with data management and can implement processes to ensure your data is safe, secure, and backed up. In the event of a disaster, you can be confident that you will never lose your data.',
+                fr: 'Notre équipe connaît bien la gestion des données et peut mettre en œuvre des processus garantissant que vos données sont sûres, sécurisées et sauvegardées. En cas de sinistre, vous pouvez être sûr de ne jamais perdre vos données.'
+              })
+            },
+            {
+              label: t({
+                en: 'Digital Research Alliance of Canada Applications',
+                fr: "Applications de l'Alliance de recherche numérique du Canada"
+              }),
+              description: t({
+                en: 'We are familiar with the Digital Research Alliance of Canada and can help you access and utilize their services effectively to support your research needs.',
+                fr: "Nous connaissons bien l'Alliance de recherche numérique du Canada et pouvons vous aider à accéder à ses services et à les utiliser efficacement pour répondre à vos besoins en matière de recherche."
               })
             }
           ]}
@@ -242,19 +265,16 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
       </div>
     </div>
   </section>
-  <section class="mb-12 md:mb-16">
-    <h2
-      class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl"
-      id="resources-heading"
-    >
+  <section class="mb-16">
+    <Heading class="mb-8 text-center" id="resources-heading" variant="h2">
       {
         t({
           en: 'Resources',
           fr: 'Ressources'
         })
       }
-    </h2>
-    <div class="grid gap-6 md:grid-cols-2">
+    </Heading>
+    <div class="grid gap-6 lg:grid-cols-2">
       <Resource
         link={{
           kind: 'mailto',

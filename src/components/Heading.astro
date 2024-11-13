@@ -1,0 +1,63 @@
+---
+import { cn } from '@/utils/cn';
+import { match } from 'ts-pattern';
+
+type BaseProps = {
+  class?: string;
+  id?: string;
+};
+
+type H1Props = BaseProps & {
+  xl?: boolean;
+  variant: 'h1';
+};
+
+type StdProps = BaseProps & {
+  variant: 'h2' | 'h3' | 'h4' | 'h5';
+};
+
+type Props = H1Props | StdProps;
+---
+
+{
+  match(Astro.props)
+    .with({ variant: 'h1' }, ({ class: className, xl, ...props }) => (
+      <h1
+        class={cn(
+          'text-2xl font-extrabold leading-tight tracking-tight',
+          xl ? 'text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl' : 'md:text-3xl',
+          className
+        )}
+        {...props}
+      >
+        <slot />
+      </h1>
+    ))
+    .with({ variant: 'h2' }, ({ class: className, ...props }) => (
+      <h2
+        class={cn('text-[1.375rem] font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl', className)}
+        {...props}
+      >
+        <slot />
+      </h2>
+    ))
+    .with({ variant: 'h3' }, ({ class: className, ...props }) => (
+      <h3 class={cn('text-lg font-semibold leading-tight tracking-tight md:text-xl xl:text-2xl', className)} {...props}>
+        <slot />
+      </h3>
+    ))
+    .with({ variant: 'h4' }, ({ class: className, ...props }) => (
+      <h4
+        class={cn('text-[1.0625rem] font-semibold leading-tight tracking-tight md:text-lg xl:text-xl', className)}
+        {...props}
+      >
+        <slot />
+      </h4>
+    ))
+    .with({ variant: 'h5' }, ({ class: className, ...props }) => (
+      <h5 class={cn('text-base font-semibold leading-tight tracking-tight md:text-[1.0625rem]', className)} {...props}>
+        <slot />
+      </h5>
+    ))
+    .exhaustive()
+}

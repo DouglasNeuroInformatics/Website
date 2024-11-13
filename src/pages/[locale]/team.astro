@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 
+import Heading from '@/components/Heading.astro';
 import Headshot from '@/components/Headshot.astro';
 import PageHeading from '@/components/PageHeading.astro';
 import { useTranslations } from '@/i18n';
@@ -52,7 +53,9 @@ const { resolvedLanguage, t } = useTranslations(Astro.url);
             </div>
             <div class="flex flex-col md:col-span-3 xl:col-span-2">
               <div class="mb-2 flex h-14 flex-col justify-between py-2.5 pl-[4.25rem] md:mb-0 md:py-1.5 md:pl-0">
-                <h5 class="font-bold leading-none tracking-tight md:text-lg">{`${fullName}${suffix ? `, ${suffix}` : ''}`}</h5>
+                <Heading class="leading-none md:text-lg" variant="h4">
+                  {`${fullName}${suffix ? `, ${suffix}` : ''}`}
+                </Heading>
                 <span class="text-sm font-semibold leading-none tracking-tight text-sky-700 dark:text-sky-500 md:text-base md:dark:text-sky-400">
                   {position[resolvedLanguage]}
                 </span>
