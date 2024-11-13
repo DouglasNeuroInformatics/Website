@@ -18,6 +18,7 @@ import mattermostIcon from '@/assets/svg/mattermost.svg?raw';
 import openDataCaptureIcon from '@/assets/svg/open-data-capture.svg?raw';
 import programmingFigure from '@/assets/svg/programming.svg?raw';
 import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
+import Heading from '@/components/Heading.astro';
 ---
 
 <Layout
@@ -39,7 +40,7 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
       id="hero-container"
     >
       <span
-        class="text-muted-foreground text-pretty text-xs font-semibold uppercase leading-normal tracking-tight sm:text-sm xl:text-base"
+        class="text-muted-foreground text-pretty text-sm font-semibold uppercase leading-normal tracking-tight md:text-base"
       >
         {
           t({
@@ -48,17 +49,15 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
           })
         }
       </span>
-      <h1
-        class="text-[1.375rem] font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl xl:whitespace-nowrap xl:text-5xl"
-      >
+      <Heading xl variant="h1">
         {
           t({
             en: 'The Douglas Neuroinformatics Platform',
             fr: 'Le Douglas Neuroinformatics Platform'
           })
         }
-      </h1>
-      <p class="mt-3 text-sm text-gray-700 dark:text-gray-300 sm:text-base">
+      </Heading>
+      <p class="mt-3 text-sm text-gray-700 dark:text-gray-300 md:text-base">
         {
           t({
             en: 'We provide a Linux-based computing platform for storage and computationally intensive tasks at the Douglas Research Center. Our team also specializes in developing and deploying open-source software tailored to meet the specific needs of researchers.',
@@ -75,14 +74,14 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
   <section class="mb-16 xl:mb-32">
-    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl">
+    <Heading class="mb-8 text-center" variant="h2">
       {
         t({
           en: 'Our Platforms',
           fr: 'Nos plateformes'
         })
       }
-    </h2>
+    </Heading>
     <div class="grid gap-6 lg:grid-cols-2">
       <ServiceOffering
         description={t({
@@ -121,14 +120,14 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
   <section class="mb-16 xl:mb-32">
-    <h2 class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl">
+    <Heading class="mb-8 text-center" variant="h2">
       {
         t({
           en: 'Consulting Services',
           fr: 'Services de conseil'
         })
       }
-    </h2>
+    </Heading>
     <div class="flex flex-col gap-8">
       <div class="mb-8 grid gap-12 lg:grid-cols-2">
         <ConsultingService
@@ -267,17 +266,14 @@ import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
     </div>
   </section>
   <section class="mb-16">
-    <h2
-      class="mb-8 text-center text-xl font-bold leading-tight tracking-tight md:text-2xl xl:text-3xl"
-      id="resources-heading"
-    >
+    <Heading class="mb-8 text-center" id="resources-heading" variant="h2">
       {
         t({
           en: 'Resources',
           fr: 'Ressources'
         })
       }
-    </h2>
+    </Heading>
     <div class="grid gap-6 lg:grid-cols-2">
       <Resource
         link={{

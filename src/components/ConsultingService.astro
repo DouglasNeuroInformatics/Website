@@ -1,5 +1,6 @@
 ---
 import checkCircleIcon from '@/assets/svg/check-circle.svg?raw';
+import Heading from './Heading.astro';
 
 type Props = {
   description?: string;
@@ -15,9 +16,9 @@ const { description, items, title } = Astro.props;
 
 <div class="flex flex-col gap-5">
   <div class="flex flex-col gap-2">
-    <h4 class="text-lg font-semibold leading-tight tracking-tight md:text-xl xl:text-2xl">
+    <Heading variant="h3">
       {title}
-    </h4>
+    </Heading>
     {
       description && (
         <span class="text-sm text-gray-700 dark:text-gray-300">
@@ -29,16 +30,14 @@ const { description, items, title } = Astro.props;
   <ul class="space-y-5">
     {
       items.map((item) => (
-        <li>
-          <div class="flex items-center">
-            <div class="flex w-10 items-center [&>svg]:h-8 [&>svg]:w-8 [&>svg]:fill-green-600 [&>svg]:stroke-white">
-              <Fragment set:html={checkCircleIcon} />
-            </div>
-            <div>
-              <h5 class="font-semibold tracking-tight">{item.label}</h5>
-            </div>
+        <li class="flex">
+          <div class="flex h-full w-10 flex-shrink-0 flex-col [&>svg]:h-8 [&>svg]:w-8 [&>svg]:fill-green-600 [&>svg]:stroke-white">
+            <Fragment set:html={checkCircleIcon} />
           </div>
-          <div class="ml-10">
+          <div class="flex flex-grow flex-col">
+            <Heading class="mb-1.5"  variant="h5">
+              {item.label}
+            </Heading>
             <p class="text-sm text-gray-700 dark:text-gray-300">{item.description}</p>
           </div>
         </li>

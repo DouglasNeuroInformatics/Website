@@ -1,5 +1,6 @@
 ---
 import Card from './Card.astro';
+import Heading from './Heading.astro';
 
 type Props = {
   title: string;
@@ -32,7 +33,9 @@ const { icon, link, title } = Astro.props;
       <Fragment set:html={icon} />
     </div>
     <div class="flex w-full flex-col gap-2 text-left">
-      <h5 class="text-lg font-semibold">{title}</h5>
+      <Heading variant="h5">
+        {title}
+      </Heading>
       <span
         class:list={[
           'text-sm group-hover:underline',
