@@ -2,14 +2,14 @@ const typographyPlugin = require('@tailwindcss/typography');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,svg}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx,svg}'],
   darkMode: ['class', '[data-mode="dark"]'],
   plugins: [typographyPlugin()],
   root: __dirname,
   theme: {
     extend: {
       animation: {
-        dash: 'dash 2s forwards',
+        dash: 'dash 3s forwards',
         'spin-slow': 'spin 10s linear infinite'
       },
       colors: {

@@ -1,31 +1,18 @@
 {
-  "extends": [
-    "@douglasneuroinformatics/tsconfig"
-  ],
+  "extends": ["@douglasneuroinformatics/tsconfig"],
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "checkJs": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "jsx": "preserve",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "@/*": [
-        "*"
-      ]
+      "@/*": ["*"]
     },
     "resolveJsonModule": true
   },
-  "include": [
-    "src/**/*",
-    "astro.config.ts",
-    "eslint.config.js",
-    "prettier.config.js",
-    "tailwind.config.cjs"
-  ]
+  "include": ["src/**/*", "astro.config.ts", "eslint.config.js", "prettier.config.js", "tailwind.config.cjs"]
 }

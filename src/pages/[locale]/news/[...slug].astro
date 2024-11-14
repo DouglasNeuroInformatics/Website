@@ -6,7 +6,7 @@ import Heading from '@/components/Heading.astro';
 import PostInfoCard from '@/components/PostInfoCard.astro';
 import type { Language } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
-import { parsePostSlug } from '@/utils/news';
+import { parsePost } from '@/utils/news';
 import { toBasicISOString } from '@douglasneuroinformatics/libjs';
 import { getEntries } from 'astro:content';
 import { match } from 'ts-pattern';
@@ -20,32 +20,38 @@ export type ParsedPost = CollectionEntry<'news'> & {
 };
 
 type Props = {
-  post: ParsedPost;
+  post: ParsedPost & {
+    data: {
+      type: Exclude<CollectionEntry<'news'>['data']['type'], 'link'>;
+    };
+  };
 };
 
 export const getStaticPaths = async () => {
   const posts = await getCollection('news');
-  const paths = posts.map((post) => {
-    const { datePublished, language, name, url } = parsePostSlug(post.slug);
-    return {
-      params: {
-        locale: language,
-        datePublished: toBasicISOString(datePublished),
-        slug: `${toBasicISOString(datePublished)}/${name}`
-      },
-      props: {
-        post: {
-          ...post,
-          data: {
-            ...post.data,
-            datePublished,
-            language,
-            url
+  const paths = posts
+    .filter((post) => post.data.type !== 'link')
+    .map((post) => {
+      const { datePublished, language, name, url } = parsePost(post);
+      return {
+        params: {
+          locale: language,
+          datePublished: toBasicISOString(datePublished),
+          slug: `${toBasicISOString(datePublished)}/${name}`
+        },
+        props: {
+          post: {
+            ...post,
+            data: {
+              ...post.data,
+              datePublished,
+              language,
+              url
+            }
           }
         }
-      }
-    };
-  });
+      };
+    });
   return paths;
 };
 
@@ -59,7 +65,7 @@ const authors = await getEntries(post.data.authors);
 <Layout description={post.data.description} title={post.data.title}>
   <article class="prose prose-gray relative mx-auto max-w-3xl pt-8 dark:prose-invert xl:pt-12">
     <Heading class="not-prose text-center" variant="h1">
-      {post.data.title}
+      {post.data.extendedTitle ?? post.data.title}
     </Heading>
     <PostInfoCard
       authors={authors}

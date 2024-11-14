@@ -3,12 +3,18 @@ import { defineCollection, reference, z } from 'astro:content';
 const $BaseNewsItem = z.object({
   authors: z.array(reference('team')).min(1),
   description: z.string().min(1),
+  extendedTitle: z.string().min(1).optional(),
   isDraft: z.boolean().optional(),
   title: z.string().min(1)
 });
 
 const $Article = $BaseNewsItem.extend({
   type: z.literal('article')
+});
+
+const $Link = $BaseNewsItem.extend({
+  type: z.literal('link'),
+  url: z.string().url()
 });
 
 const $Video = $BaseNewsItem.extend({
@@ -18,7 +24,7 @@ const $Video = $BaseNewsItem.extend({
 
 export const collections = {
   news: defineCollection({
-    schema: z.union([$Article, $Video])
+    schema: z.union([$Article, $Link, $Video])
   }),
   team: defineCollection({
     schema: ({ image }) =>

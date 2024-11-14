@@ -7,7 +7,7 @@ import PostInfoCard from '@/components/PostInfoCard.astro';
 import Layout from '@/layouts/Layout.astro';
 
 import { useTranslations } from '@/i18n';
-import { parsePostSlug } from '@/utils/news';
+import { parsePost } from '@/utils/news';
 
 import { match } from 'ts-pattern';
 import type { ParsedPost } from './[...slug].astro';
@@ -21,7 +21,7 @@ const { resolvedLanguage, t } = useTranslations(Astro.url);
 const posts: ParsedPost[] = await getCollection('news', ({ data }) => !data.isDraft)
   .then((posts) =>
     posts.map((post) => {
-      const { datePublished, language, url } = parsePostSlug(post.slug);
+      const { datePublished, language, url } = parsePost(post);
       return { ...post, data: { ...post.data, datePublished, language, url } };
     })
   )
@@ -62,7 +62,7 @@ const posts: ParsedPost[] = await getCollection('news', ({ data }) => !data.isDr
       <ul class="grid gap-6 xl:grid-cols-2" id="blog-list">
         {posts.map(async (post) => {
           const authors = await getEntries(post.data.authors);
-          const { datePublished, url } = parsePostSlug(post.slug);
+          const { datePublished, url } = parsePost(post);
           let readingTime: number | null = null;
           if (post.data.type === 'article') {
             const { remarkPluginFrontmatter } = await post.render();
@@ -75,8 +75,11 @@ const posts: ParsedPost[] = await getCollection('news', ({ data }) => !data.isDr
                   <span
                     class:list={[
                       'inline-flex w-min items-center rounded-full px-3 py-0.5 text-xs font-medium',
-                      post.data.type === 'article' && 'bg-indigo-100 text-indigo-800',
-                      post.data.type === 'video' && 'bg-pink-100 text-pink-800'
+                      match(post.data.type)
+                        .with('article', () => 'bg-blue-200 text-blue-800')
+                        .with('video', () => 'bg-pink-200 text-pink-800')
+                        .with('link', () => 'bg-sky-200 text-sky-800')
+                        .exhaustive()
                     ]}
                   >
                     {match(post.data.type)
@@ -85,6 +88,12 @@ const posts: ParsedPost[] = await getCollection('news', ({ data }) => !data.isDr
                         t({
                           en: 'Video',
                           fr: 'Vidéo'
+                        })
+                      )
+                      .with('link', () =>
+                        t({
+                          en: 'Link',
+                          fr: 'Lien'
                         })
                       )
                       .exhaustive()}
