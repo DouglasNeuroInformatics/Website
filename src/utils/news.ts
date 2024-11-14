@@ -1,6 +1,9 @@
+import { toBasicISOString } from '@douglasneuroinformatics/libjs';
+import type { CollectionEntry } from 'astro:content';
+
 import type { Language } from '@/i18n';
 
-export function parsePostSlug(slug: string) {
+function parsePostSlug(slug: string) {
   const regex = /(en|fr)\/(\d{4}-\d{2}-\d{2})_([^=]+)/;
   const result = regex.exec(slug);
   if (!result) {
@@ -12,10 +15,31 @@ export function parsePostSlug(slug: string) {
     throw new Error(`Invalid date '${dateString}' in slug '${slug}'`);
   }
 
+  const datePublished = new Date(timestamp);
+
   return {
-    datePublished: new Date(timestamp),
+    datePublished,
     language,
     name,
-    url: `/${language}/news/${name}`
+    url: `/${language}/news/${toBasicISOString(datePublished)}/${name}`
   };
 }
+
+function formatAuthors(authors: CollectionEntry<'team'>[], language: Language) {
+  if (authors.length === 1) {
+    return `${authors[0]!.data.fullName}${authors[0]!.data.suffix ? `, ${authors[0]!.data.suffix}` : ''}`;
+  }
+  return authors
+    .map((author, i) => {
+      let separator: string | undefined;
+      if (i === authors.length - 1) {
+        separator = { en: 'and', fr: 'et' }[language];
+      } else if (i > 0) {
+        separator = ',';
+      }
+      return separator ? `${separator} ${author.data.fullName}` : author.data.fullName;
+    })
+    .join(' ');
+}
+
+export { formatAuthors, parsePostSlug };

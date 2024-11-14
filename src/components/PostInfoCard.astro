@@ -2,27 +2,27 @@
 import type { CollectionEntry } from 'astro:content';
 
 import { useTranslations } from '@/i18n';
-
+import { formatAuthors } from '@/utils/news';
 import Headshot from './Headshot.astro';
 
 type Props = {
-  author: CollectionEntry<'team'>;
+  authors: CollectionEntry<'team'>[];
   datePublished: Date;
-  readingTime: number;
+  readingTime: number | null;
   className?: string;
 };
 
-const { author, datePublished, readingTime, className } = Astro.props;
-const { resolvedLanguage } = useTranslations(Astro.url);
+const { authors, datePublished, readingTime, className } = Astro.props;
+const { resolvedLanguage, t } = useTranslations(Astro.url);
 ---
 
 <div class:list={['flex items-center', className]}>
   <div class="flex-shrink-0">
-    <Headshot alt={author.data.fullName} class="h-10 w-10" src={author.data.image} />
+    <Headshot alt={authors[0]!.data.fullName} class="h-10 w-10" src={authors[0]!.data.image} />
   </div>
   <div class="ml-3">
     <p class="text-sm font-semibold">
-      {`${author.data.fullName}${author.data.suffix ? `, ${author.data.suffix}` : ''}`}
+      {formatAuthors(authors, resolvedLanguage)}
     </p>
     <div class="flex space-x-1 text-sm text-gray-700 dark:text-gray-300">
       <time datetime={datePublished.toISOString()}>
@@ -32,8 +32,20 @@ const { resolvedLanguage } = useTranslations(Astro.url);
           })
         }
       </time>
-      <span aria-hidden="true">&middot;</span>
-      <span>{Math.max(Math.round(readingTime), 1)} min read</span>
+      {
+        typeof readingTime === 'number' && (
+          <Fragment>
+            <span aria-hidden="true">&middot;</span>
+            <span>
+              {Math.max(Math.round(readingTime), 1) +
+                t({
+                  en: ' min read',
+                  fr: ' min de lecture'
+                })}
+            </span>
+          </Fragment>
+        )
+      }
     </div>
   </div>
 </div>
