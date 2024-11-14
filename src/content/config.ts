@@ -12,6 +12,11 @@ const $Article = $BaseNewsItem.extend({
   type: z.literal('article')
 });
 
+const $Link = $BaseNewsItem.extend({
+  type: z.literal('link'),
+  url: z.string().url()
+});
+
 const $Video = $BaseNewsItem.extend({
   src: z.string().url().startsWith('https://www.youtube.com/embed'),
   type: z.literal('video')
@@ -19,7 +24,7 @@ const $Video = $BaseNewsItem.extend({
 
 export const collections = {
   news: defineCollection({
-    schema: z.union([$Article, $Video])
+    schema: z.union([$Article, $Link, $Video])
   }),
   team: defineCollection({
     schema: ({ image }) =>
