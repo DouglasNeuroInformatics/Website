@@ -1,7 +1,9 @@
 ---
 title: 'Bienvenue sur notre site web'
 description: "Ce site web fournira des informations sur nos offres de services actuelles, ainsi qu'un aperçu de nos développements et de nos projets futurs."
-author: joshua-unrau
+authors:
+  - joshua-unrau
+type: article
 ---
 
 Bienvenue sur le site web du Douglas Neuroinformatics Platform.

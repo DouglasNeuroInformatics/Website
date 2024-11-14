@@ -1,0 +1,86 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+
+import Heading from '@/components/Heading.astro';
+import PostInfoCard from '@/components/PostInfoCard.astro';
+import type { Language } from '@/i18n';
+import Layout from '@/layouts/Layout.astro';
+import { parsePostSlug } from '@/utils/news';
+import { toBasicISOString } from '@douglasneuroinformatics/libjs';
+import { getEntries } from 'astro:content';
+import { match } from 'ts-pattern';
+
+export type ParsedPost = CollectionEntry<'news'> & {
+  data: {
+    datePublished: Date;
+    language: Language;
+    url: string;
+  };
+};
+
+type Props = {
+  post: ParsedPost;
+};
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection('news');
+  const paths = posts.map((post) => {
+    const { datePublished, language, name, url } = parsePostSlug(post.slug);
+    return {
+      params: {
+        locale: language,
+        datePublished: toBasicISOString(datePublished),
+        slug: `${toBasicISOString(datePublished)}/${name}`
+      },
+      props: {
+        post: {
+          ...post,
+          data: {
+            ...post.data,
+            datePublished,
+            language,
+            url
+          }
+        }
+      }
+    };
+  });
+  return paths;
+};
+
+const { post } = Astro.props;
+
+const { Content, remarkPluginFrontmatter } = await post.render();
+
+const authors = await getEntries(post.data.authors);
+---
+
+<Layout description={post.data.description} title={post.data.title}>
+  <article class="prose prose-gray relative mx-auto max-w-3xl pt-8 dark:prose-invert xl:pt-12">
+    <Heading class="not-prose text-center" variant="h1">
+      {post.data.title}
+    </Heading>
+    <PostInfoCard
+      authors={authors}
+      className="not-prose my-8"
+      datePublished={post.data.datePublished}
+      readingTime={post.data.type === 'article' ? remarkPluginFrontmatter.readingTime : null}
+    />
+    {
+      match(post.data)
+        .with({ type: 'article' }, () => <Content />)
+        .with({ type: 'video' }, ({ src }) => (
+          <iframe
+            class="mx-auto aspect-video w-full border-none"
+            src={src}
+            title="YouTube"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          />
+        ))
+        .exhaustive()
+    }
+  </article>
+</Layout>

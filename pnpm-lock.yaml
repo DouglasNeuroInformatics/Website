@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@douglasneuroinformatics/libjs':
+        specifier: ^1.0.2
+        version: 1.0.2(typescript@5.6.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -235,6 +238,11 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  '@douglasneuroinformatics/libjs@1.0.2':
+    resolution: {integrity: sha512-MyUx0ty8KMZH0ra59TPmzjQH5jtqPuMcGZN7CpzLgZedzcgoIWZCOPbdnjonqyB0q1JaxN8CPIacIFw9NvFS7w==}
+    peerDependencies:
+      typescript: ^5.1.0
 
   '@douglasneuroinformatics/prettier-config@0.0.1':
     resolution: {integrity: sha512-Cml8ilNKjJOMp50lR5isEfc9QkGGgf8PoF9Fk73CmYGGMS8TUmhA59++Zia/12rJ2fkpKFhfI8uA3VTEnv+qKw==}
@@ -3519,6 +3527,11 @@ snapshots:
       - svelte-eslint-parser
       - ts-node
       - vue-eslint-parser
+
+  '@douglasneuroinformatics/libjs@1.0.2(typescript@5.6.3)':
+    dependencies:
+      type-fest: 4.26.1
+      typescript: 5.6.3
 
   '@douglasneuroinformatics/prettier-config@0.0.1(prettier-plugin-astro@0.14.1)(prettier-plugin-tailwindcss@0.6.8(prettier-plugin-astro@0.14.1)(prettier@3.3.3))(prettier@3.3.3)':
     dependencies:

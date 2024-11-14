@@ -1,14 +1,24 @@
 import { defineCollection, reference, z } from 'astro:content';
 
+const $BaseNewsItem = z.object({
+  authors: z.array(reference('team')).min(1),
+  description: z.string().min(1),
+  isDraft: z.boolean().optional(),
+  title: z.string().min(1)
+});
+
+const $Article = $BaseNewsItem.extend({
+  type: z.literal('article')
+});
+
+const $Video = $BaseNewsItem.extend({
+  src: z.string().url().startsWith('https://www.youtube.com/embed'),
+  type: z.literal('video')
+});
+
 export const collections = {
   news: defineCollection({
-    schema: z.object({
-      author: reference('team'),
-      description: z.string().min(1),
-      isDraft: z.boolean().optional(),
-      title: z.string().min(1),
-      type: z.enum(['article']).default('article')
-    })
+    schema: z.union([$Article, $Video])
   }),
   team: defineCollection({
     schema: ({ image }) =>
