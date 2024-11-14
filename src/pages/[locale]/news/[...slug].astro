@@ -59,7 +59,7 @@ const authors = await getEntries(post.data.authors);
 <Layout description={post.data.description} title={post.data.title}>
   <article class="prose prose-gray relative mx-auto max-w-3xl pt-8 dark:prose-invert xl:pt-12">
     <Heading class="not-prose text-center" variant="h1">
-      {post.data.title}
+      {post.data.extendedTitle ?? post.data.title}
     </Heading>
     <PostInfoCard
       authors={authors}

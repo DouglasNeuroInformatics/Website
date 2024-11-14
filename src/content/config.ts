@@ -3,6 +3,7 @@ import { defineCollection, reference, z } from 'astro:content';
 const $BaseNewsItem = z.object({
   authors: z.array(reference('team')).min(1),
   description: z.string().min(1),
+  extendedTitle: z.string().min(1).optional(),
   isDraft: z.boolean().optional(),
   title: z.string().min(1)
 });
