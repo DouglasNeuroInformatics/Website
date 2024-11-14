@@ -1,7 +1,9 @@
 ---
 title: 'Welcome to Our Website'
 description: 'This website will provide information about our current service offerings, as well as insights into our future developments and plans.'
-author: joshua-unrau
+authors:
+  - joshua-unrau
+type: article
 ---
 
 Welcome to the Douglas Neuroinformatics Platform website.
