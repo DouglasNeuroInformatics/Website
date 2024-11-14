@@ -1,6 +1,5 @@
 ---
 import ConsultingService from '@/components/ConsultingService.astro';
-import ReactLogo from '@/components/ReactLogo.astro';
 import Resource from '@/components/Resource.astro';
 import ServiceOffering from '@/components/ServiceOffering.astro';
 import { useTranslations } from '@/i18n';
@@ -19,6 +18,7 @@ import openDataCaptureIcon from '@/assets/svg/open-data-capture.svg?raw';
 import programmingFigure from '@/assets/svg/programming.svg?raw';
 import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
 import Heading from '@/components/Heading.astro';
+import Logo from '@/components/Logo.astro';
 ---
 
 <Layout
@@ -70,7 +70,7 @@ import Heading from '@/components/Heading.astro';
       class="col-span-12 hidden translate-y-12 items-center justify-center opacity-0 transition-[opacity,transform] duration-700 xl:col-span-4 xl:flex"
       id="react-logo-container"
     >
-      <ReactLogo class="h-auto w-72 xl:w-96" />
+      <Logo animate class="h-auto w-72" />
     </div>
   </section>
   <section class="mb-16 xl:mb-32">

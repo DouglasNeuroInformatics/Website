@@ -7,7 +7,7 @@ const { animate, class: className } = Astro.props;
 ---
 
 <svg
-  class:list={['logo', animate && 'transition-[fill-opacity] duration-1000 [fill-opacity:0%]', className]}
+  class:list={['logo', animate && 'transition-[fill-opacity] duration-[1500ms] [fill-opacity:0%]', className]}
   data-animate={animate}
   height="666.378"
   preserveAspectRatio="xMidYMid"
@@ -99,6 +99,6 @@ const { animate, class: className } = Astro.props;
     setTimeout(() => {
       logo.classList.remove('[fill-opacity:0%]');
       innerBackground.classList.remove('stroke-[5px]');
-    }, 1000);
+    }, 1500);
   });
 </script>
