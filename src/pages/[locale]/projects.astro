@@ -166,29 +166,35 @@ export const getStaticPaths = () => {
   for (let i = 0; i < ul.children.length; i++) {
     const li = ul.children.item(i) as HTMLLIElement;
     const icons = li.querySelectorAll('div[data-container-type="technologies"] > div > img');
+    const margin = Math.min(li.clientHeight / 2, 75);
     let isFirstEntry = true;
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        const isFromUp = entry.boundingClientRect.top < 0 && entry.isIntersecting;
-        if (isFromUp && !isFirstEntry) {
-          li.classList.replace('transition-[opacity,transform]', 'transition-opacity');
-        }
-        if (entry.isIntersecting) {
-          observer.disconnect();
-          li.classList.replace('opacity-0', 'opacity-100');
-          li.classList.replace('translate-y-10', 'translate-y-0');
-          setTimeout(() => {
-            for (let i = 0; i < icons.length; i++) {
-              setTimeout(() => {
-                icons.item(i).classList.replace('opacity-0', 'opacity-100');
-                icons.item(i).classList.replace('scale-0', 'scale-100');
-              }, i * 100);
-            }
-          }, 200);
-        }
-        isFirstEntry = false;
-      });
-    });
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          const isFromUp = entry.boundingClientRect.top < 0 && entry.isIntersecting;
+          if (isFromUp && !isFirstEntry) {
+            li.classList.replace('transition-[opacity,transform]', 'transition-opacity');
+          }
+          if (entry.isIntersecting) {
+            observer.disconnect();
+            li.classList.replace('opacity-0', 'opacity-100');
+            li.classList.replace('translate-y-10', 'translate-y-0');
+            setTimeout(() => {
+              for (let i = 0; i < icons.length; i++) {
+                setTimeout(() => {
+                  icons.item(i).classList.replace('opacity-0', 'opacity-100');
+                  icons.item(i).classList.replace('scale-0', 'scale-100');
+                }, i * 100);
+              }
+            }, 200);
+          }
+          isFirstEntry = false;
+        });
+      },
+      {
+        rootMargin: `-${margin}px 0px`
+      }
+    );
     setTimeout(() => {
       observer.observe(li);
     }, i * 200);
