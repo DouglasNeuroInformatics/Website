@@ -90,8 +90,7 @@ const { animate, class: className } = Astro.props;
   </g>
 </svg>
 <script>
-  const animatedLogos = document.querySelectorAll<SVGSVGElement>('.logo[data-animate]');
-  animatedLogos.forEach((logo) => {
+  function animateLogo(logo: SVGElement) {
     const innerBackground = logo.querySelector('.inner-brain-background') as SVGPathElement;
     const totalLength = innerBackground.getTotalLength().toString();
     innerBackground.style.strokeDasharray = totalLength;
@@ -100,5 +99,6 @@ const { animate, class: className } = Astro.props;
       logo.classList.remove('[fill-opacity:0%]');
       innerBackground.classList.remove('stroke-[5px]');
     }, 1500);
-  });
+  }
+  document.querySelectorAll<SVGSVGElement>('.logo[data-animate]').forEach(animateLogo);
 </script>

@@ -1,0 +1,15 @@
+title: 
+  en: PEPP Data Cleaning
+  fr: Nettoyage des données du PEPP
+description:
+  en: The Prevention and Early Intervention for Psychosis (PEPP) clinic gathered longitudinal data over 15 years, involving more than a thousand participants and thousands of variables. This data was spread across 88 separate SPSS files, with variable names that were inconsistent, often containing typos or ambiguous abbreviations (e.g., "ab_1"). In some cases, identical variable names referred to different items. Furthermore, the coding scheme for values changed over time. For instance, a Likert scale ranging from 0 to 4 at one timepoint might range from 1 to 5 at another. Missing data were encoded using arbitrary numbers in SPSS, which were inconsistent across variables and timepoints. Occasionally, these codes could be misinterpreted as valid responses (e.g., a column with integer responses up to 50 used "77" to indicate missing data). There was no accompanying documentation. Our team developed a reproducible pipeline to consolidate and transform this data into a single, coherent CSV file.
+  fr: Le programme de prévention et d'intervention précoce pour la psychose (PEPP) a recueilli des données longitudinales sur une période de 15 ans, impliquant plus d'un millier de participants et des milliers de variables. Ces données étaient réparties dans 88 fichiers SPSS distincts, avec des noms de variables incohérents, contenant souvent des fautes de frappe ou des abréviations ambiguës (par exemple, « ab_1 »). Dans certains cas, des noms de variables identiques renvoyaient à des éléments différents. En outre, le système de codage des valeurs a changé au fil du temps. Par exemple, une échelle de Likert allant de 0 à 4 à un moment donné peut aller de 1 à 5 à un autre moment. Les données manquantes ont été codées à l'aide de nombres arbitraires dans SPSS, qui n'étaient pas cohérents d'une variable à l'autre et d'un point dans le temps à l'autre. Parfois, ces codes pouvaient être interprétés à tort comme des réponses valides (par exemple, une colonne avec des réponses entières jusqu'à 50 a utilisé « 77 » pour indiquer des données manquantes). Il n'y avait pas de documentation d'accompagnement. Notre équipe a développé un pipeline reproductible pour consolider et transformer ces données en un seul fichier CSV cohérent.
+dateCompleted: 2024-05-17
+contributors:
+  - weijie-tan
+  - ryan-haniff
+technologies:
+  - python
+  - pandas
+  - numpy
+link: ~

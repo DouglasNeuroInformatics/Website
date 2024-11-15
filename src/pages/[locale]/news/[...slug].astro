@@ -63,8 +63,8 @@ const authors = await getEntries(post.data.authors);
 ---
 
 <Layout description={post.data.description} title={post.data.title}>
-  <article class="prose prose-gray relative mx-auto max-w-3xl pt-8 dark:prose-invert xl:pt-12">
-    <Heading class="not-prose text-center" variant="h1">
+  <article class="prose prose-sm prose-gray relative mx-auto max-w-3xl pt-8 dark:prose-invert xl:pt-12">
+    <Heading class="not-prose text-center text-gray-900 dark:text-gray-100" variant="h1">
       {post.data.extendedTitle ?? post.data.title}
     </Heading>
     <PostInfoCard
@@ -75,7 +75,19 @@ const authors = await getEntries(post.data.authors);
     />
     {
       match(post.data)
-        .with({ type: 'article' }, () => <Content />)
+        .with({ type: 'article' }, ({ source }) => (
+          <Fragment>
+            <Content />
+            {source && (
+              <div>
+                <span style={{ display: 'inline' }}>Source: </span>
+                <a href={source.href} target="_blank">
+                  {source.label}
+                </a>
+              </div>
+            )}
+          </Fragment>
+        ))
         .with({ type: 'video' }, ({ src }) => (
           <iframe
             class="mx-auto aspect-video w-full border-none"

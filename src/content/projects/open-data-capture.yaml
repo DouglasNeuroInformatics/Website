@@ -1,0 +1,20 @@
+title: 
+  en: Open Data Capture
+  fr: Open Data Capture
+description:
+  en: Open Data Capture is a web-based application designed for clinical research data collection and performance improvement. It allows clinical researchers to administer data collection instruments, such as forms and interactive tasks, to research subjects. 
+  fr: Open Data Capture est une application web conçue pour la collecte de données de recherche clinique et l'amélioration des performances. Elle permet aux chercheurs cliniques d'administrer des instruments de collecte de données, tels que des formulaires et des tâches interactives, à des sujets de recherche.
+dateCompleted: ~
+contributors:
+  - joshua-unrau
+  - gabriel-devenyi
+  - david-roper
+technologies:
+  - typescript
+  - nodejs
+  - react
+  - tailwindcss
+  - nestjs
+  - mongodb
+  - docker
+link: https://github.com/DouglasNeuroInformatics/OpenDataCapture

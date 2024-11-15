@@ -9,6 +9,12 @@ const $BaseNewsItem = z.object({
 });
 
 const $Article = $BaseNewsItem.extend({
+  source: z
+    .object({
+      href: z.string().min(1).url(),
+      label: z.string().min(1)
+    })
+    .optional(),
   type: z.literal('article')
 });
 
@@ -34,7 +40,8 @@ export const collections = {
         en: z.string().min(1),
         fr: z.string().min(1)
       }),
-      link: z.string().url(),
+      isDraft: z.boolean().optional(),
+      link: z.string().url().nullable(),
       technologies: z.array(reference('technologies')).min(1),
       title: z.object({
         en: z.string().min(1),
@@ -44,23 +51,35 @@ export const collections = {
     type: 'data'
   }),
   team: defineCollection({
-    schema: ({ image }) =>
-      z.object({
-        description: z.object({
-          en: z.string().min(1),
-          fr: z.string().min(1)
+    schema: ({ image }) => {
+      return z.union([
+        z.object({
+          fullName: z.string(),
+          image: image().refine((arg) => arg.height === arg.width, {
+            message: 'Image must be square (1:1 aspect ratio)'
+          }),
+          position: z.null(),
+          seniority: z.never().optional(),
+          suffix: z.never().optional()
         }),
-        fullName: z.string(),
-        image: image().refine((arg) => arg.height === arg.width, {
-          message: 'Image must be square (1:1 aspect ratio)'
-        }),
-        position: z.object({
-          en: z.string().min(1),
-          fr: z.string().min(1)
-        }),
-        seniority: z.number().positive().int(),
-        suffix: z.enum(['MD', 'PhD']).optional()
-      }),
+        z.object({
+          description: z.object({
+            en: z.string().min(1),
+            fr: z.string().min(1)
+          }),
+          fullName: z.string(),
+          image: image().refine((arg) => arg.height === arg.width, {
+            message: 'Image must be square (1:1 aspect ratio)'
+          }),
+          position: z.object({
+            en: z.string().min(1),
+            fr: z.string().min(1)
+          }),
+          seniority: z.number().positive().int(),
+          suffix: z.enum(['MD', 'PhD']).optional()
+        })
+      ]);
+    },
     type: 'data'
   }),
   technologies: defineCollection({

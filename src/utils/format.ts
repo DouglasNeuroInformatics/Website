@@ -1,6 +1,8 @@
 import type { CollectionEntry } from 'astro:content';
 
-export function formatTeamMembers(teamMembers: CollectionEntry<'team'>[]) {
+import type { Language } from '@/i18n';
+
+export function formatTeamMembers(teamMembers: CollectionEntry<'team'>[], resolvedLanguage: Language) {
   if (teamMembers.length === 1) {
     return `${teamMembers[0]!.data.fullName}${teamMembers[0]!.data.suffix ? `, ${teamMembers[0]!.data.suffix}` : ''}`;
   }
@@ -13,7 +15,10 @@ export function formatTeamMembers(teamMembers: CollectionEntry<'team'>[]) {
       }
       let separator: string | undefined;
       if (i === teamMembers.length - 1) {
-        separator = ' & ';
+        separator = {
+          en: teamMembers.length > 2 ? ', and ' : ' and ',
+          fr: ' et '
+        }[resolvedLanguage];
       } else if (i > 0) {
         separator = ', ';
       }
