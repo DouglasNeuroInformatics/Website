@@ -4,6 +4,8 @@
   viewBox="0 0 256 256"
   xmlns="http://www.w3.org/2000/svg"
   preserveAspectRatio="xMidYMid"
+  transform="scale(0.85)"
+  
 >
   <path fill="#007ACC" d="M0 128v128h256V0H0z" />
   <path
