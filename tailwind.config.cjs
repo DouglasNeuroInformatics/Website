@@ -27,6 +27,9 @@ module.exports = {
           xl: '3rem'
         }
       },
+      fontSize: {
+        md: '0.9375rem'
+      },
       keyframes: {
         dash: {
           '50%, 100%': {
