@@ -8,6 +8,7 @@ dateCompleted: ~
 contributors:
   - weijie-tan
   - joshua-unrau
+  - gabriel-devenyi
 technologies:
   - typescript
   - nodejs
@@ -16,5 +17,4 @@ technologies:
   - nestjs
   - mongodb
   - docker
-link: ~
-url: https://github.com/DouglasNeuroInformatics/DataBank
+link: https://github.com/DouglasNeuroInformatics/DataBank
