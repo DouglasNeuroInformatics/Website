@@ -6,8 +6,14 @@ import Headshot from '@/components/Headshot.astro';
 import PageHeading from '@/components/PageHeading.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
+import type { CollectionEntry } from 'astro:content';
 
-const team = await getCollection('team');
+type CurrentTeamMember = Extract<CollectionEntry<'team'>['data'], { position: object }>;
+
+const team = (await getCollection('team', ({ data }) => data.position)) as (CollectionEntry<'team'> & {
+  data: CurrentTeamMember;
+})[];
+
 team.sort((a, b) => {
   if (a.data.seniority > b.data.seniority) {
     return 1;
