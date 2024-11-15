@@ -1,0 +1,32 @@
+---
+import PageHeading from '@/components/PageHeading.astro';
+import { useTranslations } from '@/i18n';
+import Layout from '@/layouts/Layout.astro';
+
+const { t } = useTranslations(Astro.url);
+
+export const getStaticPaths = () => {
+  return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
+};
+---
+
+<Layout
+  bilingual
+  description={t({
+    en: "Discover the latest projects from the Douglas Neuroinformatics Platform. We've enhanced researchers' workflows through a variety of innovative initiatives",
+    fr: 'Découvrez les derniers projets du Douglas Neuroinformatics Platform. Nous avons amélioré les flux de travail des chercheurs grâce à diverses initiatives innovantes.'
+  })}
+  title={t({
+    en: 'Douglas Neuroinformatics Platform - Projects',
+    fr: 'Douglas Neuroinformatics Platform - Projets'
+  })}
+>
+  <PageHeading>
+    {
+      t({
+        en: 'Our Projects',
+        fr: 'Nos projets'
+      })
+    }
+  </PageHeading>
+</Layout>
