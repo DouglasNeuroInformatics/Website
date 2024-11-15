@@ -7,6 +7,7 @@ description:
 dateCompleted: 2024-05-17
 contributors:
   - weijie-tan
+  - ryan-haniff
 technologies:
   - python
   - pandas
