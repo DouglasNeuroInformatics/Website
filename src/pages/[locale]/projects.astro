@@ -65,7 +65,7 @@ export const getStaticPaths = () => {
         const contributors = await getEntries(project.contributors);
         const technologies = await getEntries(project.technologies);
         return (
-          <li class="translate-y-10 opacity-0 transition-all duration-700 ease-in-out">
+          <li class="translate-y-10 opacity-0 transition-[opacity,transform] duration-700 ease-in-out">
             <Card class="flex h-full flex-col p-6">
               <div class="flex flex-col gap-6">
                 <Heading variant="h3">{project.title}</Heading>
@@ -166,8 +166,13 @@ export const getStaticPaths = () => {
   for (let i = 0; i < ul.children.length; i++) {
     const li = ul.children.item(i) as HTMLLIElement;
     const icons = li.querySelectorAll('div[data-container-type="technologies"] > div > img');
+    let isFirstEntry = true;
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
+        const isFromUp = entry.boundingClientRect.top < 0 && entry.isIntersecting;
+        if (isFromUp && !isFirstEntry) {
+          li.classList.replace('transition-[opacity,transform]', 'transition-opacity');
+        }
         if (entry.isIntersecting) {
           observer.disconnect();
           li.classList.replace('opacity-0', 'opacity-100');
@@ -181,6 +186,7 @@ export const getStaticPaths = () => {
             }
           }, 200);
         }
+        isFirstEntry = false;
       });
     });
     setTimeout(() => {
