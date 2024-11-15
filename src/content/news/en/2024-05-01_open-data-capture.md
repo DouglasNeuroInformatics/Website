@@ -1,7 +1,7 @@
 ---
 title: 'Open Data Capture: A Flexible Modern Open-Source Web-Based Platform for Data Collection in Clinical and Research Settings'
 extendedTitle: 'Open Data Capture: A Flexible Modern Open-Source Web-Based Platform for Data Collection in Clinical and Research Settings From the Douglas Neuroinformatics Team'
-description: 'An essential component of the modernization of health care is measurement-based care (MBC). Much work has focused on approaches predicting outcomes and assigning treatments using measurements. However, one must first have measurements. In clinical settings, measurements are taken, but rarely considering future use of that data; no structure is imposed and no validation is implemented.'
+description: 'Here, we present the design and implementation of the Open Data Capture platform at the Douglas Hospital.'
 authors:
   - gabriel-devenyi
   - joshua-unrau
