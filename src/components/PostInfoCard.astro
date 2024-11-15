@@ -22,7 +22,7 @@ const { resolvedLanguage, t } = useTranslations(Astro.url);
   </div>
   <div class="ml-3">
     <p class="text-sm font-semibold">
-      {formatTeamMembers(authors, resolvedLanguage)}
+      {formatTeamMembers(authors)}
     </p>
     <div class="flex space-x-1 text-sm text-gray-700 dark:text-gray-300">
       <time datetime={datePublished.toISOString()}>
