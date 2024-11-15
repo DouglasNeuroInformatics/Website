@@ -95,7 +95,7 @@ export const getStaticPaths = () => {
                         fr: 'Principaux contributeurs : '
                       })}
                     </span>
-                    {formatTeamMembers(contributors)}
+                    {formatTeamMembers(contributors, resolvedLanguage)}
                   </p>
                   {project.link && (
                     <div class="text-sm text-gray-700 dark:text-gray-300">
