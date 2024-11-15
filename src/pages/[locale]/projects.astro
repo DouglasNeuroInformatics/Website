@@ -65,7 +65,7 @@ export const getStaticPaths = () => {
         const contributors = await getEntries(project.contributors);
         const technologies = await getEntries(project.technologies);
         return (
-          <li class="translate-y-6 opacity-0 transition-all duration-500 ease-in-out">
+          <li class="translate-y-10 opacity-0 transition-all duration-700 ease-in-out">
             <Card class="flex h-full flex-col p-6">
               <div class="flex flex-col gap-6">
                 <Heading variant="h3">{project.title}</Heading>
@@ -131,13 +131,13 @@ export const getStaticPaths = () => {
                       fr: 'Technologies clés'
                     })}
                   </Heading>
-                  <div class="flex flex-wrap gap-7">
+                  <div class="flex flex-wrap gap-7" data-container-type="technologies">
                     {technologies.map(({ data: technology }) => (
                       <div class="group relative flex h-10 w-10 items-end justify-center">
                         <img
                           alt={technology.name}
                           class:list={[
-                            'h-10 w-10 transform-gpu duration-300 ease-in-out group-hover:translate-y-5 group-hover:scale-125',
+                            'h-10 w-10 scale-0 transform-gpu opacity-0 duration-300 ease-in-out group-hover:translate-y-5 group-hover:scale-125',
                             technology.invert === 'dark'
                               ? 'dark:invert'
                               : technology.invert === 'light'
@@ -165,9 +165,26 @@ export const getStaticPaths = () => {
   const ul = document.getElementById('projects-list')!;
   for (let i = 0; i < ul.children.length; i++) {
     const li = ul.children.item(i) as HTMLLIElement;
+    const icons = li.querySelectorAll('div[data-container-type="technologies"] > div > img');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          li.classList.replace('opacity-0', 'opacity-100');
+          li.classList.replace('translate-y-10', 'translate-y-0');
+          setTimeout(() => {
+            for (let i = 0; i < icons.length; i++) {
+              setTimeout(() => {
+                icons.item(i).classList.replace('opacity-0', 'opacity-100');
+                icons.item(i).classList.replace('scale-0', 'scale-100');
+              }, i * 100);
+            }
+          }, 200);
+        }
+      });
+    });
     setTimeout(() => {
-      li.classList.replace('opacity-0', 'opacity-100');
-      li.classList.replace('translate-y-6', 'translate-y-0');
-    }, i * 100);
+      observer.observe(li);
+    }, i * 200);
   }
 </script>
