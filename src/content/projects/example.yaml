@@ -29,5 +29,6 @@ technologies:  # list all used in order of importance
   - pandas
   - python
   - react
+  - tailwindcss
   - typescript
 link: https://github.com/DouglasNeuroInformatics
