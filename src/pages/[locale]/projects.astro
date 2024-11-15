@@ -1,9 +1,38 @@
 ---
+import Card from '@/components/Card.astro';
+import Heading from '@/components/Heading.astro';
 import PageHeading from '@/components/PageHeading.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
-const { t } = useTranslations(Astro.url);
+const { resolvedLanguage, t } = useTranslations(Astro.url);
+
+const projects = await getCollection('projects')
+  .then((projects) => {
+    return projects.map(({ data }) => ({
+      ...data,
+      title: data.title[resolvedLanguage],
+      description: data.description[resolvedLanguage]
+    }));
+  })
+  .then((projects) =>
+    projects.toSorted((a, b) => {
+      if (a.dateCompleted === null && b.dateCompleted === null) {
+        return a.title.localeCompare(b.title);
+      } else if (a.dateCompleted === null) {
+        return -1;
+      } else if (b.dateCompleted === null) {
+        return 1;
+      }
+      if (a.dateCompleted > b.dateCompleted) {
+        return -1;
+      } else if (b.dateCompleted > a.dateCompleted) {
+        return 1;
+      }
+      return a.title.localeCompare(b.title);
+    })
+  );
 
 export const getStaticPaths = () => {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -29,4 +58,28 @@ export const getStaticPaths = () => {
       })
     }
   </PageHeading>
+  <ul class="grid gap-6 xl:grid-cols-2" id="projects-list">
+    {
+      projects.map((project) => (
+        <li class="translate-y-6 opacity-0 transition-all duration-500 ease-in-out">
+          <Card class="flex h-full flex-col p-5">
+            <div class="flex flex-col gap-2">
+              <Heading variant="h4">{project.title}</Heading>
+              <p class="text-sm text-gray-700 dark:text-gray-300">{project.description}</p>
+            </div>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>
+<script>
+  const ul = document.getElementById('projects-list')!;
+  for (let i = 0; i < ul.children.length; i++) {
+    const li = ul.children.item(i) as HTMLLIElement;
+    setTimeout(() => {
+      li.classList.replace('opacity-0', 'opacity-100');
+      li.classList.replace('translate-y-6', 'translate-y-0');
+    }, i * 100);
+  }
+</script>

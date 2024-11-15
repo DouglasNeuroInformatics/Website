@@ -26,6 +26,20 @@ export const collections = {
   news: defineCollection({
     schema: z.union([$Article, $Link, $Video])
   }),
+  projects: defineCollection({
+    schema: z.object({
+      dateCompleted: z.date().nullable(),
+      description: z.object({
+        en: z.string().min(1),
+        fr: z.string().min(1)
+      }),
+      title: z.object({
+        en: z.string().min(1),
+        fr: z.string().min(1)
+      })
+    }),
+    type: 'data'
+  }),
   team: defineCollection({
     schema: ({ image }) =>
       z.object({
