@@ -60,5 +60,14 @@ export const collections = {
         suffix: z.enum(['MD', 'PhD']).optional()
       }),
     type: 'data'
+  }),
+  technologies: defineCollection({
+    schema: ({ image }) =>
+      z.object({
+        icon: image(),
+        invert: z.enum(['dark', 'light']).optional(),
+        name: z.string()
+      }),
+    type: 'data'
   })
 };
