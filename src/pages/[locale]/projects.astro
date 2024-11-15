@@ -4,7 +4,8 @@ import Heading from '@/components/Heading.astro';
 import PageHeading from '@/components/PageHeading.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { formatTeamMembers } from '@/utils/format';
+import { getCollection, getEntries } from 'astro:content';
 
 const { resolvedLanguage, t } = useTranslations(Astro.url);
 
@@ -60,16 +61,28 @@ export const getStaticPaths = () => {
   </PageHeading>
   <ul class="grid gap-6 xl:grid-cols-2" id="projects-list">
     {
-      projects.map((project) => (
-        <li class="translate-y-6 opacity-0 transition-all duration-500 ease-in-out">
-          <Card class="flex h-full flex-col p-5">
-            <div class="flex flex-col gap-2">
-              <Heading variant="h4">{project.title}</Heading>
-              <p class="text-sm text-gray-700 dark:text-gray-300">{project.description}</p>
-            </div>
-          </Card>
-        </li>
-      ))
+      projects.map(async (project) => {
+        const contributors = await getEntries(project.contributors);
+        return (
+          <li class="translate-y-6 opacity-0 transition-all duration-500 ease-in-out">
+            <Card class="flex h-full flex-col p-5">
+              <div class="flex flex-col gap-2">
+                <Heading variant="h4">{project.title}</Heading>
+                <p class="text-sm text-gray-700 dark:text-gray-300">
+                  <span class="font-semibold text-gray-900 dark:text-gray-100">
+                    {t({
+                      en: 'Main Contributors: ',
+                      fr: 'Principaux contributeurs : '
+                    })}
+                  </span>
+                  {formatTeamMembers(contributors, resolvedLanguage)}
+                </p>
+                <p class="text-sm text-gray-700 dark:text-gray-300">{project.description}</p>
+              </div>
+            </Card>
+          </li>
+        );
+      })
     }
   </ul>
 </Layout>

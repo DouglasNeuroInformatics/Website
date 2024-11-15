@@ -10,11 +10,11 @@ export function formatTeamMembers(teamMembers: CollectionEntry<'team'>[], langua
     .map((author, i) => {
       let separator: string | undefined;
       if (i === teamMembers.length - 1) {
-        separator = { en: 'and', fr: 'et' }[language];
+        separator = { en: ' and ', fr: ' et ' }[language];
       } else if (i > 0) {
-        separator = ',';
+        separator = ', ';
       }
-      return separator ? `${separator} ${author.data.fullName}` : author.data.fullName;
+      return separator ? separator + author.data.fullName : author.data.fullName;
     })
-    .join(' ');
+    .join('');
 }
