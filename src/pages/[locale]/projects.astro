@@ -97,21 +97,23 @@ export const getStaticPaths = () => {
                     </span>
                     {formatTeamMembers(contributors)}
                   </p>
-                  <p class="text-sm text-gray-700 dark:text-gray-300">
-                    <span class="font-semibold text-gray-900 dark:text-gray-100">
-                      {t({
-                        en: 'Link: ',
-                        fr: 'Lien : '
-                      })}
-                    </span>
-                    <a
-                      class="underline hover:text-gray-900 dark:hover:text-gray-100"
-                      target="_blank"
-                      href={project.link}
-                    >
-                      {project.link}
-                    </a>
-                  </p>
+                  {project.link && (
+                    <div class="text-sm text-gray-700 dark:text-gray-300">
+                      <span class="font-semibold text-gray-900 dark:text-gray-100">
+                        {t({
+                          en: 'Link: ',
+                          fr: 'Lien : '
+                        })}
+                      </span>
+                      <a
+                        class="underline hover:text-gray-900 dark:hover:text-gray-100"
+                        target="_blank"
+                        href={project.link}
+                      >
+                        {project.link}
+                      </a>
+                    </div>
+                  )}
                 </div>
                 <div class="flex flex-col gap-1.5">
                   <Heading variant="h5">
