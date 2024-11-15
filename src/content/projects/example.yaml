@@ -24,6 +24,7 @@ technologies:  # list all used in order of importance
   - nestjs
   - nextjs
   - nodejs
+  - numpy
   - pandas
   - python
   - react
