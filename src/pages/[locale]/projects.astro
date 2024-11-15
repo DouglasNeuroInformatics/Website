@@ -59,7 +59,7 @@ export const getStaticPaths = () => {
       })
     }
   </PageHeading>
-  <ul class="grid gap-6 xl:grid-cols-2" id="projects-list">
+  <ul class="grid gap-6" id="projects-list">
     {
       projects.map(async (project) => {
         const contributors = await getEntries(project.contributors);
@@ -67,17 +67,34 @@ export const getStaticPaths = () => {
         return (
           <li class="translate-y-6 opacity-0 transition-all duration-500 ease-in-out">
             <Card class="flex h-full flex-col p-5">
-              <div class="flex flex-col gap-2">
-                <Heading variant="h4">{project.title}</Heading>
-                <p class="text-sm text-gray-700 dark:text-gray-300">
-                  <span class="font-semibold text-gray-900 dark:text-gray-100">
-                    {t({
-                      en: 'Main Contributors: ',
-                      fr: 'Principaux contributeurs : '
-                    })}
-                  </span>
-                  {formatTeamMembers(contributors, resolvedLanguage)}
-                </p>
+              <div class="flex flex-col gap-3">
+                <Heading variant="h3">{project.title}</Heading>
+                <div class="flex flex-col gap-1">
+                  <p class="text-sm text-gray-700 dark:text-gray-300">
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">
+                      {t({
+                        en: 'Main Contributors: ',
+                        fr: 'Principaux contributeurs : '
+                      })}
+                    </span>
+                    {formatTeamMembers(contributors, resolvedLanguage)}
+                  </p>
+                  <p class="text-sm text-gray-700 dark:text-gray-300">
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">
+                      {t({
+                        en: 'Link: ',
+                        fr: 'Lien : '
+                      })}
+                    </span>
+                    <a
+                      class="underline hover:text-gray-900 dark:hover:text-gray-100"
+                      target="_blank"
+                      href={project.link}
+                    >
+                      {project.link}
+                    </a>
+                  </p>
+                </div>
                 <p class="text-sm text-gray-700 dark:text-gray-300">{project.description}</p>
                 <Heading variant="h5">
                   {t({
@@ -85,7 +102,7 @@ export const getStaticPaths = () => {
                     fr: 'Technologies clés'
                   })}
                 </Heading>
-                <div class="mt-6 flex flex-wrap gap-7">
+                <div class="mt-7 flex flex-wrap gap-7">
                   {technologies.map(({ data: technology }) => (
                     <div class="group relative flex h-10 w-10 items-end justify-center">
                       <img
