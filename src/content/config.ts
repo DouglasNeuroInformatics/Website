@@ -9,6 +9,12 @@ const $BaseNewsItem = z.object({
 });
 
 const $Article = $BaseNewsItem.extend({
+  source: z
+    .object({
+      href: z.string().min(1).url(),
+      label: z.string().min(1)
+    })
+    .optional(),
   type: z.literal('article')
 });
 

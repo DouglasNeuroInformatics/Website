@@ -75,7 +75,19 @@ const authors = await getEntries(post.data.authors);
     />
     {
       match(post.data)
-        .with({ type: 'article' }, () => <Content />)
+        .with({ type: 'article' }, ({ source }) => (
+          <Fragment>
+            <Content />
+            {source && (
+              <div>
+                <span style={{ display: 'inline' }}>Source: </span>
+                <a href={source.href} target="_blank">
+                  {source.label}
+                </a>
+              </div>
+            )}
+          </Fragment>
+        ))
         .with({ type: 'video' }, ({ src }) => (
           <iframe
             class="mx-auto aspect-video w-full border-none"
