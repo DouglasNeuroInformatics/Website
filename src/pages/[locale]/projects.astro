@@ -9,7 +9,7 @@ import { getCollection, getEntries } from 'astro:content';
 
 const { resolvedLanguage, t } = useTranslations(Astro.url);
 
-const projects = await getCollection('projects')
+const projects = await getCollection('projects', ({ data }) => !data.isDraft)
   .then((projects) => {
     return projects.map(({ data }) => ({
       ...data,

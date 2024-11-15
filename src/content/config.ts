@@ -34,6 +34,7 @@ export const collections = {
         en: z.string().min(1),
         fr: z.string().min(1)
       }),
+      isDraft: z.boolean().optional(),
       link: z.string().url().nullable(),
       technologies: z.array(reference('technologies')).min(1),
       title: z.object({
