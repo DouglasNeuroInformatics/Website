@@ -9,6 +9,7 @@ import Layout from '@/layouts/Layout.astro';
 import { useTranslations } from '@/i18n';
 import { parsePost } from '@/utils/news';
 
+import Heading from '@/components/Heading.astro';
 import { match } from 'ts-pattern';
 import type { ParsedPost } from './[...slug].astro';
 
@@ -99,7 +100,9 @@ const posts: ParsedPost[] = await getCollection('news', ({ data }) => !data.isDr
                       .exhaustive()}
                   </span>
                   <div class="mb-6 mt-3">
-                    <p class="line-clamp-2 font-semibold tracking-tight md:text-lg">{post.data.title}</p>
+                    <Heading class="line-clamp-2" variant="h4">
+                      {post.data.title}
+                    </Heading>
                     <p class="mt-3 line-clamp-3 text-sm text-gray-700 dark:text-gray-300">{post.data.description}</p>
                   </div>
                   <PostInfoCard

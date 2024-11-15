@@ -5,6 +5,7 @@ import LanguageToggle from './LanguageToggle.astro';
 import NavLink from './NavLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
+import { late } from 'astro:schema';
 import SiteTitle from './SiteTitle.astro';
 
 const { t, translatePath } = useTranslations(Astro.url);
@@ -15,6 +16,13 @@ const navLinks = [
     label: t({
       en: 'Home',
       fr: 'Accueil'
+    })
+  },
+  {
+    href: translatePath('/projects'),
+    label: t({
+      en: 'Projects',
+      fr: 'Projets'
     })
   },
   {

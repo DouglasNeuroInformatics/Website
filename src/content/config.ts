@@ -26,6 +26,23 @@ export const collections = {
   news: defineCollection({
     schema: z.union([$Article, $Link, $Video])
   }),
+  projects: defineCollection({
+    schema: z.object({
+      contributors: z.array(reference('team')).min(1),
+      dateCompleted: z.date().nullable(),
+      description: z.object({
+        en: z.string().min(1),
+        fr: z.string().min(1)
+      }),
+      link: z.string().url(),
+      technologies: z.array(reference('technologies')).min(1),
+      title: z.object({
+        en: z.string().min(1),
+        fr: z.string().min(1)
+      })
+    }),
+    type: 'data'
+  }),
   team: defineCollection({
     schema: ({ image }) =>
       z.object({
@@ -43,6 +60,15 @@ export const collections = {
         }),
         seniority: z.number().positive().int(),
         suffix: z.enum(['MD', 'PhD']).optional()
+      }),
+    type: 'data'
+  }),
+  technologies: defineCollection({
+    schema: ({ image }) =>
+      z.object({
+        icon: image(),
+        invert: z.enum(['dark', 'light']).optional(),
+        name: z.string()
       }),
     type: 'data'
   })
