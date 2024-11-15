@@ -1,0 +1,19 @@
+title: 
+  en: Open Data Bank
+  fr: Open Data Bank
+description:
+  en: Open Data Bank is an open-source web application for managing, versioning, and sharing tabular datasets. Is is developed as a generic tool applicable across a range of research environments.
+  fr: Open Data Bank est une application web open-source pour la gestion, la mise à jour et le partage d'ensembles de données tabulaires. Elle est conçue comme un outil générique applicable à un large éventail d'environnements de recherche.
+dateCompleted: ~
+contributors:
+  - weijie-tan
+  - joshua-unrau
+technologies:
+  - typescript
+  - nodejs
+  - react
+  - tailwindcss
+  - nestjs
+  - mongodb
+  - docker
+link: ~
