@@ -14,3 +14,16 @@ contributors:  # list in order of contribution
   - thomas-beaudry
   - vanessa-valiquette
   - weijie-tan
+technologies:  # list all used in order of importance
+  - css
+  - docker
+  - html
+  - javascript
+  - linux
+  - mongodb
+  - nestjs
+  - nextjs
+  - nodejs
+  - python
+  - react
+  - typescript
