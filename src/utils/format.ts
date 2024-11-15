@@ -16,7 +16,7 @@ export function formatTeamMembers(teamMembers: CollectionEntry<'team'>[], resolv
       let separator: string | undefined;
       if (i === teamMembers.length - 1) {
         separator = {
-          en: ' and ',
+          en: teamMembers.length > 2 ? ', and ' : ' and ',
           fr: ' et '
         }[resolvedLanguage];
       } else if (i > 0) {
