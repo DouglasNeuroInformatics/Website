@@ -36,6 +36,13 @@ module.exports = {
             strokeDashoffset: 0
           }
         }
+      },
+      typography: {
+        sm: {
+          css: {
+            fontSize: '0.9375rem'
+          }
+        }
       }
     }
   }
