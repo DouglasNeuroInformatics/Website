@@ -28,7 +28,8 @@ const { resolvedLanguage, t } = useTranslations(Astro.url);
       <time datetime={datePublished.toISOString()}>
         {
           datePublished.toLocaleDateString(resolvedLanguage, {
-            dateStyle: 'long'
+            dateStyle: 'long',
+            timeZone: 'UTC'
           })
         }
       </time>

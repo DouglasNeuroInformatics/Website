@@ -80,7 +80,8 @@ export const getStaticPaths = () => {
                     {project.dateCompleted?.toLocaleDateString(resolvedLanguage, {
                       year: 'numeric',
                       month: 'long',
-                      day: 'numeric'
+                      day: 'numeric',
+                      timeZone: 'UTC'
                     }) ??
                       t({
                         en: 'In Progress',
