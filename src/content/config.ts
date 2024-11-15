@@ -28,6 +28,7 @@ export const collections = {
   }),
   projects: defineCollection({
     schema: z.object({
+      contributors: z.array(reference('team')).min(1),
       dateCompleted: z.date().nullable(),
       description: z.object({
         en: z.string().min(1),
