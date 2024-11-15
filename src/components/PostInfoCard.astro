@@ -21,7 +21,7 @@ const { resolvedLanguage, t } = useTranslations(Astro.url);
     <Headshot alt={authors[0]!.data.fullName} class="h-10 w-10" src={authors[0]!.data.image} />
   </div>
   <div class="ml-3">
-    <p class="text-sm font-semibold">
+    <p class="text-sm font-semibold md:text-md">
       {formatTeamMembers(authors, resolvedLanguage)}
     </p>
     <div class="flex space-x-1 text-sm text-gray-700 dark:text-gray-300">
