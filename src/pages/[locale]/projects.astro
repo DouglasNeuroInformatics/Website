@@ -68,14 +68,14 @@ export const getStaticPaths = () => {
       fr: 'Rechercher...'
     })}
   />
-  <ul class="grid gap-12" id="projects-list">
+  <ul class="grid min-h-screen gap-12" id="projects-list">
     {
       projects.map(async (project) => {
         const contributors = await getEntries(project.contributors);
         const technologies = await getEntries(project.technologies);
         return (
           <li
-            class="translate-y-10 opacity-0 transition-[opacity,transform] duration-700 ease-in-out"
+            class="h-min translate-y-10 opacity-0 transition-[opacity,transform] duration-700 ease-in-out data-[match=false]:hidden"
             data-title={project.title}
           >
             <Card class="flex h-full flex-col p-6">
@@ -216,6 +216,7 @@ export const getStaticPaths = () => {
   });
 
   function filter(searchTerm: string) {
+    input.disabled = true;
     observers.forEach((observer) => observer.disconnect());
     listItems.forEach((li) => {
       li.classList.replace('opacity-100', 'opacity-0');
@@ -224,27 +225,18 @@ export const getStaticPaths = () => {
     setTimeout(() => {
       listItems.forEach((li) => {
         const title = li.getAttribute('data-title')!;
-        const isMatch = title.toLowerCase().includes(searchTerm.toLowerCase());
-        if (isMatch) {
+        if (title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          li.setAttribute('data-match', 'true');
+        } else {
+          li.setAttribute('data-match', 'false');
+        }
+      });
+      listItems.forEach((li) => {
+        if (li.getAttribute('data-match') === 'true') {
           observers.get(li)!.observe(li);
         }
       });
     }, 700);
-
-    // for (let i = 0; i < ul.children.length; i++) {
-    //   const li = ul.children.item(i) as HTMLLIElement;
-    // }
-    //   const title = li.getAttribute('data-title')!;
-    //   console.log(title, searchTerm);
-    //   const isMatch = title.toLowerCase().includes(searchTerm.toLowerCase());
-    //   if (!isMatch) {
-    //     li.style.display = 'none';
-    //   } else {
-    //     li.style.display = 'block';
-    //     li.style.scale = '1';
-    //   }
-    //   console.log(title);
-    // }
   }
 
   {
