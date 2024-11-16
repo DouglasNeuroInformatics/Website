@@ -10,7 +10,7 @@ type Props = {
 const { class: className, id, placeholder } = Astro.props;
 ---
 
-<form class={cn('relative', className)} id={id}>
+<form autocomplete="off" class={cn('relative', className)} id={id}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
