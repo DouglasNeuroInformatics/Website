@@ -215,17 +215,22 @@ export const getStaticPaths = () => {
     observers.set(li, observer);
   });
 
-  function observe() {
-    listItems.forEach((li, i) => {
-      setTimeout(() => {
-        observers.get(li)!.observe(li);
-      }, i * 200);
-    });
-  }
-
-  observe();
-
   function filter(searchTerm: string) {
+    observers.forEach((observer) => observer.disconnect());
+    listItems.forEach((li) => {
+      li.classList.replace('opacity-100', 'opacity-0');
+      li.classList.replace('translate-y-0', 'translate-y-10');
+    });
+    setTimeout(() => {
+      listItems.forEach((li) => {
+        const title = li.getAttribute('data-title')!;
+        const isMatch = title.toLowerCase().includes(searchTerm.toLowerCase());
+        if (isMatch) {
+          observers.get(li)!.observe(li);
+        }
+      });
+    }, 700);
+
     // for (let i = 0; i < ul.children.length; i++) {
     //   const li = ul.children.item(i) as HTMLLIElement;
     // }
@@ -240,6 +245,16 @@ export const getStaticPaths = () => {
     //   }
     //   console.log(title);
     // }
+  }
+
+  {
+    let delay = 0;
+    listItems.forEach((li) => {
+      setTimeout(() => {
+        observers.get(li)!.observe(li);
+      }, delay);
+      delay += 200;
+    });
   }
 
   input.addEventListener('input', (event) => {
