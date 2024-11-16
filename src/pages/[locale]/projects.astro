@@ -216,7 +216,9 @@ export const getStaticPaths = () => {
   });
 
   function filter(searchTerm: string) {
+    form.setAttribute('data-loading', 'true');
     input.disabled = true;
+
     observers.forEach((observer) => observer.disconnect());
     listItems.forEach((li) => {
       li.classList.replace('opacity-100', 'opacity-0');
@@ -236,25 +238,34 @@ export const getStaticPaths = () => {
           observers.get(li)!.observe(li);
         }
       });
+      setTimeout(() => {
+        form.setAttribute('data-loading', 'false');
+        input.disabled = false;
+      }, 700);
     }, 700);
   }
 
   {
     let delay = 0;
+
     listItems.forEach((li) => {
       setTimeout(() => {
         observers.get(li)!.observe(li);
       }, delay);
       delay += 200;
     });
+
+    let timeout: ReturnType<typeof setTimeout>;
+    input.addEventListener('input', (event) => {
+      const value = (event.target as HTMLInputElement).value;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        filter(value);
+      }, 500);
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+    });
   }
-
-  input.addEventListener('input', (event) => {
-    const value = (event.target as HTMLInputElement).value;
-    filter(value);
-  });
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-  });
 </script>
