@@ -180,7 +180,7 @@ export const getStaticPaths = () => {
   const listItems = document.querySelectorAll<HTMLLIElement>('#projects-list > li')!;
   const observers = new Map<HTMLLIElement, IntersectionObserver>();
 
-  listItems.forEach((li, i) => {
+  listItems.forEach((li) => {
     const icons = li.querySelectorAll('div[data-container-type="technologies"] > div > img');
     const margin = Math.min(li.clientHeight / 2, 75);
 
@@ -212,10 +212,18 @@ export const getStaticPaths = () => {
         rootMargin: `-${margin}px 0px`
       }
     );
-    setTimeout(() => {
-      observer.observe(li);
-    }, i * 200);
+    observers.set(li, observer);
   });
+
+  function observe() {
+    listItems.forEach((li, i) => {
+      setTimeout(() => {
+        observers.get(li)!.observe(li);
+      }, i * 200);
+    });
+  }
+
+  observe();
 
   function filter(searchTerm: string) {
     // for (let i = 0; i < ul.children.length; i++) {
