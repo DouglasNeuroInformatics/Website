@@ -68,14 +68,14 @@ export const getStaticPaths = () => {
       fr: 'Rechercher...'
     })}
   />
-  <ul class="grid min-h-screen gap-12" id="projects-list">
+  <ul class="grid min-h-screen w-full gap-12" id="projects-list">
     {
       projects.map(async (project) => {
         const contributors = await getEntries(project.contributors);
         const technologies = await getEntries(project.technologies);
         return (
           <li
-            class="h-min translate-y-10 opacity-0 transition-[opacity,transform] duration-700 ease-in-out data-[match=false]:hidden"
+            class="flex h-min max-w-full translate-y-10 flex-col overflow-hidden opacity-0 transition-[opacity,transform] duration-700 ease-in-out data-[match=false]:hidden"
             data-title={project.title}
           >
             <Card class="flex h-full flex-col p-6">
@@ -110,7 +110,7 @@ export const getStaticPaths = () => {
                     {formatTeamMembers(contributors, resolvedLanguage)}
                   </p>
                   {project.link && (
-                    <div class="text-sm text-gray-700 dark:text-gray-300">
+                    <div class="overflow-hidden text-ellipsis text-sm text-gray-700 dark:text-gray-300">
                       <span class="font-semibold text-gray-900 dark:text-gray-100">
                         {t({
                           en: 'Link: ',
