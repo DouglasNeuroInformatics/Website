@@ -2,6 +2,7 @@
 import Card from '@/components/Card.astro';
 import Heading from '@/components/Heading.astro';
 import PageHeading from '@/components/PageHeading.astro';
+import SearchBar from '@/components/SearchBar.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
 import { formatTeamMembers } from '@/utils/format';
@@ -59,13 +60,24 @@ export const getStaticPaths = () => {
       })
     }
   </PageHeading>
-  <ul class="grid gap-12" id="projects-list">
+  <SearchBar
+    class="mb-5"
+    id="project-search-bar"
+    placeholder={t({
+      en: 'Search...',
+      fr: 'Rechercher...'
+    })}
+  />
+  <ul class="grid min-h-screen w-full gap-12" id="projects-list">
     {
       projects.map(async (project) => {
         const contributors = await getEntries(project.contributors);
         const technologies = await getEntries(project.technologies);
         return (
-          <li class="translate-y-10 opacity-0 transition-[opacity,transform] duration-700 ease-in-out">
+          <li
+            class="flex h-min max-w-full translate-y-10 flex-col overflow-hidden opacity-0 transition-[opacity,transform] duration-700 ease-in-out data-[match=false]:hidden"
+            data-title={project.title}
+          >
             <Card class="flex h-full flex-col p-6">
               <div class="flex flex-col gap-6">
                 <Heading variant="h3">{project.title}</Heading>
@@ -98,7 +110,7 @@ export const getStaticPaths = () => {
                     {formatTeamMembers(contributors, resolvedLanguage)}
                   </p>
                   {project.link && (
-                    <div class="text-sm text-gray-700 dark:text-gray-300">
+                    <div class="overflow-hidden text-ellipsis text-sm text-gray-700 dark:text-gray-300">
                       <span class="font-semibold text-gray-900 dark:text-gray-100">
                         {t({
                           en: 'Link: ',
@@ -162,11 +174,16 @@ export const getStaticPaths = () => {
   </ul>
 </Layout>
 <script>
-  const ul = document.getElementById('projects-list')!;
-  for (let i = 0; i < ul.children.length; i++) {
-    const li = ul.children.item(i) as HTMLLIElement;
+  const form = document.querySelector('#project-search-bar') as HTMLFormElement;
+  const input = form.querySelector('input') as HTMLInputElement;
+
+  const listItems = document.querySelectorAll<HTMLLIElement>('#projects-list > li')!;
+  const observers = new Map<HTMLLIElement, IntersectionObserver>();
+
+  listItems.forEach((li) => {
     const icons = li.querySelectorAll('div[data-container-type="technologies"] > div > img');
     const margin = Math.min(li.clientHeight / 2, 75);
+
     let isFirstEntry = true;
     const observer = new IntersectionObserver(
       (entries, observer) => {
@@ -195,8 +212,60 @@ export const getStaticPaths = () => {
         rootMargin: `-${margin}px 0px`
       }
     );
+    observers.set(li, observer);
+  });
+
+  function filter(searchTerm: string) {
+    form.setAttribute('data-loading', 'true');
+    input.disabled = true;
+
+    observers.forEach((observer) => observer.disconnect());
+    listItems.forEach((li) => {
+      li.classList.replace('opacity-100', 'opacity-0');
+      li.classList.replace('translate-y-0', 'translate-y-10');
+    });
     setTimeout(() => {
-      observer.observe(li);
-    }, i * 200);
+      listItems.forEach((li) => {
+        const title = li.getAttribute('data-title')!;
+        if (title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          li.setAttribute('data-match', 'true');
+        } else {
+          li.setAttribute('data-match', 'false');
+        }
+      });
+      listItems.forEach((li) => {
+        if (li.getAttribute('data-match') === 'true') {
+          observers.get(li)!.observe(li);
+        }
+      });
+      setTimeout(() => {
+        form.setAttribute('data-loading', 'false');
+        input.disabled = false;
+      }, 700);
+    }, 700);
+  }
+
+  {
+    let delay = 0;
+
+    listItems.forEach((li) => {
+      setTimeout(() => {
+        observers.get(li)!.observe(li);
+      }, delay);
+      delay += 200;
+    });
+
+    let timeout: ReturnType<typeof setTimeout>;
+    input.addEventListener('input', (event) => {
+      const value = (event.target as HTMLInputElement).value;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        filter(value);
+      }, 500);
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+    });
   }
 </script>
