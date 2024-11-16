@@ -2,6 +2,7 @@
 import Card from '@/components/Card.astro';
 import Heading from '@/components/Heading.astro';
 import PageHeading from '@/components/PageHeading.astro';
+import SearchBar from '@/components/SearchBar.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
 import { formatTeamMembers } from '@/utils/format';
@@ -59,6 +60,14 @@ export const getStaticPaths = () => {
       })
     }
   </PageHeading>
+  <SearchBar
+    class="mb-5"
+    id="project-search-bar"
+    placeholder={t({
+      en: 'Search...',
+      fr: 'Rechercher...'
+    })}
+  />
   <ul class="grid gap-12" id="projects-list">
     {
       projects.map(async (project) => {
@@ -199,4 +208,18 @@ export const getStaticPaths = () => {
       observer.observe(li);
     }, i * 200);
   }
+</script>
+<script>
+
+  const form = document.querySelector('#project-search-bar') as HTMLFormElement;
+  const input = form.querySelector('input') as HTMLInputElement;
+
+  input.addEventListener('input', (event) => {
+    const value = (event.target as HTMLInputElement).value;
+    console.log(value);
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
 </script>
