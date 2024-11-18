@@ -1,0 +1,16 @@
+title:
+  en: File server data migration
+  fr: Migration des données du serveur de fichiers
+
+description:
+  en: We provided system administration consulting to securely transfer a large dataset from the DNP file server to a Synology NAS. This process involved meticulous data verification, comprehensive NAS configuration, and ongoing communication with the project stakeholders to ensure all actions aligned with their requirements and addressed their security concerns.
+  fr: Nous avons fourni des conseils en matière d'administration de système afin de transférer en toute sécurité un vaste ensemble de données du serveur de fichiers DNP vers un NAS Synology. Ce processus a nécessité une vérification méticuleuse des données, une configuration complète du NAS et une communication permanente avec les parties prenantes du projet afin de s'assurer que toutes les actions étaient conformes à leurs exigences et répondaient à leurs préoccupations en matière de sécurité.
+dateCompleted: 2024-08-01
+contributors:
+  - thomas-beaudry
+  - gabriel-devenyi
+technologies:
+  - synology
+  - ubuntu
+  - zfs
+link: ~
