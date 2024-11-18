@@ -6,12 +6,11 @@ description:
   fr: Le DNP a été engagé pour faciliter l'acquisition et le déploiement d'un serveur Windows. Notre équipe a procédé à une installation, une mise en place et une configuration complètes pour permettre au serveur de fonctionner comme un serveur de sommeil PSG, capable d'exécuter le logiciel Natus pour l'acquisition de données à partir d'études du sommeil.|En outre, nous avons configuré le serveur pour qu'il effectue des sauvegardes nocturnes sur un serveur de fichiers géré par DNP. Ce serveur de fichiers est équipé de capacités de sauvegarde robustes, garantissant une récupération des données sûre et à l'abri des catastrophes. Nous les avons ensuite aidés à cloner un système de fichiers et nous les avons formés à l'utilisation du logiciel de sauvegarde et à la restauration efficace des données en cas de besoin.
 dateCompleted: 2023-12
 contributors:
-  - Thomas Beaudry
-  - Gabriel Devenyi
+  - thomas-beaudry
+  - gabriel-devenyi
 technologies:
   - windows server
   - duplicati
   - ubuntu
   - zfs
-  - natus
 link: ~
