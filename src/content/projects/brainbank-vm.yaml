@@ -1,0 +1,16 @@
+title:
+  en: Douglas-Bell Canada Brain Bank VM hosting
+  fr: Banque de cerveaux Douglas-Bell Canada (VM hosting)
+
+description:
+  en: The DNP hosts Douglas-Bell Canada BrainBank's LORIS instance on a dedicated virtual machine, ensuring it remains accessible and performs reliably. Regular backups are in place to protect their data, and we carry out ongoing maintenance to keep the system stable. We also provide on-call support as needed to address any technical issues.
+  fr: Le DNP héberge l'instance LORIS de Douglas-Bell Canada BrainBank sur une machine virtuelle dédiée, ce qui garantit son accessibilité et sa fiabilité. Des sauvegardes régulières sont en place pour protéger leurs données, et nous effectuons une maintenance continue pour maintenir le système stable. Nous fournissons également une assistance sur appel en cas de problème technique.
+dateCompleted: ongoing
+contributors:
+  - gabriel-devenyi
+  - thomas-beaudry
+technologies:
+  - libvirt
+  - ubuntu
+  - zfs
+link: ~
