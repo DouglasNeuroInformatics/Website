@@ -4,12 +4,12 @@ title:
 description:
   en: The DNP was contracted to facilitate the acquisition and deployment of a Windows Server. Our team conducted a full installation, setup, and configuration to enable the server to function as a PSG sleep server, being capable of running Natus software for data acquisition from sleep studies.|Additionally, we configured the server to perform nightly backups to a DNP-managed file server. This file server is equipped with robust backup capabilities, ensuring secure and disaster-proof data recovery. We then aided them in cloning a file system, and trained them on utilizing the backup software, and restoring data efficiently when needed.
   fr: Le DNP a été engagé pour faciliter l'acquisition et le déploiement d'un serveur Windows. Notre équipe a procédé à une installation, une mise en place et une configuration complètes pour permettre au serveur de fonctionner comme un serveur de sommeil PSG, capable d'exécuter le logiciel Natus pour l'acquisition de données à partir d'études du sommeil.|En outre, nous avons configuré le serveur pour qu'il effectue des sauvegardes nocturnes sur un serveur de fichiers géré par DNP. Ce serveur de fichiers est équipé de capacités de sauvegarde robustes, garantissant une récupération des données sûre et à l'abri des catastrophes. Nous les avons ensuite aidés à cloner un système de fichiers et nous les avons formés à l'utilisation du logiciel de sauvegarde et à la restauration efficace des données en cas de besoin.
-dateCompleted: 2023-12
+dateCompleted: 2023-12-01
 contributors:
   - thomas-beaudry
   - gabriel-devenyi
 technologies:
-  - windows server
+  - windows
   - duplicati
   - ubuntu
   - zfs
