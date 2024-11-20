@@ -1,0 +1,15 @@
+title: 
+  en: Adaptive Semantic Judgment Task 
+  fr: Adaptive Semantic Judgment Task
+description:
+  en: A digital word association test using the WebSpeech API, the JsPsych framework, and custom JsPsych plugins. The system presents pairs of words on-screen and through text-to-speech, asking users to identify whether they are semantically related. It maintains core psycholinguistic testing principles while offering flexible stimulus management and automated progression through difficulty levels.  
+  fr: Un test d'association de mots numériques utilisant l'API WebSpeech, le framework JsPsych et des plugins JsPsych personnalisés. Le système présente des paires de mots à l'écran et par synthèse vocale, en demandant aux utilisateurs d'identifier s'ils sont sémantiquement liés. Il conserve les principes fondamentaux des tests psycholinguistiques tout en offrant une gestion flexible des stimuli et une progression automatisée à travers les niveaux de difficulté.
+  dateCompleted: in-progress # if in-progress, specify ~
+contributors:  # list in order of contribution
+  - cian-monnin
+  - joshua-unrau
+technologies:  # list all used in order of importance
+  - typescript
+  - css
+  - html
+link: https://github.com/DouglasNeuroInformatics/AdaptiveSemanticJudgementTask

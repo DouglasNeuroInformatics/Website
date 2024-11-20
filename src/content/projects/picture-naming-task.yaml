@@ -1,0 +1,15 @@
+title: 
+  en: Picture Naming Task 
+  fr: Picture Naming Task
+description:
+  en: A digital adaptation of neuropsychological picture naming tests using the JsPsych framework. Unlike traditional fixed-format assessments, this web-based system allows administrators to customize stimulus sets and difficulty levels. The platform dynamically adjusts image presentation based on performance. It maintains the core functionality of classic tests like the Boston Naming Test while adding flexibility in stimulus management and adaptive difficulty progression.  
+  fr: Une adaptation numérique de tests de dénomination d'images neuropsychologiques utilisant le framework JsPsych. Contrairement aux évaluations traditionnelles au format fixe, ce système basé sur le Web permet aux administrateurs de personnaliser les ensembles de stimuli et les niveaux de difficulté. La plateforme ajuste dynamiquement la présentation des images en fonction des performances. Il conserve les fonctionnalités de base des tests classiques comme le Boston Naming Test tout en ajoutant de la flexibilité dans la gestion des stimuli et la progression adaptative de la difficulté.
+dateCompleted: in-progress # if in-progress, specify ~
+contributors:  # list in order of contribution
+  - cian-monnin
+  - joshua-unrau
+technologies:  # list all used in order of importance
+  - typescript
+  - css
+  - html
+link: https://github.com/DouglasNeuroInformatics/PictureNamingTask
