@@ -18,7 +18,7 @@ const { description, people, title } = Astro.props;
 
 <div class="flex flex-col gap-6">
   <div class="flex flex-col gap-0.5">
-    <Heading class="text-xl md:text-[1.375rem] xl:text-2xl" variant="h2">{title}</Heading>
+    <Heading class="text-xl md:text-[1.375rem]" variant="h3">{title}</Heading>
     <p class="text-[0.9375rem] leading-tight font-normal text-gray-700 dark:text-gray-300">{description}</p>
   </div>
   <ul class="grid gap-6 md:gap-8 xl:grid-cols-2" data-component="team-members-list">
@@ -49,12 +49,13 @@ const { description, people, title } = Astro.props;
   </ul>
 </div>
 <script>
-  const ul = document.querySelector('[data-component="team-members-list"]')!;
-  for (let i = 0; i < ul.children.length; i++) {
-    const li = ul.children.item(i) as HTMLLIElement;
-    setTimeout(() => {
-      li.classList.replace('opacity-0', 'opacity-100');
-      li.classList.replace('translate-y-6', 'translate-y-0');
-    }, i * 100);
-  }
+  document.querySelectorAll('[data-component="team-members-list"]').forEach((ul) => {
+    for (let i = 0; i < ul.children.length; i++) {
+      const li = ul.children.item(i) as HTMLLIElement;
+      setTimeout(() => {
+        li.classList.replace('opacity-0', 'opacity-100');
+        li.classList.replace('translate-y-6', 'translate-y-0');
+      }, i * 100);
+    }
+  });
 </script>
