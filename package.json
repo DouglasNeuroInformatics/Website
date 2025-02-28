@@ -12,7 +12,7 @@
     "lint": "astro check && eslint --fix src"
   },
   "dependencies": {
-    "@douglasneuroinformatics/libjs": "^1.0.2",
+    "@douglasneuroinformatics/libjs": "^2.3.0",
     "clsx": "^2.1.1",
     "es-toolkit": "^1.32.0",
     "tailwind-merge": "^3.0.2",
@@ -20,13 +20,13 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^3.1.9",
+    "@astrojs/mdx": "^4.1.0",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^6.0.0",
     "@douglasneuroinformatics/eslint-config": "^5.3.1",
     "@douglasneuroinformatics/prettier-config": "^0.0.2",
     "@douglasneuroinformatics/tsconfig": "^1.0.2",
     "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.0.9",
     "@types/node": "22.x",
     "astro": "^5.4.0",
     "eslint": "^9.21.0",
