@@ -42,7 +42,7 @@ const navLinks = [
 ---
 
 <header
-  class="fixed top-0 z-10 w-full bg-white/80 text-gray-700 shadow backdrop-blur-lg dark:bg-gray-800/75 dark:text-gray-300"
+  class="fixed top-0 z-10 w-full bg-white/80 text-gray-700 shadow-sm backdrop-blur-lg dark:bg-gray-800/75 dark:text-gray-300"
 >
   <div class="container flex items-center justify-between py-3 font-medium">
     <SiteTitle class="[&>span]:hidden [&>span]:md:block" />
@@ -51,7 +51,7 @@ const navLinks = [
         {navLinks.map(({ label, ...props }) => <NavLink {...props}>{label}</NavLink>)}
       </nav>
       <div class="mx-5 h-8 w-[1px] rounded-md bg-gray-300 dark:bg-gray-700"></div>
-      <div class="flex flex-grow justify-end gap-3">
+      <div class="flex grow justify-end gap-3">
         <ThemeToggle />
         <LanguageToggle />
       </div>
