@@ -7,39 +7,47 @@ import Headshot from './Headshot.astro';
 export type CurrentTeamMember = Extract<CollectionEntry<'team'>['data'], { position: object }>;
 
 type Props = {
+  description: string;
   people: CurrentTeamMember[];
+  title: string;
 };
 
 const { resolvedLanguage, t } = useTranslations(Astro.url);
-const { people } = Astro.props;
+const { description, people, title } = Astro.props;
 ---
 
-<ul class="grid gap-6 md:gap-8 xl:grid-cols-2" data-component="team-members-list">
-  {
-    people.map(({ fullName, suffix, position, image, description }) => (
-      <li class="translate-y-6 opacity-0 transition-all duration-500 ease-in-out">
-        <div class="relative grid h-full gap-8 rounded-md border border-gray-300 bg-gray-50 p-5 shadow-xs md:grid-cols-4 md:rounded-none md:border-none md:bg-inherit md:p-0 md:shadow-none xl:grid-cols-3 dark:border-gray-600 dark:bg-gray-800 md:dark:bg-inherit">
-          <div class="absolute top-5 left-5 h-14 w-14 md:static md:flex md:h-auto md:w-auto md:items-center md:justify-center">
-            <Headshot class="md:rounded-lg md:shadow-lg" src={image} alt={fullName} />
-          </div>
-          <div class="flex flex-col md:col-span-3 xl:col-span-2">
-            <div class="mb-2 flex h-14 flex-col justify-between py-2.5 pl-[4.25rem] md:mb-0 md:py-1.5 md:pl-0">
-              <Heading class="leading-none md:text-lg" variant="h4">
-                {`${fullName}${suffix ? `, ${suffix}` : ''}`}
-              </Heading>
-              <span class="text-sm leading-none font-semibold tracking-tight text-sky-700 md:text-base dark:text-sky-500 md:dark:text-sky-400">
-                {position[resolvedLanguage]}
-              </span>
+<div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-0.5">
+    <Heading class="text-xl md:text-[1.375rem] xl:text-2xl" variant="h2">{title}</Heading>
+    <p class="text-[0.9375rem] leading-tight font-normal text-gray-700 dark:text-gray-300">{description}</p>
+  </div>
+  <ul class="grid gap-6 md:gap-8 xl:grid-cols-2" data-component="team-members-list">
+    {
+      people.map(({ fullName, suffix, position, image, description }) => (
+        <li class="translate-y-6 opacity-0 transition-all duration-500 ease-in-out">
+          <div class="relative grid h-full gap-8 rounded-md border border-gray-300 bg-gray-50 p-5 shadow-xs md:grid-cols-4 md:rounded-none md:border-none md:bg-inherit md:p-0 md:shadow-none xl:grid-cols-3 dark:border-gray-600 dark:bg-gray-800 md:dark:bg-inherit">
+            <div class="absolute top-5 left-5 h-14 w-14 md:static md:flex md:h-auto md:w-auto md:items-center md:justify-center">
+              <Headshot class="md:rounded-lg md:shadow-lg" src={image} alt={fullName} />
             </div>
-            <p class="py-1.5 text-sm leading-tight font-normal text-gray-700 dark:text-gray-300">
-              {description[resolvedLanguage]}
-            </p>
+            <div class="flex flex-col md:col-span-3 xl:col-span-2">
+              <div class="mb-2 flex h-14 flex-col justify-between py-2.5 pl-[4.25rem] md:mb-0 md:py-1.5 md:pl-0">
+                <Heading class="leading-none md:text-lg" variant="h4">
+                  {`${fullName}${suffix ? `, ${suffix}` : ''}`}
+                </Heading>
+                <span class="text-sm leading-none font-semibold tracking-tight text-sky-700 md:text-base dark:text-sky-500 md:dark:text-sky-400">
+                  {position[resolvedLanguage]}
+                </span>
+              </div>
+              <p class="py-1.5 text-sm leading-tight font-normal text-gray-700 dark:text-gray-300">
+                {description[resolvedLanguage]}
+              </p>
+            </div>
           </div>
-        </div>
-      </li>
-    ))
-  }
-</ul>
+        </li>
+      ))
+    }
+  </ul>
+</div>
 <script>
   const ul = document.querySelector('[data-component="team-members-list"]')!;
   for (let i = 0; i < ul.children.length; i++) {

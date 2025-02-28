@@ -52,5 +52,15 @@ const { t } = useTranslations(Astro.url);
       })
     }
   </PageHeading>
-  <TeamMembers people={coreTeam} />
+  <TeamMembers
+    people={coreTeam}
+    description={t({
+      en: 'Our core technical team is actively engaged in a variety of technical projects, including software development and the ongoing maintenance and optimization of our server infrastructure.',
+      fr: "Notre équipe technique principale est activement engagée dans une variété de projets techniques, y compris le développement de logiciels et la maintenance et l'optimisation continues de notre infrastructure de serveurs."
+    })}
+    title={t({
+      en: 'Core Team',
+      fr: 'Équipe principale'
+    })}
+  />
 </Layout>
