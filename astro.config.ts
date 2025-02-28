@@ -1,8 +1,7 @@
 import path from 'node:path';
 
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import { toString } from 'mdast-util-to-string';
 import getReadingTime from 'reading-time';
@@ -22,11 +21,7 @@ export default defineConfig({
           fr: 'fr'
         }
       }
-    }),
-    tailwind({
-      configFile: path.resolve(import.meta.dirname, 'tailwind.config.cjs')
-    }),
-    mdx()
+    })
   ],
   markdown: {
     remarkPlugins: [
@@ -46,6 +41,7 @@ export default defineConfig({
   },
   site: 'https://douglasneuroinformatics.ca',
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(import.meta.dirname, 'src')

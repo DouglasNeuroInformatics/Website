@@ -14,5 +14,12 @@
     },
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "astro.config.ts", "eslint.config.js", "prettier.config.js", "tailwind.config.cjs"]
+  "include": [
+    "src/**/*",
+    "astro.config.ts",
+    "eslint.config.js",
+    "prettier.config.js",
+    "tailwind.config.cjs",
+    ".astro/types.d.ts"
+  ]
 }

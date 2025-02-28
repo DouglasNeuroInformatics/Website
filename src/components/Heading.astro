@@ -42,7 +42,7 @@ type Props = H1Props | StdProps;
       </h2>
     ))
     .with({ variant: 'h3' }, ({ class: className, ...props }) => (
-      <h3 class={cn('text-lg font-semibold leading-tight tracking-tight md:text-xl xl:text-2xl', className)} {...props}>
+      <h3 class={cn('text-lg font-semibold leading-tight tracking-tight md:text-xl', className)} {...props}>
         <slot />
       </h3>
     ))
