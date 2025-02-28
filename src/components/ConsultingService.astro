@@ -34,7 +34,7 @@ const { description, items, title } = Astro.props;
           <div class="flex h-full w-10 flex-shrink-0 flex-col [&>svg]:h-8 [&>svg]:w-8 [&>svg]:fill-green-600 [&>svg]:stroke-white">
             <Fragment set:html={checkCircleIcon} />
           </div>
-          <div class="flex flex-grow flex-col">
+          <div class="flex grow flex-col">
             <Heading class="mb-1.5"  variant="h5">
               {item.label}
             </Heading>
