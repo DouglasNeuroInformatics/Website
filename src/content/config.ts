@@ -76,7 +76,8 @@ export const collections = {
             fr: z.string().min(1)
           }),
           seniority: z.number().positive().int(),
-          suffix: z.enum(['MD', 'PhD']).optional()
+          suffix: z.enum(['MD', 'PhD']).optional(),
+          type: z.enum(['core-team-member', 'd3sm-coordinator'])
         })
       ]);
     },
