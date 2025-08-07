@@ -2,19 +2,21 @@
 import Card from './Card.astro';
 import Heading from './Heading.astro';
 
+type StandardLink = {
+  kind: 'standard';
+  href: string;
+};
+
+type MailtoLink = {
+  kind: 'mailto';
+  name: string;
+  domain: string;
+};
+
 type Props = {
   title: string;
   icon: string;
-  link:
-    | {
-        kind: 'standard';
-        href: string;
-      }
-    | {
-        kind: 'mailto';
-        name: string;
-        domain: string;
-      };
+  link: StandardLink | MailtoLink;
 };
 
 const { icon, link, title } = Astro.props;
@@ -51,7 +53,7 @@ const { icon, link, title } = Astro.props;
 </Card>
 <script>
   document.querySelectorAll<HTMLDivElement>('.resource-btn').forEach((button) => {
-    if (button.hasAttribute('data-mailto')) {
+    if (button.getAttribute('data-mailto') === 'true') {
       const span = button.querySelector<HTMLSpanElement>('span[data-name][data-domain]')!;
       button.addEventListener('click', function () {
         window.location.href = `mailto:${span.dataset.name}@${span.dataset.domain}`;

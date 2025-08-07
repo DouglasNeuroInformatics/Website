@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.14.0",
   "scripts": {
     "build": "rm -rf dist && astro build",
     "deploy": "rsync -r dist/* douglasneuroinformatics.ca:/var/www/html",
@@ -12,36 +12,37 @@
     "lint": "astro check && eslint --fix src"
   },
   "dependencies": {
-    "@douglasneuroinformatics/libjs": "^2.3.0",
+    "@douglasneuroinformatics/libjs": "^3.1.0",
     "clsx": "^2.1.1",
-    "es-toolkit": "^1.32.0",
-    "tailwind-merge": "^3.0.2",
-    "ts-pattern": "^5.6.2"
+    "es-toolkit": "^1.39.8",
+    "tailwind-merge": "^3.3.1",
+    "ts-pattern": "^5.8.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/sitemap": "^3.2.1",
-    "@douglasneuroinformatics/eslint-config": "^5.3.1",
-    "@douglasneuroinformatics/prettier-config": "^0.0.2",
-    "@douglasneuroinformatics/tsconfig": "^1.0.2",
+    "@astrojs/sitemap": "^3.4.2",
+    "@douglasneuroinformatics/eslint-config": "^5.3.5",
+    "@douglasneuroinformatics/prettier-config": "^0.3.0",
+    "@douglasneuroinformatics/tsconfig": "^1.0.4",
     "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.0.9",
+    "@tailwindcss/vite": "^4.1.11",
     "@types/node": "22.x",
-    "astro": "^5.4.0",
-    "eslint": "^9.21.0",
+    "astro": "^5.12.8",
+    "eslint": "^9.32.0",
     "mdast-util-to-string": "^4.0.0",
-    "prettier": "^3.5.2",
+    "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.11",
-    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "reading-time": "^1.5.0",
-    "sharp": "^0.33.5",
-    "tailwindcss": "^4.0.9",
-    "type-fest": "^4.35.0",
-    "typescript": "5.6.x"
+    "sharp": "^0.34.3",
+    "tailwindcss": "^4.1.11",
+    "type-fest": "^4.41.0",
+    "typescript": "5.8.x"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
       "esbuild",
       "sharp"
     ]
