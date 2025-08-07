@@ -12,7 +12,7 @@ type Props = {
   title: string;
 };
 
-const { resolvedLanguage, t } = useTranslations(Astro.url);
+const { resolvedLanguage } = useTranslations(Astro.url);
 const { description, people, title } = Astro.props;
 ---
 
