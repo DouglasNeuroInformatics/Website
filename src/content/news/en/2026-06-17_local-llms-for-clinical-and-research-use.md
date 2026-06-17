@@ -15,9 +15,9 @@ The Douglas Neuroinformatics Platform is addressing it directly: we are deployin
 
 We selected a set of complementary open-weight models to cover the range of clinical and research needs:
 
-- **Gemma 4** — Google's general-purpose open model, used as a capable all-rounder for drafting, summarization, coding assistance, and general question answering.
-- **MedGemma 3** and **MedGemma 4** — medically-tuned variants designed for clinical text and biomedical reasoning. Running both generations lets us compare quality and behaviour while giving users a model trained specifically on medical content.
-- **Qwen 3.6** — a strong multilingual model, valuable in a bilingual French/English setting and competitive on reasoning and coding tasks.
+- **[Gemma 4](https://huggingface.co/google/gemma-4-31B-it)** — Google's general-purpose open model, used as a capable all-rounder for drafting, summarization, coding assistance, and general question answering.
+- **[MedGemma 3](https://huggingface.co/google/medgemma-27b-it)** and **[MedGemma 4](https://huggingface.co/google/medgemma-1.5-4b-it)** — medically-tuned variants designed for clinical text and biomedical reasoning. Running both generations lets us compare quality and behaviour while giving users a model trained specifically on medical content.
+- **[Qwen 3.6](https://huggingface.co/Qwen/Qwen3.6-27B)** — a strong multilingual model, valuable in a bilingual French/English setting and competitive on reasoning and coding tasks.
 
 Offering several models matters. No single model is best at everything, and being able to route a clinical summarization task to MedGemma while sending a multilingual or coding task to Qwen or Gemma gives users the right tool without compromise.
 

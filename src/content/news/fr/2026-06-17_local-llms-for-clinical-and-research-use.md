@@ -15,9 +15,9 @@ La Plateforme de neuroinformatique Douglas s’y attaque directement : nous dép
 
 Nous avons retenu un ensemble de modèles à poids ouverts complémentaires pour couvrir l’éventail des besoins cliniques et de recherche :
 
-- **Gemma 4** — le modèle ouvert généraliste de Google, utilisé comme outil polyvalent pour la rédaction, la synthèse, l’assistance au code et les questions générales.
-- **MedGemma 3** et **MedGemma 4** — des variantes spécialisées en médecine, conçues pour le texte clinique et le raisonnement biomédical. Exécuter les deux générations nous permet de comparer leur qualité et leur comportement tout en offrant aux utilisateurs un modèle entraîné spécifiquement sur du contenu médical.
-- **Qwen 3.6** — un modèle multilingue performant, précieux dans un contexte bilingue français/anglais et compétitif en raisonnement et en programmation.
+- **[Gemma 4](https://huggingface.co/google/gemma-4-31B-it)** — le modèle ouvert généraliste de Google, utilisé comme outil polyvalent pour la rédaction, la synthèse, l’assistance au code et les questions générales.
+- **[MedGemma 3](https://huggingface.co/google/medgemma-27b-it)** et **[MedGemma 4](https://huggingface.co/google/medgemma-1.5-4b-it)** — des variantes spécialisées en médecine, conçues pour le texte clinique et le raisonnement biomédical. Exécuter les deux générations nous permet de comparer leur qualité et leur comportement tout en offrant aux utilisateurs un modèle entraîné spécifiquement sur du contenu médical.
+- **[Qwen 3.6](https://huggingface.co/Qwen/Qwen3.6-27B)** — un modèle multilingue performant, précieux dans un contexte bilingue français/anglais et compétitif en raisonnement et en programmation.
 
 Offrir plusieurs modèles a son importance. Aucun modèle unique n’excelle en tout, et pouvoir diriger une tâche de synthèse clinique vers MedGemma tout en envoyant une tâche multilingue ou de code vers Qwen ou Gemma donne aux utilisateurs le bon outil sans compromis.
 
