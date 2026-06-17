@@ -1,10 +1,10 @@
 fullName: Cian Monnin
 position:
-  en: Junior Developer
-  fr: Développeur junior
+  en: Scientific Programmer
+  fr: Programmeur scientifique
 image: '@/assets/headshots/cian-monnin.webp'
 description:
-  en: Cian is currently working on implementing object storage within Open Data Capture. In the future, this will be used for new instrument modalities, such as brain imaging data.
-  fr: Cian travaille actuellement à la mise en œuvre du stockage d'objets au sein d'Open Data Capture. À l'avenir, ce système sera utilisé pour de nouvelles modalités d'instruments, telles que les données d'imagerie cérébrale.
+  en: Cian writes and maintains software and provides user support.
+  fr: Cian écrit et maintient des logiciels et offre du soutien aux utilisateurs.
 seniority: 9
 type: core-team-member
