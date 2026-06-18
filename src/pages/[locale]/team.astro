@@ -25,6 +25,7 @@ team.sort((a, b) => {
 
 const coreTeam = team.filter(({ type }) => type === 'core-team-member');
 const d3smCoordinators = team.filter(({ type }) => type === 'd3sm-coordinator');
+const alumni = team.filter(({ type }) => type === 'alumni');
 
 export const getStaticPaths = () => {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -73,6 +74,17 @@ const { t } = useTranslations(Astro.url);
       title={t({
         en: 'Program Coordinators',
         fr: 'Coordinatrices de projet'
+      })}
+    />
+    <TeamMembers
+      people={alumni}
+      description={t({
+        en: 'These are former members of the Douglas Neuroinformatics Platform team who have contributed to our projects and mission.',
+        fr: "Il s'agit d'anciens membres de l'équipe de la Douglas Neuroinformatics Platform qui ont contribué à nos projets et à notre mission."
+      })}
+      title={t({
+        en: 'Alumni',
+        fr: 'Anciens membres'
       })}
     />
   </div>
