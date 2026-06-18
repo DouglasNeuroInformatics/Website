@@ -1,0 +1,16 @@
+title:
+  en: Reimbursement Management Platform
+  fr: Plateforme de gestion des remboursements
+description:
+  en: A full-stack platform for managing expense reimbursements and travel requests with a multi-stage approval workflow. Built with React and a Deno/Hono backend, it supports requester, supervisor, and financial administrator roles, document uploads to S3-compatible storage, and multilingual use.
+  fr: Une plateforme complète pour la gestion des remboursements de frais et des demandes de déplacement avec un flux d'approbation multi-étapes. Construite avec React et un backend Deno/Hono, elle prend en charge les rôles de demandeur, de superviseur et d'administrateur financier, le téléversement de documents vers un stockage compatible S3 et une utilisation multilingue.
+dateCompleted: ~
+contributors:
+  - gabriel-devenyi
+technologies:
+  - typescript
+  - react
+  - tailwindcss
+  - docker
+  - nodejs
+link: https://github.com/DouglasNeuroInformatics/ReimbursementManagement
