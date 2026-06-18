@@ -1,0 +1,16 @@
+title:
+  en: Trident Data Hub
+  fr: Trident Data Hub
+description:
+  en: A web application for browsing and filtering research datasets across institutions, diseases, drugs, and custom tags. Dataset records are maintained in a Google Sheet and synchronized to the deployed site, with researcher contact information automatically scrubbed before publication.
+  fr: Une application web permettant de parcourir et de filtrer des jeux de données de recherche par institution, maladie, médicament et étiquettes personnalisées. Les enregistrements de jeux de données sont maintenus dans un Google Sheet et synchronisés avec le site déployé, les coordonnées des chercheurs étant automatiquement masquées avant la publication.
+dateCompleted: ~
+contributors:
+  - cian-monnin
+technologies:
+  - typescript
+  - react
+  - nodejs
+  - html
+  - css
+link: https://github.com/DouglasNeuroInformatics/TridentDataHub
