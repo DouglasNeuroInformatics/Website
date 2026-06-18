@@ -1,0 +1,15 @@
+title:
+  en: ADHD Deformation-Based Morphometry
+  fr: Morphométrie basée sur la déformation du TDAH
+description:
+  en: A neuroimaging project investigating relationships between brain structure and behavioural measures in children with ADHD versus matched controls. T1-weighted images are processed using deformation-based morphometry, and the resulting Jacobian determinants are related to clinical and neuropsychological measures via univariate linear models and Partial Least Squares Correlation.
+  fr: Un projet de neuroimagerie étudiant les relations entre la structure cérébrale et les mesures comportementales chez les enfants atteints de TDAH par rapport à des témoins appariés. Les images pondérées en T1 sont traitées par morphométrie basée sur la déformation, et les déterminants jacobians résultants sont reliés aux mesures cliniques et neuropsychologiques par des modèles linéaires univariés et une analyse des moindres carrés partiels.
+dateCompleted: ~
+contributors:
+  - cian-monnin
+technologies:
+  - python
+  - numpy
+  - pandas
+  - r
+link: https://github.com/DouglasNeuroInformatics/adhd-dbm-plsc
