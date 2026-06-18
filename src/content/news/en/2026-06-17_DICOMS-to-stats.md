@@ -1,107 +1,81 @@
 ---
-title: 'Brain-Behaviour Analysis Pipeline: End-to-End, DICOM to Stats'
-description: A walkthrough of an MRI-to-statistics pipeline, from BIDS conversion through deformation-based morphometry to multivariate PLSC analysis on HPC.
+title: 'From Forgotten Scans to a Finished Neuroimaging Report'
+description: >-
+  How the Douglas Neuroinformatics Platform turns disorganised,
+  stale MRI data into a complete, reproducible brain-behaviour
+  analysis.
 authors:
   - cian-monnin
 type: article
 ---
 
-## Intro
+Research groups collect MRI scans. The scans end up on a hard
+drive, sometimes for years. File formats are mixed, naming
+conventions have drifted, the person who ran the scanner has
+graduated, and the behavioural spreadsheet has been through
+enough hands that nobody is confident about what was cleaned.
 
-A research group had T1-weighted MRI scans (a mix of DICOM and
-NIfTI files) paired with a spreadsheet of behavioural, cognitive,
-and demographic measures. The question: does brain structure
-relate to behaviour?
+This is a common situation we see at the Douglas
+Neuroinformatics Platform. A group has data that could answer
+a real question, but the gap between what they have and an
+actual analysis feels too wide. There's no
+pipeline, no standardised layout, and the team's strength is
+the science, not the data engineering.
 
-## Step 1: From Scans to Structure
+## The bottleneck isn't the statistics
 
-First everything was brought into a single BIDS dataset. Raw
-DICOMs were converted with **dcm2bids** ([repo](https://github.com/UNFmontreal/Dcm2Bids)); the existing NIfTI files were renamed and
-slotted into the same BIDS layout. This gave a consistent structure
-for the downstream tools regardless of source format.
+The statistical methods for relating brain structure to
+behaviour are well known. The hard part is everything that comes
+before: getting mixed file formats into a common standard,
+checking quality on every scan, preprocessing consistently, and
+putting together a workflow that someone could re-run next year
+and get the same result.
 
-Preprocessing was handled by **Synthstrip_N3** ([repo](https://github.com/CoBrALab/synthstrip_N3)), which performs skull-stripping and N3
-bias field correction. It is maintained by CoBrALab.
+Groups routinely underestimate this. It's not a weekend job.
+It's months of troubleshooting, often on unfamiliar compute
+infrastructure, and a misstep early on can quietly affect every
+result downstream. When the work falls to a trainee learning as
+they go, reproducibility tends to suffer.
 
-From BIDSified T1s, **deformation-based morphometry (DBM)** was computed
-via `optimized_antsMultivariateTemplateConstruction` ([repo](https://github.com/CoBrALab/optimized_antsMultivariateTemplateConstruction)),
-which builds an unbiased average template. The resulting deformation
-fields are turned into Jacobian determinant maps for statistical
-analysis.
+## What we actually deliver
 
-## Step 2: Univariate Models - The Standard Approach
+We take a group from disorganised data to a finished,
+reproducible analysis:
 
-Voxel-wise linear models were run for each behavioural measure:
+**A clean, standards-compliant dataset.** Whatever came in
+DICOMs from the scanner, hand-renamed NIfTIs, a mix of both,
+goes out as a single structured dataset that any tool in the
+field can work with.
 
-```
-jacobian ~ group + sex + age + behavioural_score
-```
+**End-to-end preprocessing.** Skull stripping, bias correction,
+template construction, morphometric mapping, all handled with
+established tools, properly configured for the data. The group
+doesn't need to know which software versions clash or which
+parameters matter for their acquisition.
 
-Models were submitted via SLURM on Digital Research Alliance of
-Canada's [Trillium cluster](https://docs.alliancecan.ca/wiki/Trillium).
-FDR correction was applied across all voxels.
+**Statistics that fit the question.** Voxel-wise models are a
+reasonable start, but they're not always enough. When it makes
+sense, we use multivariate methods that model brain and
+behaviour together, picking up distributed patterns that
+standard approaches bury under multiple-comparison corrections.
 
-A characteristic failure mode of univariate methods with
-distributed signals: each voxel tested individually produces a
-multiple comparison burden that buries weak but distributed effects.
+**Figures and tables for the paper.** Brain maps on the group's
+own template. Bar charts with confidence intervals. Summary
+tables with variance and significance. Finished outputs for a
+manuscript.
 
-## Step 3: Multivariate Pivot - PLSC
+**A reproducible record.** Every step is scripted. The whole
+analysis reruns from raw data with one config change. When a
+reviewer asks "what if you control for X," the answer is a
+rerun, not a rebuild.
 
-Partial Least Squares Correlation (PLSC) avoids the multiple
-comparison problem by modelling brain and behaviour jointly:
+## Why come to us
 
-- **X matrix:** subjects × voxels (log Jacobians)
-- **Y matrix:** subjects × behavioural measures
+A group that tries to do all of this independently will spend
+months on work outside their expertise. We've done it
+before, we maintain the infrastructure, and we build every
+pipeline to be reproducible from day one.
 
-PLSC finds latent variable (LV) pairs. These are weighted brain
-patterns and weighted behaviour patterns that are maximally
-correlated.
-
-**Post-hoc validation:** LV scores were regressed against age and
-sex to rule out confounding.
-
-## Step 4: Delivered Outputs
-
-- **Behavioural loading plots** - Bar charts with 95% bootstrap CIs
-  per measure. Measures whose CI does not cross zero are reliable
-  contributors to the latent behavioural pattern.
-- **Brain maps** - Bootstrap ratio volumes (effectively z-scores for
-  voxel weights) written to MINC and overlaid on the template.
-  Coronal, sagittal, and axial slices. Thresholded (|BSR| > 1.95)
-  and unthresholded versions.
-- **Variance table** - All LVs with singular values, percent
-  variance, and permutation p-values.
-- **Post-hoc tables** - OLS results for age and sex against LV
-  scores.
-
-## Infrastructure Details
-
-**Pipeline design:** A single `ANALYSIS_NAME` parameter drives the
-entire workflow. Every script reads paths and parameters from
-environment variables. Output directories are auto-named from config
-(`plsc_outputs_boot1000_perm5000_YYYYMMDD_HHmm`). This allows
-re-plotting old runs without re-running models.
-
-**Checkpointing:** The PLSC analysis (~5 hrs) saves raw results to a
-pickle after completion. Re-running post-processing skips the
-expensive jacobian loading and PLS computation.
-
-**Dependency management (HPC):** Getting `pypyls` to install on the
-cluster took some fiddling. It needed pinned older versions of
-`setuptools` and `numpy` plus a no-build-isolation install from
-git, and the right modules loaded first. Once the version
-constraints were nailed down, the environment was reproducible.
-
-## Summary
-
-- dcm2bids/BIDS -> Synthstrip_N3 -> DBM -> log Jacobian maps
-- Univariate voxel-wise models per behavioural measure (FDR-corrected)
-- PLSC for joint brain-behaviour modelling, avoiding the multiple
-  comparison burden
-- Post-hoc LV regression against age and sex to check confounding
-- Full outputs: brain maps, loading plots, summary tables, raw
-  results
-
----
-
-_Tools: [dcm2bids](https://github.com/UNFmontreal/Dcm2Bids), [Synthstrip_N3](https://github.com/CoBrALab/synthstrip_N3), [optimized_antsMultivariateTemplateConstruction](https://github.com/CoBrALab/optimized_antsMultivariateTemplateConstruction), [pypyls](https://github.com/netneurolab/pypyls)_
+The practical upshot: a dataset collecting dust becomes a
+completed analysis. Stale data becomes a paper. And the group
+spends its time on the science instead of fighting the tooling.

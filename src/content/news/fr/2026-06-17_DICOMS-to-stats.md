@@ -1,120 +1,94 @@
 ---
-title: 'Pipeline d''analyse cerveau-comportement : de bout en bout, du DICOM aux statistiques'
-description: Survol d'un pipeline allant de l'IRM aux statistiques, de la conversion BIDS à la morphométrie basée sur les déformations jusqu'à l'analyse multivariée PLSC sur HPC.
+title: 'D''images oubliées à un rapport de neuroimagerie complet'
+description: >-
+  Comment la Plateforme de neuroinformatique Douglas transforme
+  des données IRM désorganisées et dormantes en une analyse
+  cerveau-comportement complète et reproductible.
 authors:
   - cian-monnin
 type: article
 ---
 
-## Introduction
+Les groupes de recherche accumulent des images IRM. Les fichiers
+finissent sur un disque dur, parfois pendant des années. Les
+formats sont variés, les conventions de nommage ont dérivé, la
+personne qui opérait le scanner a terminé ses études, et le
+tableur de données comportementales est passé entre assez de
+mains pour que plus personne ne soit certain de ce qui a été
+nettoyé.
 
-Un groupe de recherche disposait d'images IRM pondérées en T1 (un
-mélange de fichiers DICOM et NIfTI) accompagnées d'un tableur de
-mesures comportementales, cognitives et démographiques. La
-question : la structure cérébrale est-elle liée au comportement ?
+C'est une situation courante à la Plateforme de
+neuroinformatique Douglas. Un groupe a des données qui
+pourraient répondre à une vraie question, mais l'écart entre
+ce qu'il a et une analyse concrète semble trop grand. Il n'y
+a pas de pipeline en place, pas de structure
+standardisée, et la force de l'équipe est la science, pas
+l'ingénierie des données.
 
-## Étape 1 : des images à la structure
+## Le goulot d'étranglement n'est pas les statistiques
 
-D'abord, tout a été regroupé dans un seul jeu de données BIDS. Les
-DICOM bruts ont été convertis avec **dcm2bids** ([dépôt](https://github.com/UNFmontreal/Dcm2Bids)) ; les fichiers NIfTI existants ont
-été renommés et intégrés à la même structure BIDS. Cela a fourni une
-organisation cohérente pour les outils en aval, quel que soit le
-format source.
+Les méthodes statistiques pour relier la structure cérébrale au
+comportement sont bien connues. La partie difficile, c'est tout
+ce qui vient avant : convertir des formats de fichiers
+disparates en un standard commun, vérifier la qualité de chaque
+image, prétraiter de manière cohérente, et mettre en place un
+flux de travail que quelqu'un pourrait relancer l'an prochain et
+obtenir le même résultat.
 
-Le prétraitement a été assuré par **Synthstrip_N3** ([dépôt](https://github.com/CoBrALab/synthstrip_N3)), qui réalise l'extraction du crâne
-et la correction du champ de biais N3. Il est maintenu par CoBrALab.
+Les groupes sous-estiment régulièrement cet effort. Ce n'est
+pas un travail de fin de semaine. Ce sont des mois de mise au
+point, souvent sur une infrastructure de calcul peu familière,
+et un faux pas en amont peut affecter silencieusement tous les
+résultats en aval. Quand ce travail retombe sur un stagiaire
+qui apprend en cours de route, la reproductibilité en souffre.
 
-À partir des T1 mis au format BIDS, la **morphométrie basée sur les
-déformations (DBM)** a été calculée via
-`optimized_antsMultivariateTemplateConstruction` ([dépôt](https://github.com/CoBrALab/optimized_antsMultivariateTemplateConstruction)),
-qui construit un gabarit moyen non biaisé. Les champs de déformation
-résultants sont convertis en cartes de déterminant jacobien pour
-l'analyse statistique.
+## Ce que nous livrons concrètement
 
-## Étape 2 : modèles univariés - l'approche standard
+Nous amenons un groupe de données désorganisées à une analyse
+complète et reproductible :
 
-Des modèles linéaires voxel par voxel ont été ajustés pour chaque
-mesure comportementale :
+**Un jeu de données propre et conforme aux standards.** Quels
+que soient les fichiers reçus, DICOMs bruts du scanner, NIfTIs
+renommés à la main, un mélange des deux, le résultat est un
+jeu de données unique et structuré, lisible par n'importe quel
+outil du domaine.
 
-```
-jacobian ~ group + sex + age + behavioural_score
-```
+**Un prétraitement de bout en bout.** Extraction du crâne,
+correction de biais, construction de gabarit, cartographie
+morphométrique, le tout pris en charge avec des outils établis,
+correctement configurés pour les données en question. Le groupe
+n'a pas besoin de savoir quelles versions de logiciels entrent
+en conflit ou quels paramètres comptent pour leur acquisition.
 
-Les modèles ont été soumis via SLURM sur la grappe
-[Trillium](https://docs.alliancecan.ca/wiki/Trillium) de l'Alliance
-de recherche numérique du Canada. Une correction FDR a été appliquée
-sur l'ensemble des voxels.
+**Des statistiques adaptées à la question.** Les modèles voxel
+par voxel sont un point de départ raisonnable, mais ils ne
+suffisent pas toujours. Quand c'est pertinent, nous utilisons
+des méthodes multivariées qui modélisent conjointement le
+cerveau et le comportement, révélant des patrons distribués que
+les approches standard enfouissent sous les corrections de
+comparaisons multiples.
 
-Un mode de défaillance caractéristique des méthodes univariées face à
-des signaux distribués : chaque voxel testé individuellement engendre
-un fardeau de comparaisons multiples qui enfouit les effets faibles
-mais distribués.
+**Des figures et tableaux prêts pour l'article.** Cartes
+cérébrales superposées au gabarit du groupe. Diagrammes en
+barres avec intervalles de confiance. Tableaux récapitulatifs
+avec variance et significativité. Des résultats finis pour un
+manuscrit.
 
-## Étape 3 : pivot multivarié - PLSC
+**Un dossier reproductible.** Chaque étape est scriptée.
+L'analyse entière se relance à partir des données brutes avec
+un seul changement de configuration. Quand un réviseur demande
+« que se passe-t-il si on contrôle pour X », la réponse est une
+relance, pas une reconstruction.
 
-La corrélation des moindres carrés partiels (PLSC) évite le problème
-des comparaisons multiples en modélisant conjointement le cerveau et
-le comportement :
+## Pourquoi faire appel à nous
 
-- **Matrice X :** sujets × voxels (jacobiens logarithmiques)
-- **Matrice Y :** sujets × mesures comportementales
+Un groupe qui tente de faire tout cela seul passera des mois
+sur un travail hors de son expertise. Nous l'avons déjà fait,
+nous maintenons l'infrastructure, et
+nous construisons chaque pipeline pour être reproductible dès
+le départ.
 
-La PLSC trouve des paires de variables latentes (VL). Ce sont des
-patrons cérébraux pondérés et des patrons comportementaux pondérés,
-corrélés au maximum.
-
-**Validation a posteriori :** les scores des VL ont été régressés sur
-l'âge et le sexe afin d'écarter tout facteur de confusion.
-
-## Étape 4 : livrables
-
-- **Graphiques de saturation comportementale** - Diagrammes en barres
-  avec IC bootstrap à 95 % par mesure. Les mesures dont l'IC ne
-  croise pas zéro contribuent de façon fiable au patron comportemental
-  latent.
-- **Cartes cérébrales** - Volumes de ratio bootstrap (en pratique des
-  scores z pour les poids de voxels) écrits en MINC et superposés au
-  gabarit. Coupes coronales, sagittales et axiales. Versions seuillées
-  (|BSR| > 1,95) et non seuillées.
-- **Tableau de variance** - Toutes les VL avec valeurs singulières,
-  pourcentage de variance et valeurs p de permutation.
-- **Tableaux a posteriori** - Résultats OLS de l'âge et du sexe en
-  fonction des scores des VL.
-
-## Détails d'infrastructure
-
-**Conception du pipeline :** un seul paramètre `ANALYSIS_NAME` pilote
-tout le flux de travail. Chaque script lit les chemins et paramètres
-depuis des variables d'environnement. Les répertoires de sortie sont
-nommés automatiquement à partir de la configuration
-(`plsc_outputs_boot1000_perm5000_YYYYMMDD_HHmm`). Cela permet de
-refaire les graphiques d'anciennes exécutions sans relancer les
-modèles.
-
-**Points de reprise :** l'analyse PLSC (~5 h) enregistre les résultats
-bruts dans un pickle une fois terminée. Relancer le post-traitement
-évite le chargement coûteux des jacobiens et le calcul de la PLS.
-
-**Gestion des dépendances (HPC) :** installer `pypyls` sur la grappe a
-demandé quelques bricolages. Il fallait des versions anciennes
-épinglées de `setuptools` et `numpy`, plus une installation depuis git
-sans isolation de build, et les bons modules chargés au préalable. Une
-fois les contraintes de version fixées, l'environnement était
-reproductible.
-
-## Résumé
-
-- dcm2bids/BIDS -> Synthstrip_N3 -> DBM -> cartes jacobiennes
-  logarithmiques
-- Modèles univariés voxel par voxel par mesure comportementale
-  (corrigés FDR)
-- PLSC pour la modélisation conjointe cerveau-comportement, évitant le
-  fardeau des comparaisons multiples
-- Régression a posteriori des VL sur l'âge et le sexe pour vérifier
-  l'absence de facteur de confusion
-- Livrables complets : cartes cérébrales, graphiques de saturation,
-  tableaux récapitulatifs, résultats bruts
-
----
-
-_Outils : [dcm2bids](https://github.com/UNFmontreal/Dcm2Bids), [Synthstrip_N3](https://github.com/CoBrALab/synthstrip_N3), [optimized_antsMultivariateTemplateConstruction](https://github.com/CoBrALab/optimized_antsMultivariateTemplateConstruction), [pypyls](https://github.com/netneurolab/pypyls)_
+Le résultat concret : un jeu de données qui prenait la
+poussière devient une analyse complète. Des données dormantes
+deviennent un article. Et le groupe consacre son temps à la
+science plutôt qu'à se battre avec les outils.
