@@ -1,6 +1,6 @@
 ---
 title: 'Running TestMyBrain Tasks in Open Data Capture'
-extendedTitle: 'Running TestMyBrain Tasks in Open Data Capture: Bridging Decade Old Code to a Modern ES Module Runtime'
+extendedTitle: 'Running TestMyBrain Tasks in Open Data Capture: Bringing Decade Old Legacy Code to a Modern ES Module Runtime'
 description: 'We brought the legacy TestMyBrain cognitive tasks into Open Data Capture by enabling our modern ES-module instrument runtime to execute non-strict mode, globally scoped scripts and serve its assets from a service worker.'
 authors:
   - joshua-unrau
