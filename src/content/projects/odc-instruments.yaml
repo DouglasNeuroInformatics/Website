@@ -1,0 +1,16 @@
+title:
+  en: ODC Instruments
+  fr: Instruments ODC
+description:
+  en: A curated collection of open-access data-collection instruments — forms and interactive tasks — for the Open Data Capture platform. Each instrument is self-contained and validated, and can be previewed in the online playground or served locally for development.
+  fr: Une collection organisée d'instruments de collecte de données en accès libre — formulaires et tâches interactives — pour la plateforme Open Data Capture. Chaque instrument est autonome et validé, et peut être prévisualisé dans le terrain de jeu en ligne ou servi localement pour le développement.
+dateCompleted: ~
+contributors:
+  - joshua-unrau
+  - david-roper
+  - gabriel-devenyi
+technologies:
+  - typescript
+  - javascript
+  - nodejs
+link: https://github.com/DouglasNeuroInformatics/ODC_Instruments
