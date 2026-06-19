@@ -79,3 +79,21 @@ pipeline to be reproducible from day one.
 The practical upshot: a dataset collecting dust becomes a
 completed analysis. Stale data becomes a paper. And the group
 spends its time on the science instead of fighting the tooling.
+
+## Coming soon: scanner-to-derivatives automation
+
+We are building end-to-end services that automate the full path
+from scanner to pipeline derivatives. Raw DICOMs come off the
+scanner and flow directly into conversion, quality control, and
+preprocessing, with analysis-ready outputs produced without
+manual intervention.
+
+## Reproducible research support
+
+If you'd like help developing reproducible research workflows
+using tools like [Nipoppy](https://nipoppy.readthedocs.io),
+[Nextflow](https://www.nextflow.io),
+[nf-core](https://nf-co.re),
+[nf-neuro](https://github.com/scilus/nf-neuro), or a bespoke
+pipeline tailored to your data,
+get in touch at [contact@douglasneuroinformatics.ca](mailto:contact@douglasneuroinformatics.ca).

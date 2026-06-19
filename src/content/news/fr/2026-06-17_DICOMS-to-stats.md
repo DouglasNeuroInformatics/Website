@@ -92,3 +92,22 @@ Le résultat concret : un jeu de données qui prenait la
 poussière devient une analyse complète. Des données dormantes
 deviennent un article. Et le groupe consacre son temps à la
 science plutôt qu'à se battre avec les outils.
+
+## Bientôt disponible : automatisation du scanner aux dérivés
+
+Nous développons des services de bout en bout qui automatisent
+le parcours complet, du scanner aux dérivés de pipeline. Les
+DICOMs bruts sortent du scanner et passent directement par la
+conversion, le contrôle qualité et le prétraitement, produisant
+des résultats prêts à l'analyse sans intervention manuelle.
+
+## Soutien à la recherche reproductible
+
+Si vous souhaitez de l'aide pour développer des flux de travail
+de recherche reproductibles à l'aide d'outils comme
+[Nipoppy](https://nipoppy.readthedocs.io),
+[Nextflow](https://www.nextflow.io),
+[nf-core](https://nf-co.re),
+[nf-neuro](https://github.com/scilus/nf-neuro), ou un pipeline
+sur mesure adapté à vos données,
+contactez-nous à [contact@douglasneuroinformatics.ca](mailto:contact@douglasneuroinformatics.ca).
