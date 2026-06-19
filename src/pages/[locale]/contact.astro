@@ -1,0 +1,66 @@
+---
+import Resource from '@/components/Resource.astro';
+import { useTranslations } from '@/i18n';
+import Layout from '@/layouts/Layout.astro';
+
+import envelopeIcon from '@/assets/svg/envelope.svg?raw';
+import PageHeading from '@/components/PageHeading.astro';
+
+export const getStaticPaths = () => {
+  return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
+};
+
+const { t } = useTranslations(Astro.url);
+---
+
+<Layout
+  bilingual
+  description={t({
+    en: 'Contact the Douglas Neuroinformatics Platform for general inquiries, projects, collaborations, or technical support.',
+    fr: 'Communiquez avec la Douglas Neuroinformatics Platform pour des demandes générales, des projets, des collaborations ou du soutien technique.'
+  })}
+  title={t({
+    en: 'Contact - Douglas Neuroinformatics Platform',
+    fr: 'Contact - Douglas Neuroinformatics Platform'
+  })}
+>
+  <PageHeading>
+    {t({ en: 'Contact', fr: 'Contact' })}
+  </PageHeading>
+  <section class="mx-auto max-w-3xl">
+    <p class="mb-8 text-center text-gray-600 dark:text-gray-400">
+      {
+        t({
+          en: 'Get in touch with the Douglas Neuroinformatics Platform. For general inquiries, projects, or collaborations, reach out to our main contact. For technical support requests, use our dedicated support address.',
+          fr: "Communiquez avec la Douglas Neuroinformatics Platform. Pour les demandes générales, les projets ou les collaborations, écrivez à notre adresse principale. Pour les demandes d'assistance technique, utilisez notre adresse de soutien dédiée."
+        })
+      }
+    </p>
+    <div class="grid gap-6 lg:grid-cols-2">
+      <Resource
+        link={{
+          kind: 'mailto',
+          name: 'contact',
+          domain: 'douglasneuroinformatics.ca'
+        }}
+        icon={envelopeIcon}
+        title={t({
+          en: 'General Inquiries',
+          fr: 'Demandes générales'
+        })}
+      />
+      <Resource
+        link={{
+          kind: 'mailto',
+          name: 'support',
+          domain: 'douglasneuroinformatics.ca'
+        }}
+        icon={envelopeIcon}
+        title={t({
+          en: 'Support Requests',
+          fr: "Demandes d'assistance"
+        })}
+      />
+    </div>
+  </section>
+</Layout>

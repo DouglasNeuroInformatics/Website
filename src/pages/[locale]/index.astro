@@ -5,7 +5,7 @@ import ServiceOffering from '@/components/ServiceOffering.astro';
 import { useTranslations } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
 
-const { t } = useTranslations(Astro.url);
+const { t, translatePath } = useTranslations(Astro.url);
 
 export const getStaticPaths = () => {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -132,8 +132,8 @@ import Logo from '@/components/Logo.astro';
       <div class="mb-8 grid gap-12 lg:grid-cols-2">
         <ConsultingService
           description={t({
-            en: 'We specialize in developing bespoke software, from full-scale applications to small utility scripts. For most projects, our pricing is comparable to hiring research assistants, but without the hassle of recruitment and training. Please <button class="font-medium underline hover:cursor-pointer hover:text-gray-900 dark:hover:text-gray-100" data-contact-ref="true" type="button">contact us</button> for more information or to get a quote.',
-            fr: 'Nous sommes spécialisés dans le développement de logiciels sur mesure, qu\'il s\'agisse d\'applications à grande échelle ou de petits scripts utilitaires. Pour la plupart des projets, nos tarifs sont comparables à ceux des assistants de recherche, mais sans les inconvénients du recrutement et de la formation. N\'hésitez pas à  <button class="font-medium underline hover:cursor-pointer hover:text-gray-900 dark:hover:text-gray-100" data-contact-ref="true" type="button">nous contacter</button> pour plus d\'informations ou pour obtenir un devis.'
+            en: `We specialize in developing bespoke software, from full-scale applications to small utility scripts. For most projects, our pricing is comparable to hiring research assistants, but without the hassle of recruitment and training. Please <a class="font-medium underline hover:text-gray-900 dark:hover:text-gray-100" href="${translatePath('/contact')}">contact us</a> for more information or to get a quote.`,
+            fr: `Nous sommes spécialisés dans le développement de logiciels sur mesure, qu'il s'agisse d'applications à grande échelle ou de petits scripts utilitaires. Pour la plupart des projets, nos tarifs sont comparables à ceux des assistants de recherche, mais sans les inconvénients du recrutement et de la formation. N'hésitez pas à <a class="font-medium underline hover:text-gray-900 dark:hover:text-gray-100" href="${translatePath('/contact')}">nous contacter</a> pour plus d'informations ou pour obtenir un devis.`
           })}
           title={t({
             en: 'Software Development',
@@ -192,8 +192,8 @@ import Logo from '@/components/Logo.astro';
         </div>
         <ConsultingService
           description={t({
-            en: 'We specialize in administering, deploying, and managing open source software platforms. Please <button class="font-medium underline hover:cursor-pointer hover:text-gray-900 dark:hover:text-gray-100" data-contact-ref="true" type="button">reach out to us</button> for additional details or to request a quote.',
-            fr: 'Nous sommes spécialisés dans l\'administration, le déploiement et la gestion de plateformes de logiciels open source. N\'hésitez pas à <button class="font-medium underline hover:cursor-pointer hover:text-gray-900 dark:hover:text-gray-100" data-contact-ref="true" type="button">prendre contact avec nous</button> pour obtenir des détails supplémentaires ou un devis.'
+            en: `We specialize in administering, deploying, and managing open source software platforms. Please <a class="font-medium underline hover:text-gray-900 dark:hover:text-gray-100" href="${translatePath('/contact')}">reach out to us</a> for additional details or to request a quote.`,
+            fr: `Nous sommes spécialisés dans l'administration, le déploiement et la gestion de plateformes de logiciels open source. N'hésitez pas à <a class="font-medium underline hover:text-gray-900 dark:hover:text-gray-100" href="${translatePath('/contact')}">prendre contact avec nous</a> pour obtenir des détails supplémentaires ou un devis.`
           })}
           title={t({
             en: 'System Administration',
@@ -329,16 +329,6 @@ import Logo from '@/components/Logo.astro';
   const heroContainer = document.getElementById('hero-container')!;
   heroContainer.classList.replace('opacity-0', 'opacity-100');
   heroContainer.classList.replace('translate-y-12', 'translate-y-0');
-
-  const resourcesHeading = document.getElementById('resources-heading')!;
-
-  document.querySelectorAll<HTMLButtonElement>('button[data-contact-ref="true"]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      resourcesHeading.scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
 
   document.querySelectorAll('section:not(#hero-section)').forEach((section) => {
     let isFirstEntry = true;
