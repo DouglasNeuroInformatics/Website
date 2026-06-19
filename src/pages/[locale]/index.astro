@@ -14,6 +14,7 @@ export const getStaticPaths = () => {
 import envelopeIcon from '@/assets/svg/envelope.svg?raw';
 import firmwareFigure from '@/assets/svg/firmware.svg?raw';
 import mattermostIcon from '@/assets/svg/mattermost.svg?raw';
+import githubIcon from '@/assets/svg/github.svg?raw';
 import openDataCaptureIcon from '@/assets/svg/open-data-capture.svg?raw';
 import programmingFigure from '@/assets/svg/programming.svg?raw';
 import userPlusIcon from '@/assets/svg/user-plus.svg?raw';
@@ -278,6 +279,18 @@ import Logo from '@/components/Logo.astro';
       <Resource
         link={{
           kind: 'mailto',
+          name: 'contact',
+          domain: 'douglasneuroinformatics.ca'
+        }}
+        icon={envelopeIcon}
+        title={t({
+          en: 'General Inquiries',
+          fr: 'Demandes générales'
+        })}
+      />
+      <Resource
+        link={{
+          kind: 'mailto',
           name: 'support',
           domain: 'douglasneuroinformatics.ca'
         }}
@@ -316,6 +329,14 @@ import Logo from '@/components/Logo.astro';
         }}
         icon={openDataCaptureIcon}
         title="Open Data Capture"
+      />
+      <Resource
+        link={{
+          kind: 'standard',
+          href: 'https://github.com/DouglasNeuroInformatics'
+        }}
+        icon={githubIcon}
+        title="GitHub"
       />
     </div>
   </section>
