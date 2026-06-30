@@ -1,0 +1,16 @@
+title:
+  en: Emotion Recognition Task
+  fr: Tâche de reconnaissance des émotions
+description:
+  en: A digital emotion recognition assessment built with Vite and the jsPsych framework. The task presents video and audio stimuli and asks participants to identify the expressed emotion, with results that integrate seamlessly with Open Data Capture for data collection. It complements the Picture Naming and Adaptive Semantic Judgment tasks as part of the DNP's suite of digital cognitive tests.
+  fr: Un test numérique de reconnaissance des émotions construit avec Vite et le framework jsPsych. La tâche présente des stimuli vidéo et audio et demande aux participants d'identifier l'émotion exprimée, les résultats s'intégrant de manière transparente à Open Data Capture pour la collecte de données. Il complète les tâches de dénomination d'images et de jugement sémantique adaptatif de la suite de tests cognitifs numériques du DNP.
+dateCompleted: ~
+contributors:
+  - david-roper
+  - joshua-unrau
+  - cian-monnin
+technologies:
+  - typescript
+  - css
+  - html
+link: https://github.com/DouglasNeuroInformatics/EmotionRecognitionTask
