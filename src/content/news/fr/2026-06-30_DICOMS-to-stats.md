@@ -1,5 +1,5 @@
 ---
-title: 'D''images oubliées à un rapport de neuroimagerie complet'
+title: 'Des scans oubliés à un rapport de neuroimagerie complet'
 description: >-
   Comment la Plateforme de neuroinformatique Douglas transforme
   des données IRM désorganisées et dormantes en une analyse

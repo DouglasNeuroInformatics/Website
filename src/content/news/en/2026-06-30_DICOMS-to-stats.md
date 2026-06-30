@@ -1,5 +1,5 @@
 ---
-title: 'From Forgotten Scans to a Finished Neuroimaging Report'
+title: 'From Archived Scans to a Completed Neuroimaging Report'
 description: >-
   How the Douglas Neuroinformatics Platform turns disorganised,
   stale MRI data into a complete, reproducible brain-behaviour
